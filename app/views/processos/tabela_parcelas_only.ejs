@@ -1,0 +1,48 @@
+<table id="tabela_parcelas" class="cell-border responsive-table">
+  <thead>
+    <tr>
+      <th>Valor da Parcela</th>
+      <th>Data Vencimento</th>
+      <th>Data Rec. Rda.</th>
+      <th>Data Pago Rte.</th>
+      <th>Pagar Rte.</th>
+      <th>Ações</th>
+    </tr>
+  </thead>              
+  <tbody>   
+
+    <%
+    for (var i = 0; i < data.parcelas.length; i++) {          
+      %>
+
+      <tr>
+        <td>R$<%= data.parcelas[i].valor %></td>
+        <td>
+          <span class="hide"><%= data.parcelas[i].data_vencimento_filtro %></span>
+          <%= data.parcelas[i].data_vencimento %>
+          </td>
+        <td>
+          <span class="hide"><%= data.parcelas[i].data_recebimento_reclamada_filtro %></span>
+          <%= data.parcelas[i].data_recebimento_reclamada %>
+          </td>
+        <td>
+           <span class="hide"><%= data.parcelas[i].data_pago_reclamante_filtro %></span>
+          <%= data.parcelas[i].data_pago_reclamante %>
+          </td>
+        <td>R$<%= data.parcelas[i].valor_pagar_reclamante %></td>
+        <td>
+
+          <a data-link="/sistema/processos/editar-parcela/<%= data.parcelas[i].id %>" class="load_especifico_to_container pointer" data-idload="<%=i%>" data-container="container_parcelas">
+            <i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i>
+          </a>
+          <i class="fa fa-times-circle red-text modal-remover-mount-reload pointer" data-href="#modaldeletar_reload" data-id="<%= data.parcelas[i].id %>" data-texto="Você tem certeza que quer deletar a parcela no valor de R$<%= data.parcelas[i].valor %>? " data-to="/sistema/processos/desativar-parcela/<%= data.detalhes_processo[0].id%>" data-container="#container_tabela_parcelas_reload" aria-hidden="true"></i>
+
+
+
+        </td>
+      </tr>
+
+      <%}%>
+
+    </tbody>
+  </table>

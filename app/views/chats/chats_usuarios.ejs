@@ -1,0 +1,32 @@
+<%
+if (typeof data.grupos != 'undefined' && data.grupos.length > 0) {
+  for (var i = data.grupos.length - 1; i >= 0; i--) {
+    %>
+    <li class="collection-item avatar load-mensagens-grupo golden soft" data-id_chat_grupo="<%= data.grupos[i].id %>" data-id="">
+      <img src="<%= data.grupos[i].imagem != '' && data.grupos[i].imagem != null && data.grupos[i].imagem != undefined ? data.grupos[i].imagem : '/assets/imgs/user-padrao.jpg' %>" alt="" class="circle">
+      <span class="title black-text"><b><%= data.grupos[i].nome %></b></span>
+      <p class="black-text">
+        <small>
+          <%= data.grupos[i].ultima_msg != '' && data.grupos[i].ultima_msg != null && data.grupos[i].ultima_msg != undefined ? data.grupos[i].ultima_msg : 'Começe uma conversa clicando aqui' %></small>
+      </p>
+    </li>
+    <%
+  }
+}
+%>
+
+<%
+if (typeof data.usuarios != 'undefined' && data.usuarios.length > 0) {
+  for (var i = data.usuarios.length - 1; i >= 0; i--) {
+    %>
+    <li class="collection-item avatar load-mensagens" data-id_chat="" data-id="<%= data.usuarios[i].id %>" data-tipo="2">
+      <img src="<%= data.usuarios[i].imagem != '' && data.usuarios[i].imagem != null && data.usuarios[i].imagem != undefined ? data.usuarios[i].imagem : '/assets/imgs/user-padrao.jpg' %>" alt="" class="circle">
+      <span class="title black-text"><b><%= data.usuarios[i].nome %></b></span>
+      <p class="black-text">
+        <small><%= data.usuarios[i].ultima_msg != '' && data.usuarios[i].ultima_msg != null && data.usuarios[i].ultima_msg != undefined ? data.usuarios[i].ultima_msg : 'Começe uma conversa clicando aqui' %></small>
+      </p>
+    </li>
+    <%
+  }
+}
+%>

@@ -1,0 +1,361 @@
+  <a href="/sistema/tarefas" class="ajax-load">
+   <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Início</div>
+ </a>
+
+ <a href="/sistema/tarefas/tarefas" class="ajax-load">
+  <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Tarefas</div>
+</a>
+
+<a href="/sistema/tarefas/criar" class="ajax-load">
+  <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Criar Tarefas</div>
+</a>
+
+<div class="cream tab-archive">SAC</div>
+
+
+<div class="card cream archive full-height">
+  <div class="surface">
+<!--         <div class="header row">
+          <div class="right-align">
+            <a class="btn-floating btn-large waves-effect waves-light blue darken-2 right ajax-load" href="/sistema/tarefas/criar">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div> -->
+        <div class="pipeline-content">
+
+          <div class="board-wrapper">
+            <div class="board-main-content">
+
+              <div class="pipeline">
+
+                <div class="pipeline-header row">
+                  <div class="col s3 center">Chamadas Novas</div>
+                  <div class="col s3 center">Contactar</div>
+                  <div class="col s3 center">Re-Contactar</div>
+                  <div class="col s3 center">Concluído</div>
+                </div>
+
+                <div class="pipeline-body">
+
+                  <div class="tarja-pipeline">Dados Vinculados ao Marketing não Disponíveis ao Usuário!</div>
+
+                  <div class="col s3" ondrop="drop(event)" ondragover="allowDrop(event)">
+                   <%
+                   if (typeof data.requisicao != 'undefined' && data.requisicao.length > 0) {
+                    for (var i = data.requisicao.length - 1; i >= 0; i--) {
+
+                      if(data.requisicao[i].posicao == 0) {%>
+
+                      <div class="list-card ui-draggable" id="drag1" draggable="true" ondragstart="drag(event)">
+                        <div class="card-content">
+                          <ul>
+                            <li><b>Data:</b><%= data.requisicao[i].data %></li>
+                            <li><b>Nome:</b><%= data.requisicao[i].nome %></li>
+                            <li><b>Número do Processo:</b><%= data.requisicao[i].numero_processo %></li>
+                            <li><b>Email:</b><%= data.requisicao[i].email %></li>
+                            <li><b>CPF:</b><span class="cpf"><%= data.requisicao[i].cpf %></span></li>
+                            <li><b>Tipo de Cliente:</b>
+                              <% switch(data.requisicao[i].tipo_cliente){ 
+                                case 0: %>
+                                Outro
+                                <% break;
+                                case 1: %>
+                                Cliente Novo
+                                <% break;
+                                case 2: %>
+                                Cliente Antigo                                  
+                                <%break;}%>
+                              </li>
+                              <li><b>Telefone:</b><span class="tel"><%= data.requisicao[i].telefone %></span></li>
+                              <li><b>Mensagem:</b></li>
+                            </ul>               
+                            <%= data.requisicao[i].mensagem %>
+                          </div>
+                          <div class="card-footer">
+                            <div class="col s12 m4">
+                              <a class="yellow darken-3 white-text">Acompanhar</a>
+                            </div>
+
+                            <div class="col s12 m4">
+                              <a class="blue darken-2 white-text">Próximo Passo</a>
+                            </div>
+
+                            <div class="col s12 m4">
+                              <a class="green darken-2 white-text">Feito</a>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <%}}}%>
+
+
+
+                      </div>
+                      <div class="col s3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                        <div class="list-card ui-draggable" id="drag2" draggable="true" ondragstart="drag(event)">
+                          <div class="card-content">
+                            <ul>
+                              <li><b>Data:</b>01/11/2018</li>
+                              <li><b>Nome:</b>Leandro Abreu</li>
+                              <li><b>Número do Processo:</b></li>
+                              <li><b>Email:</b>leandrodem.abreu@gmail.com</li>
+                              <li><b>CPF:</b>945877010-68</li>
+                              <li><b>Tipo de Cliente:</b>Novo</li>
+                              <li><b>Telefone:</b>(51) 99173-1091</li>
+                              <li><b>Mensagem:</b></li>
+                            </ul>               
+                            Ação correção FGTS, Não lembro se entrei com a ação no mutirão promovido pelo SINDIPOLO, se não gostaria de entrar com o processo Att Leandro Abreu CPF 945877010-68
+
+                            <p class="center"><b>Histórico</b></p>
+                            <div class="historico-list-card">
+
+                              <table class="bordered">
+                                <tr>
+                                  <td>12:00</td>
+                                  <td>Requisição Está sendo Acompanhado por <b>José</b>
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td>14:00</td>
+                                  <td>Requisição Movido para "Reunião" por <b>José</b></td>
+                                </tr>
+
+                                <tr>
+                                  <td>16:30</td>
+                                  <td>Requisição Foi Concluído por <b>José</b></td>
+                                </tr>
+
+                              </table>
+
+                            </div>
+                          </div>
+
+
+                          <div class="card-footer">
+                            <div class="col s12 m4">
+                              <a class="yellow darken-3 white-text">Acompanhar</a>
+                            </div>
+
+                            <div class="col s12 m4">
+                              <a class="blue darken-2 white-text">Próximo Passo</a>
+                            </div>
+
+                            <div class="col s12 m4">
+                              <a class="green darken-2 white-text">Feito</a>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+                      <div class="col s3" ondrop="drop(event)" ondragover="allowDrop(event)">   
+                      </div>
+                      <div class="col s3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function allowDrop(ev) {
+            ev.preventDefault();
+          } 
+
+          function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+          }
+
+          function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+          }
+
+        </script>
+
+
+        <style>
+
+        .full-height{
+          height: calc(100% - 47px);
+        }
+
+        .surface{
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        .pipeline-content{
+          position: relative;
+          overflow-y: auto;
+          outline: none;
+          flex-grow: 1;
+        }
+
+        .tarja-pipeline{
+          background: rgba(27, 27, 27, 0.78);
+          width: 100%;
+          color: #fff;
+          font-weight: bold;
+          position: absolute;
+          top: 50%;
+          text-align: center;
+          padding: 5px;
+        }
+
+
+        .board-wrapper{
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
+
+        .board-main-content{
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          margin-right: 0;
+          transition: margin .1s ease-in; 
+        }
+
+
+        .list-card{
+          background: #fff;
+          margin: 1rem 0;
+          border-radius: 3px;
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+        }
+
+        .pipeline{
+          /*background: linear-gradient(to left, #034580, #106ab9);*/
+          height:100%;
+        }
+
+        .pipeline-header.row{
+          margin-bottom:0
+        }
+
+        .pipeline-header .col{
+          padding:10px 0px;
+        }
+
+        .pipeline-header .col:nth-child(1){
+          border-bottom:1px solid #d0a116;
+        }
+
+        .pipeline-header .col:nth-child(2){
+          border-bottom:1px solid #9497fb;
+        }
+
+        .pipeline-header .col:nth-child(3){
+          border-bottom:1px solid #717171;
+        }
+
+        .pipeline-header .col:nth-child(4){
+          border-bottom:1px solid #56ab2f;
+        }
+
+        .pipeline-body .col:nth-child(1) .list-card{
+          border-left:2px solid #d0a116;
+        }
+        .pipeline-body .col:nth-child(2) .list-card{
+          border-left:2px solid #9497fb;
+        }
+
+        .pipeline-body .col:nth-child(3) .list-card{
+          border-left:2px solid #717171;
+        }
+
+        .pipeline-body .col:nth-child(4) .list-card{
+          border-left:2px solid #56ab2f;
+        }
+
+        .pipeline-body{
+          min-height: 100px;
+          height: calc(100% - 43px);
+        }
+
+        .pipeline-body .col{
+          /*border-right: 1px solid rgba(0, 0, 0, 0.4);*/
+          border-right: 1px solid rgba(222, 209, 178, 0.5);
+          height: 100%;
+        }
+
+        .pipeline-body .col:last-child{
+          border:0;
+        }
+
+        .pipeline-body .list-card{
+          word-break: break-word;
+          text-align: justify;
+
+        }
+
+        .pipeline-body .card{
+          padding:3px;
+          cursor:move;
+          font-size: 14px;
+          word-break: break-word;
+        }
+
+
+
+        .pipeline .rodape-tarefas{
+          width: 100%;      
+          background: #ffffff; /* Old browsers */
+          background: -moz-radial-gradient(center, ellipse cover, #ffffff 19%, #e5e5e5 84%); /* FF3.6-15 */
+          background: -webkit-radial-gradient(center, ellipse cover, #ffffff 19%,#e5e5e5 84%); /* Chrome10-25,Safari5.1-6 */
+          background: radial-gradient(ellipse at center, #ffffff 19%,#e5e5e5 84%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+          box-shadow: 2px 2px 5px #4c4c4c69;
+          border: 1px solid rgba(228, 206, 154, 0.23);
+        }
+
+        .pipeline .rodape-tarefas a{
+          width: 100%;
+          height:100%;
+          padding:10px 0;
+          color:#000000;
+          display: block; 
+        }
+
+        .pipeline .card-footer{
+          width: 100%;
+          min-height: 30px;
+        }
+
+        .pipeline .card-footer .col{
+          padding: 0
+        }
+
+        .pipeline .card-footer a,.pipeline .card-footer button{
+          width: 100%;
+          height: 30px;
+          display: inline-block;
+          vertical-align: middle;
+          text-align: center;
+          cursor: pointer;
+          line-height: 30px;
+        }
+
+        .historico-list-card{
+          max-height: 200px;
+          overflow: auto;
+          word-break: normal;
+        }
+
+
+
+
+      </style>

@@ -1,0 +1,152 @@
+<div id="buttons_header" class="bordo-strip">
+  <div class="icon-square criar">
+    <a class="ajax-load"  href="/sistema/clientes/criar">
+      <img src="/assets/imgs/golden/14.png">
+      <span>Cliente</span>
+    </a>
+  </div>
+  <div class="icon-square criar">
+    <a class="ajax-load"  href="/sistema/processos/criar">
+      <img src="/assets/imgs/golden/15.png">
+      <span>Processo</span>
+    </a>
+  </div>
+  <div class="icon-square criar">
+    <a class="ajax-load" href="/sistema/adversos/criar">
+      <img src="/assets/imgs/golden/17.png">
+      <span>Adverso</span>
+    </a>
+  </div>
+  <div class="icon-square">
+    <a class="ajax-load" href="/sistema/processos">
+      <img src="/assets/imgs/golden/1.png">
+      <span>Pesquisar Processos</span>
+    </a>
+  </div>
+  <div class="icon-square">
+    <a class="ajax-load" href="/sistema/processos/cruzamento">
+      <img src="/assets/imgs/golden/3.png">
+      <span>Processos Principais por Cruzamento</span>
+    </a>
+  </div>
+  <div class="icon-square">
+    <a class="ajax-load" href="/sistema/compromissos/controle_distribuicao">
+      <img src="/assets/imgs/golden/11.png">
+      <span>Controle de Distribuição</span>
+    </a>
+  </div>
+  <div class="icon-square">
+    <a class="ajax-load" href="/sistema/documentos">
+      <img src="/assets/imgs/golden/2.png">
+      <span>Documentos</span>
+    </a>
+  </div>
+
+<!--   <div class="icon-square">
+    <a class="ajax-load" href="/sistema/compromissos/">
+      <img src="/assets/imgs/golden/7.png">
+      <span>Processos (por período)</span>
+    </a>
+  </div> -->
+  <div class="icon-square">
+    <a class="ajax-load" href="/sistema/estatisticas">
+      <img src="/assets/imgs/golden/8.png">
+      <span>Estatisticas e Aberturas de Pastas</span>
+    </a>
+  </div>
+<!--   <div class="icon-square">
+    <a class="" href="http://www.pje.jus.br/navegador/" target="_blank">
+      <img src="/assets/imgs/golden/9.png">
+      <span>Andamentos dos Tribunais</span>
+    </a>
+  </div> -->
+<!--   <div class="icon-square">
+    <a class="ajax-load" href="/sistema/processos/mortos">
+      <img src="/assets/imgs/golden/10.png">
+      <span>Arquivo Morto</span>
+    </a>
+  </div> -->
+
+  <div class="icon-square">
+    <a class="ajax-load" href="/sistema/relatorios" >
+      <img src="/assets/imgs/golden/12.png">
+      <span>Relatórios Financeiros</span>
+    </a>
+  </div>
+  <div class="icon-square">
+    <a class="ajax-load" href="/sistema/contatos/">
+      <img src="/assets/imgs/golden/13.png">
+      <span>Agenda do Escritório</span>
+    </a>
+  </div>
+
+</div>
+<style type="text/css">
+#buttons_header {
+  display: flex;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  height: ;
+  box-shadow: inset 0px 0px 4px 1px #000;
+}
+#buttons_header .icon-square {
+  height: 80px;
+  /*padding-top: 100%;*/
+  width: 140px;
+  margin: 6px 3px;
+  border-radius: 5px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+#buttons_header .icon-square.criar {
+  border: 1px solid rgba(243, 236, 151, 0.3);
+}
+#buttons_header .icon-square:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#buttons_header .icon-square a img {
+  position: absolute;
+  max-width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#buttons_header .icon-square a span {
+  transition: 0.5s;
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  top: 50px;
+  border-radius: 5px;
+  padding: 2px;
+  opacity: 0;
+  background: rgb(252,234,187); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(252,234,187,1) 0%, rgba(249,239,212,1) 50%, rgba(252,234,187,1) 100%); /* FF3.6-15 */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,234,187,1)), color-stop(50%,rgba(249,239,212,1)), color-stop(100%,rgba(252,234,187,1))); /* Chrome4-9,Safari4-5 */
+  background: -webkit-linear-gradient(top, rgba(252,234,187,1) 0%,rgba(249,239,212,1) 50%,rgba(252,234,187,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: -o-linear-gradient(top, rgba(252,234,187,1) 0%,rgba(249,239,212,1) 50%,rgba(252,234,187,1) 100%); /* Opera 11.10-11.50 */
+  background: -ms-linear-gradient(top, rgba(252,234,187,1) 0%,rgba(249,239,212,1) 50%,rgba(252,234,187,1) 100%); /* IE10 preview */
+  background: linear-gradient(to bottom, rgba(252,234,187,1) 0%,rgba(249,239,212,1) 50%,rgba(252,234,187,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fceabb',GradientType=0 ); /* IE6-9 */
+  color: rgb(79, 33, 40);
+  border-right: 2px solid rgb(79, 33, 40);
+  border-left: 2px solid rgb(79, 33, 40);
+  left: 50%;
+  transform: translateX(-50%);
+}
+#buttons_header .icon-square:hover a span {
+  transition: 0.5s;
+  opacity: 1;
+  top:  90px;
+}
+.bordo-strip {
+  background: rgb(66,25,31);
+  background: -moz-linear-gradient(top, rgba(66,25,31,1) 0%, rgba(105,48,57,1) 50%, rgba(105,48,57,1) 50%, rgba(66,25,31,1) 100%);
+  background: -webkit-linear-gradient(top, rgba(66,25,31,1) 0%,rgba(105,48,57,1) 50%,rgba(105,48,57,1) 50%,rgba(66,25,31,1) 100%);
+  background: linear-gradient(to bottom, rgba(66,25,31,1) 0%,rgba(105,48,57,1) 50%,rgba(105,48,57,1) 50%,rgba(66,25,31,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#42191f', endColorstr='#42191f',GradientType=0 );
+}
+</style>

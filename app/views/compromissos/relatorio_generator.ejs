@@ -1,0 +1,40 @@
+     
+<table id="relatorio_generator" class="centered uppercase">
+        <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+  <tbody>
+    <%
+    for (var j = 0; j < data.relatorio.length;j++) {
+      %>
+      <tr class="margin-t-10">
+        <td colspan="6" align="center" class="strong border-t-grey">Data: <%= data.relatorio[j].data_inicial_relatorio %> <%= data.relatorio[j].dia_semana_relatorio %></td>
+      </tr>
+      <tr>
+        <td colspan="6" class="strong border-r-grey border-l-grey border-t-white border-b-grey"><%= data.relatorio[j].comarca %></td>
+      </tr>
+      <tr class="conteudo_table">
+        <td><%= data.relatorio[j].data_inicial %></td>
+        <td><%= data.relatorio[j].vara %></td>
+        <td><%= data.relatorio[j].comarca %></td>
+        <td><%= data.relatorio[j].numero %>
+          <hr>
+          <%= data.relatorio[j].advogado_compromisso %>
+        </td>
+        <td class="w15"><%= data.relatorio[j].cliente %></td>
+        <td class="w15"><%= data.relatorio[j].adverso %></td>
+      </tr>
+      <tr>
+        <td colspan="6" class="margin-t-5"></td>
+      </tr>
+
+      <%}%>
+    </tbody>
+  </table>

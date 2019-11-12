@@ -1,0 +1,78 @@
+<form method="POST" action="" data-link="/sistema/compromissos/<%= data.link_pesquisar %>">
+
+  <div class="input-field input-group-control col s12 m6">
+    <label for="data_inicial">Data de Início</label>          
+    <input id="data_inicial" type="text" class="datepicker pesquisa" name="data_inicial" data-container="#tabela_compromisso_e_relatorio">
+  </div>
+
+  <div class="input-field input-group-control col s12 m6">
+    <label for="data_final">Data de Fim</label>          
+    <input id="data_final" type="text" class="datepicker pesquisa" name="data_final" data-container="#tabela_compromisso_e_relatorio">
+  </div>
+
+  <div class="col s12 m6 select-field input-group-control">
+    <label>Cliente</label>
+    <select class="browser-default pesquisa" name="id_cliente" data-container="#tabela_compromisso_e_relatorio">
+      <option value="" selected>Selecione</option>
+      <%
+      if (typeof data.clientes != 'undefined' && data.clientes.length > 0) {
+        for (var i = data.clientes.length - 1; i >= 0; i--) {
+          %>
+          <option value="<%= data.clientes[i].id %>"><%= data.clientes[i].nome %></option>
+          <%
+        }
+      }
+      %>
+    </select>
+  </div>
+  <div class="col s12 m6 select-field input-group-control">
+    <label>Adverso</label>
+    <select class="browser-default pesquisa" name="id_adverso" data-container="#tabela_compromisso_e_relatorio">
+      <option value="" selected>Selecione</option>
+      <%
+      if (typeof data.adversos != 'undefined' && data.adversos.length > 0) {
+        for (var i = data.adversos.length - 1; i >= 0; i--) {
+          %>
+          <option value="<%= data.adversos[i].id %>"><%= data.adversos[i].nome %></option>
+          <%
+        }
+      }
+      %>
+    </select>
+  </div>
+
+  <div class="col s12 m6 select-field input-group-control">
+    <label>Comarca</label>
+    <select class="browser-default pesquisa" name="id_comarca" data-container="#tabela_compromisso_e_relatorio">
+      <option value="" selected>Selecione</option>
+      <%
+      if (typeof data.comarcas != 'undefined' && data.comarcas.length > 0) {
+        for (var i = data.comarcas.length - 1; i >= 0; i--) {
+          %>
+          <option value="<%= data.comarcas[i].id %>"><%= data.comarcas[i].descricao %></option>
+          <%
+        }
+      }
+      %>
+    </select>
+  </div>
+
+  <div class="col s12 m6 select-field input-group-control">
+    <label>Advogado</label>
+    <select class="browser-default pesquisa" name="id_advogado" data-container="#tabela_compromisso_e_relatorio">
+      <option value="" selected>Selecione</option>
+      <%
+      if (typeof data.advogados != 'undefined' && data.advogados.length > 0) {
+        for (var i = data.advogados.length - 1; i >= 0; i--) {
+          %>
+          <option value="<%= data.advogados[i].id %>"><%= data.advogados[i].nome %></option>
+          <%
+        }
+      }
+      %>
+    </select>
+  </div>
+
+
+
+</form>

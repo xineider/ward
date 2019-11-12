@@ -1,0 +1,230 @@
+<div class="card-panel white">
+  <h5>--------------------------- MENU LATERAL --------------------------</h5>
+  <div class="row">
+    
+    <div class="input-field col s6 m3">
+      <input id="numero_processo" type="text">
+      <label for="numero_processo">N° Processo</label>
+      <button class="left" title="Informar a página jurídica sobre este processo"><i class="fa fa-arrow-circle-down"></i></button>
+      <button class="left" title="Consultar este processo na internet"><i class="fa fa-arrow-circle-right"></i></button>
+    </div>
+    <div class="col s6 m1">
+      <select class="browser-default">
+        <option value="1" selected>Autor</option>
+        <option value="2">Réu</option>
+        <option value="3">Terceiro</option>
+      </select>   
+      <label>Posição</label>    
+    </div>
+    <div class="input-field col s6 m1">
+      <input disabled value="79183" id="pasta_processo" type="text">
+      <label for="pasta_processo">Pasta</label>         
+    </div>
+
+    <div class="input-field col s6 m1">
+      <input disabled value="21665" id="cliente_numero" type="text">
+      <label for="cliente_numero">Cliente</label>         
+    </div>
+
+    <div class="input-field col s6 m1">
+      <input disabled value="A" id="cliente_autor" type="text">     
+    </div>
+
+    <div class="input-field col s6 m1">
+      <input disabled value="6526" id="adverso_numero" type="text">
+      <label for="adverso_numero">Adverso</label>         
+    </div>
+
+    <div class="input-field col s6 m1">
+      <input disabled value="C" id="adverso_autor" type="text">     
+    </div>
+
+    <div class="input-field col s6 m1">
+      <input disabled value="28/02/2012" id="distribuicao" type="text">
+      <label for="distribuicao">Distribuição</label>          
+    </div>
+
+    <div class="input-field col s6 m1">
+      <input disabled value="28/02/2012" id="citacao" type="text">
+      <label for="distribuicao">Citação</label>         
+    </div>
+
+    <div class="input-field col s6 m1">
+      <input disabled value="12/01/2012" id="cadastro" type="text">
+      <label for="distribuicao">Cadastro</label>          
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+    <div class="col s12 m7">
+
+      <div class="col s10 center">
+        Carga Processual
+      </div>
+      <div class="col s2">
+        <a class="btn modal-mount" data-link="/processos/captacao" data-href="#modalinfo">Captação</a>      
+      </div>
+
+      <div class="input-field col s6 m8">
+        <input id="cliente_nome" type="text">
+        <label for="cliente_nome">Cliente</label>         
+      </div>
+      <div class="input-field col s6 m4">
+
+        <!-- Ínicio dos Botões do Cliente -->
+        <a title="Outras pessoas envolvidas no processo" class="btn modal-mount" data-link="/clientes/outros_envolvidos/" data-href="#modalinfo">
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </a>
+
+        <a title="Abrir Ficha Cadastral do Cliente" class="btn modal-mount" data-link="/clientes/selecionar"data-href="#modalinfo">
+          <i class="fa fa-envelope-open text-darken-2" aria-hidden="true"></i>
+        </a>
+
+        <a title="Muda o nome desta Parte" class="btn modal-mount" data-link="/clientes/muda_nome_parte/">
+          <i class="fa fa-cog text-darken-2" aria-hidden="true"></i>
+        </a>
+
+        <a title="Lista os Processos desta Parte" class="btn modal-mount" data-link="/cliente/listar_processos_id/">
+          <i class="fa fa-archive text-darken-2" aria-hidden="true"></i>
+        </a>
+
+        <!-- Fim dos Botões do Cliente -->
+
+      </div>
+
+      <div class="input-field col s12 m8">
+        <input id="adverso_nome" type="text">
+        <label for="adverso_nome">Adverso</label>         
+      </div>
+      <div class="input-field col s6 m4">
+        <!-- Ínicio dos Botões do Adverso -->
+
+        <a title="Outras pessoas envolvidas no processo da parte contrária" class="btn modal-mount" data-link="/clientes/outros_envolvidos/" data-href="#modalinfo">
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </a>
+
+        <a title="Abrir Ficha Cadastral do Adverso" class="btn modal-mount" data-link="/clientes/abrir_ficha/" data-href="#modalinfo">
+          <i class="fa fa-envelope-open text-darken-2" aria-hidden="true"></i>
+        </a>
+
+        <a title="Muda o nome desta Parte" class="btn modal-mount" data-link="/clientes/muda_nome_parte/">
+          <i class="fa fa-cog text-darken-2" aria-hidden="true"></i>
+        </a>
+
+        <a title="Lista os Processos desta Parte" class="btn modal-mount" data-link="/cliente/listar_processos_id/">
+          <i class="fa fa-archive text-darken-2" aria-hidden="true"></i>
+        </a>
+
+        <!-- Fim dos Botões do Adverso -->
+
+      </div>
+      <div class="col s12">
+        <div class="input-field col s12 m4">
+          <input id="valor_causa" type="text">
+          <label for="valor_causa">Valor da Causa</label>         
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="anexar_grupos" type="text">
+          <label for="anexar_grupos">Anexar a grupos</label>          
+        </div>
+        <div class="input-field col s12 m4">
+          <input id="perito" type="text">
+          <label for="perito">Perito</label>          
+        </div>
+      </div>
+
+      <div class="col s12">
+        
+        <span>Último andamento:</span>
+       
+        <button class="right">Novo Andamento</button>
+      </div>
+
+      <div class="col s12">
+        
+      </div>
+
+    </div>
+
+    <style>
+    .right-detalhes-processo .input-field input{
+      width:80%
+    }
+  </style>
+  
+  <div class="col s12 m5 right-detalhes-processo">
+    <div class="input-field col s12">
+      <input id="tipo_causa" type="text">
+      <label for="tipo_causa">Tipo da Causa</label>           
+      <a class="btn grey modal-mount" data-link="/processos/tipo-causa" data-href="#modalinfo"><i class="fa fa-search"></i></a>
+    </div>
+
+    <div class="input-field col s12">
+      <input id="assunto" type="text">
+      <label for="assunto">Assunto</label>
+      <a class="btn grey"><i class="fa fa-search"></i></a>    
+    </div>
+
+    <div class="input-field col s12">
+      <input id="comarca" type="text">
+      <label for="comarca">Comarca</label>
+      <a class="btn grey"><i class="fa fa-search"></i></a>
+    </div>
+
+    <div class="input-field col s12">
+      <input id="tipo_acao_rito" type="text">
+      <label for="tipo_acao_rito">Tipo da Ação/Rito</label>
+      <a class="btn grey"><i class="fa fa-search"></i></a>    
+    </div>
+
+    <div class="input-field col s12">
+      <input id="vara" type="text">
+      <label for="vara">Vara</label>
+      <a class="btn grey"><i class="fa fa-search"></i></a>        
+    </div>
+
+    <div class="input-field col s12">
+      <input id="categoria" type="text">
+      <label for="categoria">Categoria</label>
+      <a class="btn grey"><i class="fa fa-search"></i></a>    
+    </div>
+
+    <div class="input-field col s12">
+      <input id="fase" type="text">
+      <label for="fase">Fase</label>
+      <a class="btn grey"><i class="fa fa-search"></i></a>  
+    </div>
+
+    <div class="input-field col s12">
+      <input id="advogado_responsavel" type="text">
+      <label for="advogado_responsavel">Advogado Responsável</label>
+      <a class="btn grey"><i class="fa fa-search"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m7">
+    <div class="col s6">Recursos do Processo</div>
+    <div class="col s6">Apensos do Processo</div>
+    <div class="col s6">
+      <h3>SEM RECURSO</h3>
+    </div>
+    <div class="col s6">
+      <h3>SEM APENSO</h3>
+    </div>
+  </div>
+
+  <div class="col s12 m5">
+    <div class="col s12">Compromissos do Processo</div>
+    <div class="col s6">
+      <h3>SEM COMPROMISSO</h3>
+    </div>
+  </div>
+</div>
+
+
+</div>

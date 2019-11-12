@@ -1,0 +1,116 @@
+<div class="left-align">
+  <form method="POST" action="">
+    <input type="hidden" name="id_tarefa" value="<%= id_tarefa %>">
+    <input type="hidden" name="status" value="3">
+    <button data-href="/sistema/tarefas/concluir" data-action="/sistema/tarefas/tarefas" class="btn waves-effect waves-light bordo ajax-submit">
+      Concluir <i class="fa fa-check-square-o" aria-hidden="true"></i>
+    </button>
+  </form>
+</div>
+<%
+if (typeof data.infos != 'undefined' && data.infos.length > 0) {
+  for (var i = data.infos.length - 1; i >= 0; i--) {
+    %>
+    <%
+    if (usuario.id == data.infos[i].id_usuario) {
+      %>
+<!-- <a class="btn-floating btn-large waves-effect waves-light blue right tooltipped IniciarTarefa play<%= id_tarefa %>" data-tempo="<%= data.infos[i].tempo_gasto %>" data-position="left" data-delay="50" data-tooltip="Iniciar Tarefa" data-id_tarefa="<%= id_tarefa %>"><i style="font-size: 3.5em;" class="fa fa-play-circle-o" aria-hidden="true"></i>
+</a> -->
+<%
+}
+%>
+<small>Data Entrega Prevista:&nbsp;<%= data.infos[i].data_prevista %></small>
+<p><b>Gerente Responsável:</b>&nbsp;<%= data.infos[i].responsavel %><br>
+  <b>Usuário Responsável:</b>&nbsp;<%= data.infos[i].usuario %><br>
+  <b>Descrição:</b>&nbsp;<%= data.infos[i].descricao %></p>
+
+  <%
+}
+}
+%>
+<%
+if (typeof data.uploads != 'undefined' && data.uploads.length > 0) {
+  %>
+  <h5>
+   Arquivos:
+ </h5>
+ <%
+ for (var i = data.uploads.length - 1; i >= 0; i--) {
+  %>
+  <p>
+   <a class="bordo-text" target="_blank" href="/assets/uploads/<%= data.uploads[i].arquivo %>" download><%= data.uploads[i].arquivo %></a>
+ </p>
+ <%
+}
+}
+%>
+<%
+if (typeof data.topicos != 'undefined' && data.topicos.length > 0) {
+  for (var i = data.topicos.length - 1; i >= 0; i--) {
+    %>
+    <% if(data.topicos[i].texto != ''){%>
+    <li class="collection-item">
+      <div>
+        <i class="fa <%= data.topicos[i].status == 1 ? 'fa-check-circle DesaprovarTopico bordo-text' : 'fa-circle-thin AprovarTopico bordo-text' %>" data-id="<%= data.topicos[i].id %>" aria-hidden="true"></i> <%= data.topicos[i].texto %>
+      </div>
+    </li>
+    <%
+  }
+}
+}
+%>
+<h5>
+  Comentários
+</h5>
+<form method="POST" action="">
+  <input type="hidden" name="id_tarefa" value="<%= id_tarefa %>">
+  <div class="col s12 input-field input-group-control">
+    <textarea style="min-height: 120px;" name="texto" id="texto_comentario"></textarea>
+  </div>
+
+  <%
+  if (typeof data.infos != 'undefined' && data.infos.length > 0) {
+    for (var i = data.infos.length - 1; i >= 0; i--) {
+      %>
+
+      <div class="select-field input-group-control col s12">
+        <b><label>Status *</label></b>
+        <select required="true" class="browser-default" name="status" value="<%= data.infos[i].status %>">
+
+          <option value="0" <%= data.infos[i].status == 0 ? 'selected="true"' : '' %>>
+            A fazer
+          </option>
+          <option value="1" <%= data.infos[i].status == 1 ? 'selected="true"' : '' %>>
+            Fazendo
+          </option>
+          <option value="2" <%= data.infos[i].status == 2 ? 'selected="true"' : '' %>>
+            Impedimento
+          </option>
+          <option value="3" <%= data.infos[i].status == 3 ? 'selected="true"' : '' %>>
+            Concluído
+          </option>
+        </select>
+      </div>
+
+      <%}
+    }%>
+
+    <div class="right-align">
+      <button data-href="/sistema/tarefas/cadastrar/comentario" class="btn waves-effect waves-light bordo ajax-submit-comentarios">
+        Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
+    </div>
+  </form>
+  <div class="novos-comentarios">
+  </div>
+  <%
+  if (typeof data.comentarios != 'undefined' && data.comentarios.length > 0) {
+    for (var i = data.comentarios.length - 1; i >= 0; i--) {
+      %>
+      <p>
+        <b>Comentario:</b> <%= data.comentarios[i].texto %>
+      </p>
+      <%
+    }
+  }
+  %>

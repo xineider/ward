@@ -1,0 +1,60 @@
+<div class="card white">
+  <div class="close_container_load">
+    <a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+    </a>
+  </div>
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type='hidden' name='id_usuario' value='<%= usuario.id%>'>
+
+    <div class="row">
+      <div class="input-field input-group-control col s12 m4">
+        <label for="nome">Descrição</label>
+        <input class="validate" type="text" name="nome">
+      </div>
+
+      <input type="hidden" name="tipo_compromisso" value="3">
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Data Inicial do Compromisso</label>
+        <input required="true" type="text" class="datepicker" name="data_inicial" value="<%= data.tempo[0].hoje%>">
+      </div>
+      <div class="input-field input-group-control col s12 m4">
+        <label>Horário Inicial do Compromisso(Não Obrigatório)</label>
+        <input type="text" class="timepicker" name="hora_inicial">
+      </div>
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Data Final do Compromisso</label>
+        <input type="text" class="datepicker" name="data_final">
+      </div>
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Horário Final do Compromisso(Não Obrigatório)</label>
+        <input type="text" class="timepicker" name="hora_final">
+      </div>
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Local</label>
+        <input type="text" name="local">
+      </div>
+
+      <div class="input-field input-group-control col s12">
+        <label for="complemento">Observações</label>
+        <textarea type="text" name="complemento"></textarea>
+      </div>
+
+
+ </div>
+
+ <div class="row padding-b-10">
+  <div class="right-align padding-r-10">
+    <button data-href="/sistema/compromissos/cadastrar/" data-action="/sistema/compromissos/" class="btn waves-effect waves-light bordo ajax-submit">
+      Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+
+</form>
+
+</div>

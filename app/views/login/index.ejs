@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ward Jurídico</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel='stylesheet' href='/assets/css/font-awesome.min.css' />
+	<link rel='stylesheet' href='/assets/css/materialize.min.css' />
+	<link rel='stylesheet' href='/assets/css/style.css' />	
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/materialize.min.js"></script>
+</head>
+<body class="login-background">
+	<div id="modalforgot" class="modal">
+		<div class="modal-content">
+			<p><b>Recuperação de Senha</b></p>
+			<form method="POST">
+				<div class="row">
+					<div class="col s12 input-field input-group-control full-width">
+						<label for="email">Digite seu email</label>
+						<input type="email" name="email">
+					</div>
+
+					<div class="col s12 error_container_resend hide">
+						<div class="error_resend_mensagem red white-text" style="margin-bottom: 10px;padding: 5px;text-align: center;"></div>
+					</div>
+					<div class="col s12">
+						<button class="btn bordo white-text resend-pass" style="width: 100%;">
+							Confirmar
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<main>
+		<section>
+			<div class="login">
+				<div class="login-card row">
+					<div class="col s12 m9 l5 card">
+						<form method="POST" action="/">
+							<div class="login-logo center-align">
+								<img src="/assets/imgs/logotype.png" alt="Logo Young">
+							</div>
+							<div class="login-error-message">
+								<%
+								if (typeof erro != 'undefined' && typeof tipo_erro != 'undefined' && tipo_erro == '404' || typeof erro != 'undefined' && typeof tipo_erro != 'undefined' && tipo_erro == 'login') {
+									%>
+									<div class="card-panel red darken-1 center-align" style="margin-bottom: 25px;">
+										<span class="white-text">
+											Usuário ou senha incorreto(s), tente novamente.
+										</span>
+									</div>
+									<%
+								}
+								%>
+							</div>
+							<div class="row login-input-container">
+								<div class="input-field col s12">
+									<input type="text" name="login" id="login" class="validate" autocomplete="off">
+									<label for="login">Usuário</label>
+								</div>
+								<div class="input-field col s12">
+									<input type="password" name="senha" id="senha" class="validate" autocomplete="off">
+									<label for="senha">Senha</label>
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="center-align col s12">
+									<button class="btn btn-large btn-large-w btn-radius btn-login ruby darken-2 waves-effect waves-light">
+										Entrar
+									</button>
+								</div>
+							</div>
+
+							<div class="row login-helpers">
+								<div class="col s12 center-align">
+									<a class="link-underline modal-trigger" href="#modalforgot">
+										Esqueceu sua senha?
+									</a>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col s12 center-align">
+									<a href="" class="link-underline">
+										Ainda não possui conta? Cadastre-se
+									</a>
+								</div>
+							</div>
+
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="center-align grey-text">
+			© copyright - Menso Vizio
+		</div>
+	</footer>
+
+</main>
+</body>
+
+
+
+
+</html>
+
+
+<script type="text/javascript">
+	$(document).on('ready', function () {
+		$('.modal').modal();
+
+		$(document).on('click', '.modal-trigger', function(e) {
+			var modal = $(this).attr('href');
+			$(modal).find('input:not(disabled)').first().focus();
+		});
+
+
+		$(document).on('click', '.resend-pass', function(e) {
+			e.preventDefault();
+			var form = $(this).closest('form');
+			var post = form.serializeArray();
+			$.ajax({
+				method: 'POST',
+				async: true,
+				data: post,
+				url: '/sistema/api/recuperar/senha',
+				success: function(data) {
+					console.log(data);
+					if(data == "email_nao_cadastrado"){
+						$('.error_container_resend').removeClass('hide');
+						$('.error_container_resend').find('.error_resend_mensagem').html('Não existe ninguém cadastrado com este e-mail!');
+					}else{
+						console.log('else');
+						M.toast({html:'<div class="center-align" style="width:100%;">Senha enviada para seu email com sucesso!!!</div>', displayLength:7000, classes: 'rounded green'});
+						$('.modal').modal('close');
+					}
+				},
+			    error: function(xhr) { // if error occured
+			    	alert("Error, contate o administrador ou reinicie a pagina.");
+			    }
+			  });
+		});
+	});
+
+
+</script>

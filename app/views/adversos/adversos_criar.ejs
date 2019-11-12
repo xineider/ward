@@ -1,0 +1,106 @@
+  <div class="cream tab-archive">Criar Adverso</div>
+  <a href="/sistema/adversos/" class="ajax-load">
+    <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Pesquisar/Editar</div>
+  </a>
+
+  <div class="card cream archive">
+    <form method="POST" action="" enctype="multipart/form-data">
+      <div class="right-align row">
+        <a href="/sistema/adversos/" class="ajax-load">
+         <div class="left valign-wrapper">
+          <div class="btn-floating btn-large waves-effect waves-light bordo lighten-1">
+            <i class="fa fa-search" aria-hidden="true"></i>            
+          </div>
+          <div class="black-text margin-l-5">Pesquisar Adversos</div>  
+        </div>
+      </a>
+
+      <div class="right valign-wrapper">
+        <div class="black-text margin-r-5">Salvar Adverso</div>
+        <button data-href="/sistema/adversos/cadastrar/" data-action="/sistema/adversos/" class="btn-floating btn-large waves-effect waves-light bordo ajax-submit" title="Salvar">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <h5>Informações Pessoais</h5>
+      <div class="input-field input-group-control col s12 m6">
+        <b><label for="nome">Nome *(Obrigatório)</label></b>
+        <input required="true" class="validate" type="text" name="nome">
+      </div>
+      <div class="select-field input-group-control col s12 m6">
+        <b><label>Tipo de Pessoa *(Obrigatório)</label></b>
+        <select required="true" class="browser-default" name="tipo">
+          <option value="" disabled selected>Selecione</option>
+          <option value="1">Pessoa Juridica</option>
+          <option value="2">Pessoa Fisica</option>
+        </select>
+      </div>
+      <div class="input-field input-group-control col s12 m3">
+        <b><label for="cpf_cnpj">CPF/CNPJ *(Obrigatório)</label></b>
+        <input required="true" class="validate" type="text" name="cpf_cnpj">
+      </div>
+      <div class="input-field input-group-control col s12 m3">
+        <label for="tel">Telefone</label>
+        <input class="tel" type="tel" name="tel">
+      </div>
+      <div class="input-field input-group-control col s12 m3">
+        <label for="email">E-mail</label>
+        <input class="validate" type="email" name="email">
+      </div>
+      <div class="input-field input-group-control col s12 m3">
+        <label for="contato">Contato</label>
+        <input type="text" name="contato">
+      </div>
+    </div>
+
+    <div class="row">
+      <h5>Informações do Endereço</h5>
+      <div class="input-field input-group-control full-width col s12 m3">
+        <label for="cep">CEP</label>
+        <input class="cep" type="text" name="cep">
+      </div>
+
+      <div class="input-field input-group-control col s12 m4">
+        <label for="bairro">Bairro *(Obrigatório)</label>
+        <input required="true" class="bairro validate" type="text" name="bairro" id="bairro">
+      </div>
+
+      <div style="padding: 0;" class="col s12">
+        <div class="input-field input-group-control full-width input col s12 m5">
+          <label for="rua">Rua *(Obrigatório)</label>
+          <input required="true" class="rua validate" type="text" name="rua">
+        </div>
+
+        <div class="input-field input-group-control full-width col s12 m2 l1">
+          <label for="numero" style="left:0">Número *</label>
+          <input required="true" class="numero validate" type="text" name="numero">
+        </div>
+        <div class="input-field input-group-control full-width col s12 m5">
+          <label for="cidade">Cidade *(Obrigatório)</label>
+          <input required="true" class="cidade validate" type="text" name="cidade">
+        </div>
+        <div class="input-field input-group-control full-width col s12 m2 l1">
+          <label for="estado">Estado *</label>
+          <input required="true" class="uf validate" type="text" name="estado">
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <h5>Outros</h5>
+      <div class="input-field input-group-control col s12">
+        <label for="advogado">Advogado</label>
+        <input type="text" name="advogado">
+      </div>
+    </div>
+    <div class="right-align">
+      <button data-href="/sistema/adversos/cadastrar/" data-action="/sistema/adversos/" class="btn waves-effect waves-light bordo ajax-submit" title="Salvar">
+        Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,61 @@
+
+<div class="titulo" style="box-shadow: 0px -1px 5px black;padding-top: 5px;">
+  <div class="row" style="margin-bottom: 0;">
+    <div class="col s4 center-align">
+      <img src="/assets/imgs/user-padrao.jpg" alt="" class="circle" style="width: 64px;height: 64px;">
+    </div>
+    <div class="col s8">
+      <p id="nome">
+        <%= data.usuario[0].nome %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="mensagens">
+  <%
+  var id = "";
+  if (typeof data.mensagens != 'undefined' && data.mensagens.length > 0) {
+    for (var i = data.mensagens.length - 1; i >= 0; i--) {
+      if (data.mensagens[i].texto != '' && data.mensagens[i].texto != 'undefined') {
+        if (i == 0) {
+          id = "final"
+        }
+        if (id_para == data.mensagens[i].id_usuario) {
+          %>
+          <div class="voce" id="<%= id %>">
+            <%= data.mensagens[i].texto %>
+          </div>
+          <%
+        } else {
+          %>
+          <div class="eu" id="<%= id %>">
+            <%= data.mensagens[i].texto %>
+          </div>
+          <%
+        }
+        %>
+        <%
+      }
+    }
+  }else{ %>
+  <div class="no-conversation">
+    Você não possui conversas com <%= data.usuario[0].nome %> !
+  </div>
+
+  <%
+}
+%>
+</div>
+<div class="enviar-mensagem">
+  <input type="text" id="mensagem-texto" placeholder="Escreva sua mensagem...">
+  <i class="fa fa-paper-plane bordo" id="enviar-msg" aria-hidden="true" data-id="<%= id_para %>"></i>
+</div>
+
+<script type="text/javascript">
+  if ($('.mensagens').length > 0 && $("#final").length > 0) {
+    $('.mensagens').animate({
+      scrollTop: $("#final").offset().top
+    }, -100);
+  }
+  
+</script>

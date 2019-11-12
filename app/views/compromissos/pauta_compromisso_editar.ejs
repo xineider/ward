@@ -1,0 +1,101 @@
+  <h4>Editar Compromisso</h4>
+  <form method="POST" action="" enctype="multipart/form-data">
+    <%
+    if (typeof data != 'undefined' && data.length > 0) {
+      for (var i = data.length - 1; i >= 0; i--) {
+        %>
+        <input type="hidden" value="<%= data[i].id %>" name="id">
+        <input type="hidden" name="tipo_compromisso" value="0">
+        <input type="hidden" name="deletado" value="1">
+        <div class="row">
+
+          <div class="input-field input-group-control col s12">
+            <label for="nome">Descrição</label>
+            <input class="validate" type="text" name="nome" value="<%= data[i].nome %>">
+          </div>
+
+          
+
+          <div class="col s12 select-field input-group-control">
+            <label for="tipo">Tipo do Compromisso</label>
+            <select required="true" class="browser-default" name="tipo" value="<%= data[0].tipo %>">
+              
+              
+              <option value='0' <%= data[0].tipo == 0 ? 'selected="true"' : '' %>>Audiência</option>
+              <option value='1' <%= data[0].tipo == 1 ? 'selected="true"' : '' %>>Reunião</option>
+              <option value='2' <%= data[0].tipo == 2 ? 'selected="true"' : '' %>>Perícia</option>
+            </select>
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label>Data Inicial do Compromisso</label>
+            <input required="true" type="text" class="datepicker_container_input" name="data_inicial" value="<%= data[i].data_inicial %>">
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label>Horário Inicial do Compromisso(Não Obrigatório)</label>
+            <input type="text" class="timepicker" name="hora_inicial" value="<%= data[i].hora_inicial %>">
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label>Data Final do Compromisso</label>
+            <input type="text" class="datepicker" name="data_final" id="data_final_compromisso" value="<%= data[i].data_final %>">
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label>Horário Final do Compromisso(Não Obrigatório</label>
+            <input type="text" class="timepicker" name="hora_final" value="<%= data[i].hora_final %>">
+          </div>
+
+          <div class="input-field input-group-control-with-search col s12">
+            <label for="desc_numero_processo">Número do Processo</label>
+            <input disabled value="<%= data[i].numero %>" id="desc_numero_processo" type="text">
+            <input type="hidden" name="id_processo" id="id_processo" value="<%= data[i].id_processo %>">
+          </div>
+
+          <div class="input-field input-group-control-with-search col s12">
+            <label for="desc_advogado_setor">Advogado Responsável do Setor</label>
+            <input value="<%= data[i].nome_advogado_setor %>" id="desc_advogado_setor" type="text">
+            <input type="hidden" name="id_advogado_setor" id="id_advogado_setor" value="<%= data[i].id_advogado_setor %>">
+          </div>
+
+          <div class="input-field input-group-control-with-search col s12">
+            <label for="desc_advogado_compromisso">Advogado do Compromisso</label>
+            <input value="<%= data[i].nome_advogado_compromisso %>" id="desc_advogado_compromisso" type="text">
+            <input type="hidden" name="id_advogado_compromisso" id="id_advogado_compromisso" value="<%= data[i].id_advogado_compromisso %>">
+          </div>
+
+
+
+
+
+
+          <div class="input-field input-group-control col s12">
+            <label for="local">Local</label>
+            <input type="text" name="local" value="<%= data[i].local %>">
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label for="complemento">Observações</label>
+            <textarea type="text" name="complemento"><%= data[i].complemento %></textarea>
+          </div>
+
+
+
+
+        </div>
+        <div class="right-align">
+          <button class="modal-action modal-close waves-effect waves-light btn-flat grey lighten-2">Cancelar</button>
+
+          <button data-href="/sistema/compromissos/desativar/" data-action="/sistema/compromissos/pauta_compromisso" class="modal-action modal-close waves-effect btn-flat red lighten-2 white-text ajax-submit">Excluir</button>
+
+          <button data-href="/sistema/compromissos/atualizar/" data-action="/sistema/compromissos/pauta_compromisso" class="modal-action modal-close btn waves-effect waves-light bordo ajax-submit">
+            Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+          </button>
+        </div>
+        <%
+      }
+    }
+    %>
+  </form>
+</div>

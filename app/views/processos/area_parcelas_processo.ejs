@@ -1,0 +1,52 @@
+<div class="col s12 card white" style='margin-top:30px;'>
+	<div class="close_container_load">
+		<a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>	
+		</a>
+	</div>
+
+
+
+	<div class="row margin-b-0">
+		<div class="card center padding-10 inline w100 margin-t-0">
+
+			<input type="hidden" name="id_dados_para_calculo" value="<%= data.calculos_financeiro[0].id%>">
+
+			<b>Data da Sentença ou Acordo:</b> <%= data.calculos_financeiro[0].data_sentenca_acordo%>   |
+			<b>Honorário do Escritório:</b> <%= data.calculos_financeiro[0].porc_honorario_escritorio%>%   |
+			<b>Honorário do Perito:</b> <%= data.calculos_financeiro[0].porc_honorario_perito%>%   |
+			<b>Imposto de Renda:</b> <%= data.calculos_financeiro[0].porc_imposto_renda%>%   
+
+			<a class="btn waves-effect waves-light bordo lighten-1 tooltipped load_especifico_to_container" data-idload="add_dados_calculo" data-position="top" data-tooltip="Editar Dados para Cálculo" data-link="/sistema/processos/editar-dados-para-calculo/<%= data.calculos_financeiro[0].id%>" data-container="container_dados_para_calculo">
+				<i class="fa fa-pencil" aria-hidden="true"></i> Editar Dados para Cálculo
+			</a>
+
+			<div class="container_dados_para_calculo"></div>
+
+
+		</div>
+	</div>
+
+	<div class="row margin-b-0">
+
+		<div class="col s12 center margin-t-10">
+
+			<a class="btn waves-effect waves-light bordo lighten-1 tooltipped load_especifico_to_container" data-idload="add_parcela" data-position="top" data-tooltip="Adicionar Parcela" data-link="/sistema/processos/adicionar-parcela/" data-container="container_parcelas">
+				Adicionar Parcela <i class="fa fa-plus" aria-hidden="true"></i>
+			</a>
+
+
+
+		</div>
+		
+	</div>
+
+
+	<div class="container_parcelas"></div>
+
+
+
+	<div class="col s12" id="container_tabela_parcelas_reload">
+		<%- include('tabela_parcelas_only')%>
+	</div>
+</div>

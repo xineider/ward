@@ -1,0 +1,65 @@
+<a class="btn waves-effect waves-light golden darken-2 bordo-text gerar-relatorio" data-nome-provisorio="<%= data.nome_relatorio%>" data-container-relatorio="#tabela_interna">
+  <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+  Gerar Relatório
+</a>
+
+<%console.log('///////////////// DATA RECEBIDA ////////////////////////////////////')%>
+<%console.log(data);%>
+<%console.log('///////////////////////////////////////////////////////////////////')%>
+
+<%console.log('X0X0X0X0X00X0X0X0X0X0X0X0X00X0X0X0X0X0X00X0X0X0X0X0X0X00X0X0')%>
+<%console.log(data.nome_campo_extra);%>
+<%console.log('X0X0X0X0X00X0X0X0X0X0X0X0X00X0X0X0X0X0X00X0X0X0X0X0X0X00X0X0')%>
+
+<%console.log('7878787878787878787878787878787878787878787878787878787878787')%>
+<%console.log(data.campo_extra);%>
+<%console.log('7878787878787878787878787878787878787878787878787878787878787')%>
+
+
+<% if(data.mensagem != null || data.mensagem != ''){ %>
+<div class="bordo-text margin-t-1rem margin-b-1rem"><%= data.mensagem %></div>
+
+
+<%console.log('MOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMW')%>
+<%console.log(data.mensagem);%>
+<%console.log('MOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMOMW')%>
+
+<%}%>
+
+<table class="centered highlight tabela_loc_processos tabela_filtrada responsive-table cell-border" id="tabela_interna">
+  <thead>
+    <tr>
+      <th>
+        Selecionar
+      </th>
+      <th>
+        Descrição Geral
+      </th>
+      <% if(data.nome_campo_extra != undefined || data.nome_campo_extra != null){%>
+      <th>
+        <%= data.nome_campo_extra %>
+      </th>
+      <%}%>
+
+    </tr>
+  </thead>
+  <tbody>
+    <%
+    if (typeof data.dados != 'undefined' && data.dados.length > 0) {
+      for (var i = data.dados.length - 1; i >= 0; i--) {
+        %>
+        <tr>
+         <td>
+          <a class="btn bordo selecionar-item-modal" data-id="<%= data.dados[i].id%>" data-anchorId="" data-descricao="<%= data.dados[i].descricao %>">Selecionar</a>
+        </td>
+        <td><%= data.dados[i].descricao %></td>
+        <% if(data.campo_extra[i] != undefined){%>
+        <td><%= data.campo_extra[i].extra%></td>
+        <%}%>
+
+      </tr>
+
+      <%}}else{ %>
+      <tr>Não há Dados</tr>
+
+      <% } %>

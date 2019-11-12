@@ -1,0 +1,68 @@
+<div class="col s12 card white" style='margin-top:30px;'>
+		<div class="close_container_load">
+		<a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>	
+		</a>
+	</div>
+	<div class="row">
+		<table class="centered highlight cell-border responsive-table" id="tabela_todos_clientes" style="width:100%;">
+			<thead>
+				<tr>
+					<th>Número</th>
+					<th>Cliente</th>
+					<th>Adverso</th>
+					<th>Data e hora</th>
+					<th class="hide"></th>
+					<%
+					if (typeof morto == 'undefined') {
+						%>
+						<th>Ações</th>
+						<%
+					}
+					%>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+				if (typeof data.processos_adverso != 'undefined' && data.processos_adverso.length > 0) {
+					for (var i = data.processos_adverso.length - 1; i >= 0; i--) {
+						%>
+						<tr>
+							<td>
+								<%= data.processos_adverso[i].numero %>
+							</td>
+							<td>
+								<%= data.processos_adverso[i].cliente %>
+							</td>
+							<td>
+								<%= data.processos_adverso[i].adverso %>
+							</td>
+							<td>
+								<span class="hide"><%= data.processos_adverso[i].data_table_filtro %></span>
+								<%= data.processos_adverso[i].data_processo %>
+							</td>
+							<td class="hide">
+								<input type="hidden" value="<%= data.processos_adverso[i].id %>" class="id_processo_interno">
+							</td>
+							<%
+							if (typeof morto == 'undefined') {
+								%>
+								<td>
+									<a style="font-size: 1.4em;" href="/sistema/processos/abrir/<%= data.processos_adverso[i].id %>" class="ajax-load"><i class="fa fa-pencil bordo-text" aria-hidden="true"></i></a>
+									<a href="" style="font-size: 1.4em;">
+										<i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data.processos_adverso[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data.processos_adverso[i].nome %>'? " data-to="/sistema/processos/desativar" data-back="/sistema/processos" aria-hidden="true"></i>
+									</a>
+								</td>
+								<%
+							}
+							%>
+						</tr>
+						<%
+					}
+				}
+				%>
+			</tbody>
+		</table>
+
+	</div>
+</div>

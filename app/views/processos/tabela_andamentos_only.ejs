@@ -1,0 +1,42 @@
+          <table id="tabela_andamentos" class="cell-border responsive-table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Usuário</th>
+                <th>Tipo do Andamento</th>
+                <th>Data Cadastro</th>
+              </tr>
+            </thead>              
+            <tbody>   
+
+              <%
+              for (var k = data.andamentos.length - 1; k >= 0; k--){
+                %>
+                <tr>
+                  <td><%= data.andamentos[k].data %></td>
+                  <td><%= data.andamentos[k].descricao %></td>
+                  <td><%= data.andamentos[k].usuario %></td>
+                  <td>
+                    
+                    <% switch(data.andamentos[k].tipo){
+                      case 0:%>
+                      Juridico
+                      <% break;
+                      case 1:%>
+                      Administrativo
+                      <%break;
+                      case 2:%>
+                      Financeiro
+                      <%break;
+                      case 3:%>
+                      Outro
+                      <%break;}%>
+
+                    </td>
+                    <td><%= data.andamentos[k].data_cadastro %></td>
+                  </tr>     
+
+                  <%}%>
+                </tbody>
+              </table>

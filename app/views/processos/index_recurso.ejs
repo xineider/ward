@@ -1,0 +1,185 @@
+<div class="row">
+
+	<div class="col s12">
+		<h5>Recursos</h5>
+		<div class="card white padding-a-15">
+			<table id="tabela_todos_recursos" class="centered responsive-table cell-border">
+				<thead>
+					<tr>
+						<th>Número do Recurso</th>
+						<th>Tipo da Causa</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for (var i = data.recursos.length - 1; i >= 0; i--) {
+						%>
+						<tr>
+							<td><%= data.recursos[i].numero %></td>
+							<td><%= data.recursos[i].tipo_da_causa %></td>
+							<td>
+								<a style="font-size: 1.4em;cursor: pointer;" data-link="/sistema/processos/editar-recurso/<%= data.recursos[i].id %>" class="load_especifico_to_container" data-idload="2" data-container="container_adicionar_recurso_load">
+									<i class="fa fa-pencil bordo-text" aria-hidden="true"></i>
+								</a>
+
+								<a href="" style="font-size: 1.4em;">
+									<i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data.recursos[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data.recursos[i].numero %>'? " data-to="/sistema/processos/desativar-recurso" data-back="/sistema/processos/abrir/<%= data.detalhes_processo[0].id %>" aria-hidden="true"></i>
+								</a>
+							</td>
+						</tr>
+
+						<%}%>
+						
+					</tbody>
+
+
+
+				</table>
+			</div>
+		</div>
+
+		<div class="col s12 center">
+
+			<a class="btn waves-effect waves-light bordo lighten-1 tooltipped load_especifico_to_container" data-idload="1" data-href="#modalinfo" data-position="top" data-tooltip="Adicionar Recurso" data-link="/sistema/processos/adicionar-recurso-simples/<%= data.detalhes_processo[0].id %>" data-container="container_adicionar_recurso_load">
+				Adicionar Recurso
+			</a>
+
+		</div>
+
+		<div class="container_adicionar_recurso_load"></div>
+
+	</div>
+
+	<div class="bordo-line"></div>
+
+	<div class="row">
+
+		<h5>Compromissos dos Recursos</h5>
+
+
+		<div class="card white padding-a-15">
+			<table id="tabela_todos_compromissos_dos_recursos" class="centered responsive-table cell-border">
+				<thead>
+					<tr>
+						<th>Número do Recurso</th>
+						<th>Tipo</th>
+						<th>Descrição</th>
+						<th>Data e Hora de Início</th>
+						<th>Data e Hora Final</th>
+						<th>Local</th>
+						<th>Advogado Responsável</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for (var i = data.compromissos_recursos.length - 1; i >= 0; i--) {
+						%>
+						<tr>
+							<td><%= data.compromissos_recursos[i].numero %></td>
+								<td>
+								<%if(data.compromissos_recursos[i].tipo_compromisso == 0){%>
+								<%if(data.compromissos_recursos[i].tipo==0){%>
+								Audiência
+								<%}else if(data.compromissos_recursos[i].tipo==1){%>
+								Reunião
+								<%}else if(data.compromissos_recursos[i].tipo==2){%>
+								Perícia
+								<%}}else if(data.compromissos_recursos[i].tipo_compromisso == 1){%>
+								<%if(data.compromissos_recursos[i].tipo==0) {%>
+								Acordão/Sentença
+								<%}else if(data.compromissos_recursos[i].tipo==1){%>
+								Despacho/Decisões
+								<%}else if(data.compromissos_recursos[i].tipo==2){%>
+								Petições Diversas
+								<%}else if(data.compromissos_recursos[i].tipo==3){%>
+								Quesitos
+								<%}else if(data.compromissos_recursos[i].tipo==4){%>
+								Manifestação de Documentos
+								<%}else if(data.compromissos_recursos[i].tipo==5){%>
+								Prazos Processos Físicos
+								<%}else if(data.compromissos_recursos[i].tipo==6){%>
+								Perito
+								<%}else if(data.compromissos_recursos[i].tipo==7){%>
+								Providência
+								<%}}else if(data.compromissos_recursos[i].tipo_compromisso == 2){%>
+								<%if(data.compromissos_recursos[i].tipo==0) {%>
+								Julgamento
+								<%}}else{%>
+								Não Há
+								<%}%>
+							</td>
+							<td><%= data.compromissos_recursos[i].nome %></td>
+							<td><%= data.compromissos_recursos[i].data_inicial %></td>
+							<td><%= data.compromissos_recursos[i].data_final %></td>
+							<td><%= data.compromissos_recursos[i].local %></td>
+							<td><%= data.compromissos_recursos[i].advogado %></td>
+						</tr>
+
+						<%}%>
+					</tbody>
+
+
+
+				</table>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<h5>Andamentos dos Recursos</h5>
+
+
+			<div class="card white padding-a-15">
+				<table id="tabela_todos_andamentos_dos_recursos" class="centered responsive-table cell-border">
+					<thead>
+						<tr>
+							<th>Número do Recurso</th>
+							<th>Data</th>
+							<th>Descrição</th>
+							<th>Usuário</th>
+							<th>Tipo de Andamento</th>
+							<th>Data Cadastro</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						for (var i = data.andamentos_recursos.length - 1; i >= 0; i--) {
+							%>
+							<tr>
+								<td><%= data.andamentos_recursos[i].numero %></td>
+								<td><%= data.andamentos_recursos[i].data %></td>
+								<td><%= data.andamentos_recursos[i].descricao %></td>
+								<td><%= data.andamentos_recursos[i].usuario %></td>
+								<td>
+
+									<% switch(data.andamentos_recursos[i].tipo){
+										case 0:%>
+										Juridico
+										<% break;
+										case 1:%>
+										Administrativo
+										<%break;
+										case 2:%>
+										Financeiro
+										<%break;
+										case 3:%>
+										Outro
+										<%break;}%>
+
+									</td>
+									<td><%= data.andamentos_recursos[i].data_cadastro %></td>
+								</tr>
+
+								<%}%>
+
+							</tbody>
+						</table>
+					</div>
+
+
+
+				</div>
+

@@ -1,0 +1,14 @@
+<div class="cream tab-archive">Notificações</div>
+
+<div class="card cream archive">
+	
+	<form method="POST" action="" enctype="multipart/form-data">
+		<input type="hidden" value="1" name="visto">
+		<div class="row center">
+			<button class="btn bordo ajax-submit" data-href="/sistema/notificacoes/marcarTodosVistos/" data-action="/sistema/notificacoes/">Marcar Todos Como Visto</button>
+		</div>
+	</form>
+
+	<%- include('tabela_interna_index'); %>
+
+</div>

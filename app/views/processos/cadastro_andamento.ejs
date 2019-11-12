@@ -1,0 +1,28 @@
+<div class="col s12 card white">
+
+	<div class="col s12 valign-wrapper">
+		<div class="input-field input-group-control col s12 m6">
+			<label for="andamento_data">Data</label>
+			<input class="data_sem_hora data_hoje" type="text" name="andamento_data_<%= data.nome_requirido %>" maxlength="10" value="<%= data.tempo[0].hoje%>">
+		</div>
+		<div class="select-field input-group-control col s12 m6">
+			<label>Tipo do Andamento</label>
+			<select class="browser-default" name="andamento_tipo_<%= data.nome_requirido %>">
+				<option value="0">Jurídico</option>
+				<option value="1">Administrativo</option>
+				<option value="2">Financeiro</option>
+				<option value="3">Outro</option>
+			</select>
+		</div>
+		<div class="input-field input-group-control col s12">
+			<label for="andamento_descricao">Descrição</label>
+			<textarea name="andamento_descricao_<%= data.nome_requirido %>"></textarea>
+		</div>				
+	</div>
+
+	<div class="input-field col s12 margin-b-1rem" >
+
+		<button data-href="<%= data.cadastrar_link %>" class="btn waves-effect waves-light bordo ajax-submit" data-action="/sistema/processos/abrir/<%= data.detalhes_processo[0].id %>">Salvar Novo Andamento</button>
+	</div>
+
+</div>

@@ -1,0 +1,53 @@
+<ul id="slide-out" class="sidenav chats">
+  <ul class="collection" style="margin: 0; height: 100%; padding: 0; transition: 1s;right: 0;">
+    <%
+    if (typeof chat != 'undefined' && chat.length > 0) {
+      for (var i = chat.length - 1; i >= 0; i--) {
+    %>
+    <li class="collection-item avatar">
+      <img src="<%= chat[i].imagem != '' ? chat[i].imagem : '/assets/imgs/user-padrao.jpg' %>" alt="" class="circle">
+      <span class="title black-text"><b><%= chat[i].nome %></b></span>
+      <p class="black-text">
+        <%= chat[i].ultima_msg != '' ? chat[i].ultima_msg : '<small>Começe uma conversa clicando aqui</small>' %>
+      </p>
+    </li>
+    <%
+      }
+    }
+    %>
+  </ul>
+  <div class="chat-conteudo">
+    <div class="titulo" style="box-shadow: 0px -1px 5px black;padding-top: 5px;">
+      <div class="row">
+        <div class="col s4 center-align">
+          <img src="/assets/imgs/user-padrao.jpg" alt="" class="circle" style="width: 64px;height: 64px;">
+        </div>
+        <div class="col s8">
+          <p>
+            <b>
+              Joãozera
+            </b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="mensagens">
+      <div class="eu">
+        Ola!
+      </div>
+      <div class="voce">
+        Oi, tudo bem?
+      </div>
+      <div class="voce">
+        Tudo e com você?
+      </div>
+      <div class="eu">
+        Tudo sim.
+      </div>
+    </div>
+    <div class="enviar-mensagem">
+      <input type="text" name="" placeholder="Escreva sua mensagem...">
+      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+    </div>
+  </div>
+</ul>

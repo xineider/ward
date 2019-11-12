@@ -1,0 +1,38 @@
+  <% if(usuario.nivel == 1){%>
+
+  <form method="POST" action="" enctype="multipart/form-data">
+    <%
+    if (typeof data.usuario != 'undefined' && data.usuario.length > 0) {
+      for (var i = data.usuario.length - 1; i >= 0; i--) {
+        %>
+
+        <input type="hidden" value="<%= data.usuario[i].id %>" name="id">
+        
+        <%}
+      }%>
+
+      <div class="row">
+        <div class="col s12">
+          <b>Tem certeza que deseja alterar a senha deste usuário?</b>
+        </div>
+      </div>
+
+      <button  class="btn waves-effect waves-light grey darken-2 modal-close">
+        Cancelar
+      </button>   
+
+      <button data-href="/sistema/usuarios/alterarSenha/" class="btn waves-effect waves-light bordo ajax-submit modal-close" data-action="/sistema/usuarios/">
+        Atualizar Senha
+      </button>
+
+    </form>
+
+
+    <%}else{%>
+    <div class="card cream archive">
+      <p>Sinto Muito, você não possuí autoridade para visualizar esta página</p>
+      <a href="/sistema">Clique aqui para voltar</a>
+    </div>
+
+
+    <%}%>

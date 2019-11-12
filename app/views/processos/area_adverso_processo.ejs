@@ -1,0 +1,34 @@
+<div class="card-subtitulo center">Adverso</div>
+
+<div class="input-field input-group-control full-width col s12">
+	<label for="adverso_nome">Adverso</label>					
+	<input disabled value="<%= data.detalhes_processo[0].adverso %>" id="adverso_nome" type="text">
+</div>
+
+<div class="col s12 processo-botoes-envolvidos center">
+	<!-- Ínicio dos Botões do Adverso -->
+
+
+
+	<a class="btn bordo lighten-1 load_especifico_to_container margin-l-1rem" data-link="/sistema/processos/outros_envolvidos_adverso/<%= data.detalhes_processo[0].id%>" data-container="container_adverso_load" data-idload="1">
+		<i class="fa fa-users" aria-hidden="true"></i>
+		Outras pessoas no processo
+	</a>
+
+	<a class="btn bordo lighten-1 load_especifico_to_container margin-l-1rem " data-link="/sistema/adversos/editar_dentro_processo/<%= data.detalhes_processo[0].id_adverso%>" data-container="container_adverso_load" data-idload="2">
+		<i class="fa fa-envelope-open text-darken-2" aria-hidden="true"></i>
+		Ver Cadastro Adverso
+	</a>
+
+	<a class="btn bordo lighten-1 load_especifico_to_container margin-t-5 margin-l-1rem " data-link="/sistema/processos/alterar_adverso_processo/<%= data.detalhes_processo[0].id_adverso%>" data-container="container_adverso_load" data-idload="3">
+		<i class="fa fa-cog text-darken-2" aria-hidden="true"></i>
+		Alterar nome desta Parte
+	</a>
+
+
+	<a class="btn bordo lighten-1 load_especifico_to_container margin-t-5 margin-l-1rem " data-link="/sistema/adversos/listar_todos_processos/<%= data.detalhes_processo[0].id_adverso%>" data-container="container_adverso_load" data-idload="4">
+		<i class="fa fa-archive text-darken-2" aria-hidden="true"></i>
+		Listar todos os Processos
+	</a>
+	<!-- Fim dos Botões do Adverso -->
+</div>

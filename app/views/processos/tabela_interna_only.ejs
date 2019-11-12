@@ -1,0 +1,50 @@
+    <table class="centered highlight responsive-table tabela_loc_processos cell-border tabela_filtrada" id="tabela_interna_processo" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Número do Processo</th>
+          <th>Cliente</th>
+          <th>Adverso</th>
+          <th class="hide">CPF/CNPJ</th>
+          <th>Data e hora</th>
+          <th class="hide"></th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        for (var i = data.processos.length - 1; i >= 0; i--) {
+          %>
+          <tr class="row_processo_interno <%= data.processos[i].deletado == 1 ? "grey darken-1": ""%>">
+            <td class="numero_processo">
+              <%= data.processos[i].numero %>
+            </td>
+            <td>
+              <%= data.processos[i].cliente %>
+            </td>
+            <td>
+              <%= data.processos[i].adverso %>
+            </td>
+            <td class="hide"> <%= data.processos[i].cpf_cnpj %></td>
+            <td>
+              <span class="hide"><%= data.processos[i].data_table_filtro %></span>
+              <%= data.processos[i].data_processo %>
+            </td>
+            <td class="hide">
+              <input type="hidden" value="<%= data.processos[i].id %>" class="id_processo_interno">
+            </td>
+
+            <td>
+              <a style="font-size: 1.4em;" href="/sistema/processos/abrir/<%= data.processos[i].id %>" class="ajax-load">
+                <i class="fa fa-pencil bordo-text" aria-hidden="true"></i>
+              </a>
+              <a href="" style="font-size: 1.4em;">
+                <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data.processos[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data.processos[i].nome %>'? " data-to="/sistema/processos/desativar" data-back="/sistema/processos" aria-hidden="true"></i>
+              </a>
+            </td>
+
+          </tr>
+          <%
+        }
+        %>
+      </tbody>
+    </table>

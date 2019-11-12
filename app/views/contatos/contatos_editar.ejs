@@ -1,0 +1,54 @@
+  <a href="/sistema/contatos/criar" class="ajax-load">
+    <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-l">Criar Contato</div>
+  </a>
+  <a href="/sistema/contatos/" class="ajax-load">
+    <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Pesquisar/Editar</div>
+  </a>
+  <div class="cream tab-archive">Editar Contato</div>
+
+  <div class="card cream archive">
+
+    <form method="POST" action="" enctype="multipart/form-data">
+      <input type="hidden" name="contatos[id]" value="<%= data.contatos[0].id %>">
+      
+      <div class="right-align row">
+
+       <a href="/sistema/contatos/" class="ajax-load">
+         <div class="left valign-wrapper">
+          <div class="btn-floating btn-large waves-effect waves-light bordo lighten-1">
+            <i class="fa fa-search" aria-hidden="true"></i>            
+          </div>
+          <div class="black-text margin-l-5">Pesquisar Contato</div>  
+        </div>
+      </a>
+
+      <div class="right valign-wrapper">
+        <div class="black-text margin-r-5">Salvar Contato</div>
+        <button data-href="/sistema/contatos/atualizar//" data-action="/sistema/contatos/" class="btn-floating btn-large waves-effect waves-light bordo ajax-submit" title="Salvar">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <label for="nome">Nome</label>
+        <input required="true" class="validate" type="text" name="contatos[nome]" value="<%= data.contatos[0].nome %>">
+      </div>
+    </div>
+    <div class="row Contatos_Lista">
+      <%- include('contatos_lista_todos_editar'); %>
+    </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <button class="btn bordo lighten-1 ajax-add-to" data-href="/sistema/contatos/adicionar/lista" data-to="Contatos_Lista">Adicionar Contato</button>
+      </div>
+    </div>
+    <div class="right-align">
+      <button data-href="/sistema/contatos/atualizar/" data-action="/sistema/contatos/" class="btn waves-effect waves-light bordo ajax-submit">
+        Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
+    </div>
+  </form>
+</div>

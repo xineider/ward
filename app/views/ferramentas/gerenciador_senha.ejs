@@ -1,0 +1,85 @@
+<div class="right-align">
+  <a class="btn-floating btn-large waves-effect waves-light blue darken-2 right ajax-load" href="/sistema/ferramentas/gerenciador/senhas/criar"><i class="fa fa-plus" aria-hidden="true"></i></a>
+</div>
+<%
+if (typeof data != 'undefined' && data.length > 0) {
+%>
+<table class="centered gerenciador-senha responsive-table">
+  <thead>
+    <tr>
+      <th>
+        Nome
+      </th>
+      <th>
+        Link
+      </th>
+      <th>
+        Login
+      </th>
+      <th>
+        Senha
+      </th>
+      <th>
+        Ação
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+<%
+  for (var i = data.length - 1; i >= 0; i--) {
+%>
+    <tr>
+      <td>
+        <%= data[i].nome %>
+      </td>
+      <td>
+        <%= data[i].link %>
+      </td>
+      <td>
+        <%= data[i].login %>
+      </td>
+      <td id="senha-<%= data[i].id %>">
+        <i class="fa fa-lock" aria-hidden="true"></i>
+      </td>
+      <td>
+        <a class="DesbloquearSenha" data-id="<%= data[i].id %>" data-senha="<%= data[i].senha %>"><i class="fa fa-lock tooltipped" data-position="bottom" data-delay="50" data-tooltip="Desbloqueie a Senha" aria-hidden="true"></i></a>
+
+        <a class="ajax-load" href="/sistema/ferramentas/gerenciador/senhas/editar/<%= data[i].id %>"><i class="fa fa-eye tooltipped" data-position="bottom" data-delay="50" data-tooltip="Alterar Informações" aria-hidden="true"></i></a>
+
+        <a class="modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].arquivo %>'? " data-to="/sistema/ferramentas/gerenciador/senhas/desativar" data-back="/sistema/ferramentas"><i class="fa fa-times tooltipped" data-position="bottom" data-delay="50" data-tooltip="Excluir" aria-hidden="true"></i></a>
+      </td>
+    </tr>
+<%
+  }
+%>
+  </tbody>
+</table>
+<%
+} else {
+%>
+<p class="center-align">
+  Não existem registros salvos no momento
+</p>
+<%
+}
+%>
+<style type="text/css">
+  .gerenciador-senha a i {
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: 0.5s;
+    color: #000;
+  }
+    .gerenciador-senha a i.fa-lock:hover {
+      color: #616161;
+      text-shadow: 0px 1px 1px black;
+    }
+    .gerenciador-senha a i.fa-eye:hover {
+      color: #4caf50;
+      text-shadow: 0px 1px 1px black;
+    }
+    .gerenciador-senha a i.fa-times:hover {
+      color: #f44336;
+      text-shadow: 0px 1px 1px black;
+    }
+</style>

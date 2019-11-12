@@ -1,0 +1,21 @@
+<form method="POST" action="" enctype="multipart/form-data">
+
+    <div class="input-field input-group-control col s12">
+        <label for="descricao">
+            <% if (data.descricao == null) { data.descricao = 'Descricao' }  %>
+            <%=data.descricao%>
+        </label>
+        <input type="text" name="descricao" value="<%= data.descricao_generico[0].descricao%>">
+        <input type="hidden" name="id" value="<%= data.descricao_generico[0].id%>">
+    </div>
+    
+    
+    <button data-href="/sistema/processos/editar-descricao-generico" class="btn waves-effect waves-light bordo ajax-submit-reload-anchor-id modal-close" data-modal="#modalinfo">
+        Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+
+    <button  class="btn waves-effect waves-light grey darken-2 modal-close">
+        Cancelar
+    </button>   
+    
+</form>

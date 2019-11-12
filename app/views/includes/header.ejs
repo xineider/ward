@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ward - Sistema Jurídico</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/pt-br.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script> -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.mask.js"></script>
+	<script src="/assets/js/cropper.min.js"></script>
+	<script src="/assets/js/jquery-cropper.min.js"></script>
+	<script src="/assets/js/materialize.min.js"></script>
+	<script src="/assets/js/fullcalendar.min.js"></script>
+	<script src='/assets/js/locale/pt-br.js'></script>
+	<script src="/assets/js/jquery-ui.min.js"></script>
+	<!-- <script src="/assets/js/jspdf.min.js"></script> -->
+	<script src="/assets/js/jspdf.debug.js"></script>
+	<!-- <script src="/assets/js/html2canvas.min.js"></script> -->
+	<!-- <script src="/assets/js/html2pdf.js"></script> -->
+	<!-- <script src="/assets/js/jspdf/addhtml.js"></script> -->
+	<script src="/assets/js/jspdf.plugin.autotable.js"></script>
+	<!-- <script src="/assets/js/jspdf/from_html.js"></script> -->
+	<script src="/assets/js/main.js"></script>
+	<script src="/assets/js/datatables.min.js"></script>
+	
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css' />
+	<link rel='stylesheet' href='/assets/css/font-awesome.min.css' />	
+	<link rel='stylesheet' href='/assets/css/materialize.min.css' />
+	<link rel='stylesheet' href='/assets/css/datatables.min.css' />
+	<link rel='stylesheet' href='/assets/css/cropper.min.css' />
+	<link rel='stylesheet' href='/assets/css/fullcalendar.min.css' />
+	<!--     <link rel='stylesheet' href='/assets/css/fullcalendar.print.min.css' /> -->
+	<link rel='stylesheet' href='/assets/css/jquery-ui.min.css' />
+	<link rel='stylesheet' href='/assets/css/style.css' />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+<body class="row" style="overflow-x: hidden;">
+	<input type="hidden" value="<%= usuario.id %>" name="id_usuario_sessao">
+	<input type="hidden" value="<%= usuario.hash_login %>" name="hash_usuario_sessao">
+	<input type="hidden" value="<%= usuario.nivel %>" name="nivel_usuario_sessao">
+	<input type="hidden" id="stop_contagem" value="0">
+	<div class="error_ajax none">Você parece ter se disconectado, tentando reconectar...</div>
+	<!-- Modal Structure -->
+	<div class="tarefa_controle" style="font-size: 0.9em;">
+		Tempo de Execução: <span id="tempo_executando">00:00</span>
+		<a onclick="PausarTarefa()" class="btn-floating btn-large waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Pausar Tarefa"><i style="font-size: 3.5em;" class="fa fa-pause-circle-o brown notme" aria-hidden="true"></i></a>
+	</div>
+	<div id="modaldeletar" class="modal" style="overflow: hidden;">
+		<div class="modal-content">
+			<b><p style="text-align: center;" id="texto">Remover</p></b>
+		</div>
+		<div class="modal-footer">
+			<div class="row">
+				<div class="col s12 m6">
+					<a style="width: 100%; text-align: center;" href="#!" class="modal-action modal-close waves-effect waves-gray btn-flat grey lighten-2">Cancelar</a>
+				</div>
+				<div class="col s12 m6">
+					<form method="POST" action="">
+						<input id="id" type="hidden" name="id">
+						<input type="hidden" name="deletado" value="1">
+						<button style="width: 100%; text-align: center;" class="modal-action modal-close waves-effect waves-red btn-flat red lighten-2 white-text ajax-submit"
+						data-href=""
+						data-action=""
+						>Excluir</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="modaldeletar_reload" class="modal" style="overflow: hidden;">
+		<div class="modal-content">
+			<b><p style="text-align: center;" id="texto">Remover</p></b>
+		</div>
+		<div class="modal-footer">
+			<div class="row">
+				<div class="col s12 m6">
+					<a style="width: 100%; text-align: center;" href="#!" class="modal-action modal-close waves-effect waves-gray btn-flat grey lighten-2">Cancelar</a>
+				</div>
+				<div class="col s12 m6">
+					<form method="POST" action="">
+						<input id="id" type="hidden" name="id">
+						<input type="hidden" name="deletado" value="1">
+						<button style="width: 100%; text-align: center;" class="modal-action modal-close waves-effect waves-red btn-flat red lighten-2 white-text ajax-submit-container-reload"
+						data-href=""
+						data-container="" data-mensagem-sucesso="Dado Apagado!" data-sucess-color="red rounded"
+						>Excluir</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- Modal Structure -->
+	<div id="modalinfo" class="modal">
+		<div class="modal-content">
+		</div>
+	</div>
+	<div id="modalinfo2" class="modal">
+		<div class="modal-content">
+		</div>
+	</div>
+	<div class="fixed-action-btn">
+		<div class="relative none tem_mensagem">
+			<span style="font-size: 1.3em;background-color: #f33535;border-radius: 50%;color: #fff;padding: 3px;bottom: -22px;position: absolute;width: 32px;height: 32px;text-align: center;z-index: 999;right: -5px;box-shadow: 0px 1px 3px black;">+</span>
+		</div>
+		<a data-target="slide-out" class="sidenav-trigger right chat btn-floating btn-large bordo">
+			<i class="fa fa-comment" aria-hidden="true"></i>
+		</a>
+	</div>
+	<div class="chat_box">
+
+	</div>
+	<div class="loader none">
+		<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+		<!-- <span class="sr-only">Loading...</span> -->
+	</div>
+	<style type="text/css">
+		<%
+		if (typeof usuario.config != 'undefined') {
+			%>
+			.nav-wrapper #big-nav > ul > li a {
+				background-image: linear-gradient(to right, <%= typeof usuario.config != 'undefined' ? usuario.config.cor_padrao : '' %> 50%, #fff 50%) !important;
+			}
+			<%
+		}
+		%>
+	</style>
+<!-- 		<header style="overflow: hidden;z-index: 3;" class="container">
+	    <div class="nav-wrapper">
+	    	<div class="logo-wrapper">
+					<a href="/sistema/" class="logo-header ajax-load">
+						<img src="/assets/imgs/logo.png">
+					</a>
+	    	</div>
+	    	<div class="search-home"></div>
+				<a style="font-size: 2.5em;" href="#" data-activates="slide-header" class="button-collapse right black-text hide-on-med-and-up"><i class="fa fa-bars" aria-hidden="true"></i></a>
+			
+	    </div>
+	</header> -->
+	<header>
+		<nav style="line-height: 50px; height: 50px;">
+			<div class="nav-wrapper">
+				<div class="logo-wrapper left">
+					<a href="/sistema/">
+						<img class="header-icon" src="/assets/imgs/logo.png">
+					</a>
+				</div>
+
+				<div class='input-field search-wrapper left hide-on-med-and-down'>
+					<input id='search_header' name='busca' placeholder="Buscar por nome, cpf, cnpj">
+					<i class='fa fa-search' aria-hidden='true'></i>
+				</div>
+	        <!-- <div class="input-field col s5">
+	          <i class="fa fa-search" style="font-size: 30px; line-height: 50px;"></i>
+	          <input id="icon_prefix" type="text" class="validate">
+	          <label for="icon_prefix">Pesquisar</label>
+	      </div> -->
+	      <ul id="nav-links" class="right hide-on-med-and-down">
+	      	<li><a href="http://www.pje.jus.br/navegador/" target="_blank">
+	      		<img style="margin-top:10px;" class="head-icon" src="/assets/imgs/icons/pje.png">
+	      	</a></li>
+	      	<li><a class="ajax-load" href="/sistema/compromissos/">
+	      		<img class="head-icon" src="/assets/imgs/icons/weekly-calendar.png">
+	      	</a></li>
+	      	<li><a class="ajax-load" href="/sistema/tarefas/">
+	      		<img class="head-icon" src="/assets/imgs/icons/notes-2.png">
+	      	</a></li>
+	      	<li>
+	      		<a id="notificacoes">
+	      			<img class="head-icon" src="/assets/imgs/icons/alarm.png">
+	      			<%
+	      			if (typeof data.qtdnotificacoes != 'undefined' && data.qtdnotificacoes.length > 0) { 
+	      				for (var i = 0 ; i < data.qtdnotificacoes.length; i++) {%>
+
+
+	      				<% if(data.qtdnotificacoes[i].qtdNova > 0){%>	        
+	      				<label class="notificacoes-numero">	      				
+	      					<%=data.qtdnotificacoes[i].qtdNova%>
+	      				</label>
+	      				<%}
+	      			}
+	      		}%>  
+	      	</a>
+	      </li>
+	      <li><a id="user-dropdown" class="user-dropdown">
+	      	<div class="img-user">
+	      		<img src="<%= usuario.imagem %>"> 			
+	      	</div>
+	      </a></li>
+	      <li><a class="user-dropdown"><i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+	  </ul>
+	</div>
+</nav>
+</header>
+
+<div class="notificacao-content hide">
+	<div class="notificacoes">
+		
+		<%
+		if (typeof data.notificacoes != 'undefined' && data.notificacoes.length > 0) {
+			for (var i = 0 ; i < data.notificacoes.length; i++) { %>
+			
+			<a href="/sistema<%= data.notificacoes[i].link %>" class="ajax-load notificacao_ver" data-id="<%= data.notificacoes[i].id%>">
+				<div class="notificacao-item <%= data.notificacoes[i].visto == 0 ? 'bold': ''%>">
+					<%= data.notificacoes[i].texto %>
+				</div>
+			</a>
+			<% }
+		}else{%>
+
+		<div class="notificacao-item">Você não possui nenhuma Notificação!</div>
+
+		<%}%>
+
+
+	</div>
+	<a href="/sistema/notificacoes" class="ajax-load">
+		<div class="notificao-footer center">
+
+			<span>Ver Todos</span>
+
+		</div>
+	</a>
+
+</div>
+
+<div class="user-dropdown-content hide">
+	<ul class="">
+		<li>
+			<a href="/sistema/configuracoes" class="ajax-load">
+				<i class="fa fa-cog" aria-hidden="true"></i>Configurações
+			</a>
+		</li>
+		<% if(usuario.nivel == 1){%>
+		<li>
+			<a href="/sistema/usuarios" class="ajax-load">
+				<i class="fa fa-users" aria-hidden="true"></i>Usuários
+			</a>
+		</li>
+		<%}%>
+		<li>
+			<a href="/sistema/compromissos" class="ajax-load">
+				<i class="fa fa-calendar-check-o"></i>Agenda
+			</a>
+		</li>
+
+		<li>
+			<a href="/sistema/tarefas/tarefas" class="ajax-load">
+				<i class="fa fa-tasks" aria-hidden="true"></i>Tarefas
+			</a>
+		</li>
+
+
+		<li>
+			<a href="/sistema/ward/logout">
+				<i class="fa fa-sign-out" aria-hidden="true"></i>Sair
+			</a>
+		</li>
+	</ul>
+
+
+</div>
+
+<style type="text/css">
+	/*.logo-wrapper {margin-left: -15px; width: 300px; height: 50px; text-align: center; background-color: #6e4f28;}*/
+	.logo-wrapper {padding: 5px 0 !important; width: 300px; height: 50px; margin: 0 0 0 -15px; text-align: center; background-color: #6e4f28;}
+	.logo-wrapper img {max-width: 100%; max-height: 40px;}
+	#nav-links, #nav-links li a i {
+		line-height: 50px !important;
+		max-height: 50px !important;
+		font-size: 35px !important;
+	}
+	#nav-links li a {
+		max-width: 70px;
+		max-height: 50px;
+		margin: 0;
+		padding: 3 10px;
+	}
+	#nav-links li .head-icon {
+		max-width: 44px;
+	}
+	#nav-links li .img-user {
+		height: 42px;
+		width: 42px;
+		margin: 4px;
+		margin-left: 20px;
+		border: 1px solid #fff;
+		border-radius: 50%;
+		overflow: hidden;
+		/*		background: url('/assets/imgs/user-padrao.jpg') no-repeat center;*/
+		background-size: cover;
+	}
+
+	#nav-links li .img-user img{
+		height:100%;
+		width: 100%;
+	}
+/*  		#nav-links li .img-user img {
+  			max-width: 100%;
+  			}*/
+/*  		.bg-weekly_calendar {
+			  width: 40px;
+			  height: 40px;
+			  margin: 5px 0;
+			  background: url('/assets/imgs/sprites/css_sprites.png') -5px -4703px no-repeat;
+			  background-size: 7.81%;
+			  }*/
+			</style>
+

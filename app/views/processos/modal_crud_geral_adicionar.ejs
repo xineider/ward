@@ -1,0 +1,39 @@
+<% if(data.adicionar_link!=undefined){%>
+<a class="btn bordo lighten-1 modal-mount" data-link="<%= data.adicionar_link %>" data-href="#modalinfo2">Adicionar Novo Registro</a>
+<%}%>
+<a class="btn waves-effect waves-light golden darken-2 bordo-text gerar-relatorio" data-nome-provisorio="<%= data.nome_relatorio%>" data-container-relatorio="#tabela_interna">
+  <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+  Gerar Relatório
+</a>
+
+<form method="POST" action="" enctype="multipart/form-data">
+<table class="centered highlight tabela_loc_processos tabela_filtrada responsive-table" id="tabela_interna">
+    <thead>
+      <tr>
+        <th>
+          Selecionar
+        </th>
+        <th>
+          Descrição Geral
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+<%
+	if (typeof data.dados != 'undefined' && data.dados.length > 0) {
+		for (var i = data.dados.length - 1; i >= 0; i--) {
+	 %>
+	 <tr>
+	 	<td>
+      <a class="btn bordo ajax-submit-no-form modal-close" data-href='<%= data.cadastrar_item %>' data-id='<%=data.id_processo%>' data-id-cliente='<%=data.dados[i].id%>' data-container="<%=data.container%>" data-mensagem-sucesso="Dado Cadastrado!">Selecionar</a></td>
+	 	<td><%= data.dados[i].descricao %></td>
+	 </tr>
+
+	<%}}else{ %>
+	<tr>Não há Dados</tr>
+
+	<% } %>
+
+</tbody>
+</table>
+</form>

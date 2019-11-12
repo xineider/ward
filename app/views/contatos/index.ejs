@@ -1,0 +1,17 @@
+ <a href="/sistema/contatos/criar" class="ajax-load">
+  <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-l">Criar Contato</div>
+</a>
+ <div class="cream tab-archive">Pesquisar/Editar</div>
+
+<div class="card cream archive">
+  <div class="header row">
+  <div class="right valign-wrapper">
+    <div class="black-text margin-r-5">Criar Contato</div>
+      <a class="btn-floating btn-large waves-effect waves-light bordo lighten-1 right ajax-load" href="/sistema/contatos/criar"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <%- include('contatos_pesquisa'); %>
+  <ul class="collapsible popout" data-collapsible="accordion, expandable" id="tabela_interna">
+    <%- include('contatos_interna_index'); %>
+  </ul>
+</div>

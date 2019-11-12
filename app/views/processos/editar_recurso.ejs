@@ -1,0 +1,244 @@
+<div class="col s12 card white">
+
+	<div class="close_container_load">
+		<a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+		</a>
+	</div>
+
+
+	<div class="row">
+
+		<div class="input-field input-group-control col s6 m2">
+			<label for="numero_recurso">N° do Recurso</label>
+			<input value="<%= data.recurso[0].numero %>" id="numero_recurso" name="numero_recurso" type="text">
+		</div>
+
+		<div class="select-field input-group-control col s12 m4">
+			<label>Origem</label>
+			<select class="browser-default" name="origem_recurso">
+				<%
+				if (typeof data.origem != 'undefined' && data.origem.length > 0) {
+					for (var l = data.origem.length - 1; l >= 0; l--){
+						%>
+						<option value="<%= data.origem[l].id %>" >
+							<%= data.origem[l].numero %>								
+						</option>
+						<%}
+					}%>
+				</select>
+			</div>
+
+
+			<input type="hidden" name="id_recurso" value="<%= data.recurso[0].id %>">
+
+			<div class="input-field input-group-control col s6 m3">
+				<label for="interposicao_recurso">Interposição</label>					
+				<input class="datepicker" type="text" name="interposicao_recurso" value="<%= data.recurso[0].interposicao %>">
+			</div>
+
+			<div class="input-field input-group-control col s6 m3">
+				<label for="ajuizado_recurso">Ajuizado</label>					
+				<input class="datepicker" type="text" name="ajuizado_recurso" value="<%= data.recurso[0].ajuizado %>">
+			</div>
+
+			<div class="input-field input-group-control-with-search col s12 m4">
+				<label for="desc_advogado_recurso">Advogado Responsável</label>
+				<input value="<%= data.detalhes_processo[0].advogado %>" id="desc_advogado_recurso" type="text">
+				<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-advogados" data-href="#modalinfo" data-anchor-id="#id_advogado_recurso" data-anchor-descricao="#desc_advogado_recurso">
+					<i class="fa fa-search"></i>
+				</a>
+				<input type="hidden" name="id_advogado_recurso" id="id_advogado_recurso" value="<%= data.detalhes_processo[0].id_advogado %>">
+			</div>
+
+
+			<div class="input-field input-group-control-with-search col s12 m4">
+				<label for="desc_relator_recurso">Relator</label>
+				<input id="desc_relator_recurso" type="text" value="<%= data.recurso[0].relator %>">
+				<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-relator-recurso" data-href="#modalinfo" data-anchor-id="#id_relator_recurso" data-anchor-descricao="#desc_relator_recurso">
+					<i class="fa fa-search"></i>
+				</a>
+				<input type="hidden" name="id_relator_recurso" id="id_relator_recurso">
+			</div>
+
+
+
+
+			<div class="input-field input-group-control-with-search col s12 m4">
+				<label for="desc_tipo_recurso">Tipo do Recurso</label>
+				<input id="desc_tipo_recurso" type="text" value="<%= data.recurso[0].tipo_recurso %>">
+				<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-tipo-recurso" data-href="#modalinfo" data-anchor-id="#id_tipo_recurso" data-anchor-descricao="#desc_tipo_recurso">
+					<i class="fa fa-search"></i>
+				</a>
+				<input type="hidden" name="id_tipo_recurso" id="id_tipo_recurso">
+			</div>
+
+
+			<div class="input-field input-group-control-with-search col s12 m4">
+				<label for="desc_posicao_cliente_recurso">Posição do Cliente</label>
+				<input type="text" id="desc_posicao_cliente_recurso" value="<%= data.recurso[0].posicao_cliente %>">
+				<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-posicao-cliente" data-href="#modalinfo" data-anchor-id="#id_posicao_cliente_recurso" data-anchor-descricao="#desc_posicao_cliente_recurso">
+					<i class="fa fa-search"></i>
+				</a>
+				<input type="hidden" name="id_posicao_cliente_recurso" id="id_posicao_cliente_recurso">
+			</div>
+
+			<div class="input-field input-group-control-with-search col s12 m4">
+				<label for="desc_tribunal_recurso">Tribunal</label>
+				<input id="desc_tribunal_recurso" type="text" value="<%= data.recurso[0].tribunal %>">
+				<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-tribunal-recurso" data-href="#modalinfo" data-anchor-id="#id_tribunal_recurso" data-anchor-descricao="#desc_tribunal_recurso">
+					<i class="fa fa-search"></i>
+				</a>
+				<input type="hidden" name="id_tribunal_recurso" id="id_tribunal_recurso">					
+			</div>
+
+			<div class="input-field input-group-control-with-search col s12 m4">
+				<label for="desc_turma_camara_recurso">Turma ou Câmara</label>
+				<input id="desc_turma_camara_recurso" type="text" value="<%= data.recurso[0].turma_camara %>">
+				<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-turma-camara-recurso" data-href="#modalinfo" data-anchor-id="#id_turma_camara_recurso" data-anchor-descricao="#desc_turma_camara_recurso">
+					<i class="fa fa-search"></i>
+				</a>
+				<input type="hidden" name="id_turma_camara_recurso" id="id_turma_camara_recurso">					
+			</div>
+
+		</div>
+
+		<div class="bordo-line"></div>
+
+
+		<div class="row">
+
+			<div class="col s12">
+
+				<h5 class="center">Compromissos do Recurso</h5>
+
+				<table id="tabela_compromissos_do_recurso" class="centered responsive-table cell-border">
+					<thead>
+						<tr>
+							<th>Tipo</th>
+							<th>Descrição</th>
+							<th>Data e Hora de Início</th>
+							<th>Data e Hora Final</th>
+							<th>Local</th>
+							<th>Advogado Responsável</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						for (var i = data.compromissos_recurso.length - 1; i >= 0; i--) {
+							%>
+							<tr>
+								<td>
+									<%if(data.compromissos_recurso[i].tipo==0){%>
+									Acordão/Sentença
+									<%}else if(data.compromissos_recurso[i].tipo==1){%>
+									Despacho/Decisões
+									<%}else if(data.compromissos_recurso[i].tipo==2){%>
+									Petições Diversas
+									<%}else if(data.compromissos_recurso[i].tipo==3){%>
+									Quesitos
+									<%}else if(data.compromissos_recurso[i].tipo==4){%>
+									Manifestação de Documentos
+									<%}else if(data.compromissos_recurso[i].tipo==5){%>
+									Prazos Processos Físicos
+									<%}else if(data.compromissos_recurso[i].tipo==6){%>
+									Perito
+									<%}else {%>
+									Não há
+									<%}%>
+								</td>
+								<td><%= data.compromissos_recurso[i].nome %></td>
+								<td><%= data.compromissos_recurso[i].data_inicial %></td>
+								<td><%= data.compromissos_recurso[i].data_final %></td>
+								<td><%= data.compromissos_recurso[i].local %></td>
+								<td><%= data.compromissos_recurso[i].advogado %></td>
+							</tr>
+
+							<%}%>
+						</tbody>
+					</table>
+
+				</div>
+
+				<div class="col s12 margin-b-1rem center">
+
+					<a class="btn waves-effect waves-light bordo lighten-1 tooltipped load_especifico_to_container" data-idload="1" data-position="top" data-tooltip="Adicionar Compromisso ao Recurso" data-link="/sistema/processos/adicionar-compromisso-recurso/" data-container="container_adicionar_compromisso_recurso_load">
+						Adicionar Compromisso ao Recurso<i class="fa fa-plus" aria-hidden="true"></i>
+					</a>
+
+				</div>
+
+				<div class="container_adicionar_compromisso_recurso_load"></div>
+
+			</div>
+
+			<div class="bordo-line"></div>
+
+			<div class="row">
+				<h5 class="center">Andamentos do Recurso</h5>
+
+				<table id="tabela_andamentos_do_recurso" class="cell-border">
+					<thead>
+						<tr>
+							<th>Data</th>
+							<th>Descrição</th>
+							<th>Usuário</th>
+							<th>Tipo do Andamento</th>
+							<th>Data Cadastro</th>
+						</tr>
+					</thead>							
+					<tbody>		
+
+						<%
+						for (var k = data.andamentos_recurso.length - 1; k >= 0; k--){
+							%>
+							<tr>
+								<td><%= data.andamentos_recurso[k].data %></td>
+								<td><%= data.andamentos_recurso[k].descricao %></td>
+								<td><%= data.andamentos_recurso[k].usuario %></td>
+								<td>
+
+									<% switch(data.andamentos_recurso[k].tipo){
+										case 0:%>
+										Juridico
+										<% break;
+										case 1:%>
+										Administrativo
+										<%break;
+										case 2:%>
+										Financeiro
+										<%break;
+										case 3:%>
+										Outro
+										<%break;}%>
+
+									</td>
+									<td><%= data.andamentos[k].data_cadastro %></td>
+								</tr>			
+
+								<%}%>
+							</tbody>
+						</table>
+
+						<div class="col s12 margin-b-1rem center">
+							<a class="btn waves-effect waves-light bordo lighten-1 tooltipped load_especifico_to_container" data-idload="1" data-position="top" data-tooltip="Adicionar Compromisso ao Recurso" data-link="/sistema/processos/adicionar-andamento-recurso/" data-container="container_adicionar_andamento_recurso_load">
+								Adicionar Andamentos ao Recurso<i class="fa fa-plus" aria-hidden="true"></i>
+							</a>
+
+
+						</div>
+
+						<div class="container_adicionar_andamento_recurso_load"></div>
+
+
+					</div>
+
+
+
+
+					<div class="col s12 margin-b-1rem">
+						<button data-href="/sistema/processos/editar-recurso/" class="btn waves-effect waves-light bordo ajax-submit " data-action="/sistema/processos/abrir/<%= data.detalhes_processo[0].id %>">
+							Salvar Recurso 
+						</button>
+					</div>
+				</div>

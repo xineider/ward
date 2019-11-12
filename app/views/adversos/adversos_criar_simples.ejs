@@ -1,0 +1,90 @@
+    <form method="POST" action="" enctype="multipart/form-data">
+      <input type="hidden" name="id_adverso_nao_envolvido" value="<%= data.idAdversoNaoEnvolvido%>">
+
+      <input type="hidden" name="id_processo" value="<%= data.idProcesso %>">
+
+      <div class="row">
+        <h5>Informações Pessoais do Adverso</h5>
+        <div class="input-field input-group-control col s12">
+          <b><label for="nome">Nome *(Obrigatório)</label></b>
+          <input required="true" class="validate" type="text" name="nome">
+        </div>
+        <div class="select-field input-group-control col s12">
+          <b><label>Tipo de Pessoa *(Obrigatório)</label></b>
+          <select required="true" class="browser-default" name="tipo">
+            <option value="" disabled selected>Selecione</option>
+            <option value="1">Pessoa Juridica</option>
+            <option value="2">Pessoa Fisica</option>
+          </select>
+        </div>
+        <div class="input-field input-group-control col s12">
+          <b><label for="cpf_cnpj">CPF/CNPJ *(Obrigatório)</label></b>
+          <input required="true" class="validate" type="text" name="cpf_cnpj">
+        </div>
+        <div class="input-field input-group-control col s12">
+          <label for="tel">Telefone</label>
+          <input class="tel" type="tel" name="tel">
+        </div>
+        <div class="input-field input-group-control col s12">
+          <label for="email">E-mail</label>
+          <input class="validate" type="email" name="email">
+        </div>
+        <div class="input-field input-group-control col s12">
+          <label for="contato">Contato</label>
+          <input type="text" name="contato">
+        </div>
+      </div>
+
+      <div class="row">
+        <h5>Informações do Endereço do Adverso</h5>
+        <div class="input-field input-group-control col s12">
+          <label for="cep">CEP</label>
+          <input required="true" class="cep" type="text" name="cep">
+        </div>
+
+        <div style="padding: 0;" class="col s12">
+          <div class="input-field input-group-control input col s12">
+            <label for="rua">Rua *(Obrigatório)</label>
+            <input required="true" class="rua validate" type="text" name="rua">
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label for="bairro">Bairro *(Obrigatório)</label>
+            <input required="true" class="bairro validate" type="text" name="bairro" id="bairro">
+          </div>
+
+          <div class="input-field input-group-control col s12 m6">
+            <label for="numero" style="left:0">Número *</label>
+            <input required="true" class="numero validate" type="text" name="numero">
+          </div>
+          <div class="input-field input-group-control col s12 m6">
+            <label for="estado">Estado *</label>
+            <input required="true" class="uf validate" type="text" name="estado">
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label for="cidade">Cidade *(Obrigatório)</label>
+            <input required="true" class="cidade validate" type="text" name="cidade">
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <h5>Outros</h5>
+        <div class="input-field input-group-control col s12">
+          <label for="advogado">Advogado</label>
+          <input type="text" name="advogado">
+        </div>
+      </div>
+      <div class="right-align">
+        <button class="btn modal-close grey">Cancelar</button>
+
+
+        <button data-href="/sistema/processos/cadastrar-adverso-simples/" class="btn waves-effect waves-light bordo ajax-submit-container-reload modal-close" title="Salvar Adverso" data-container="#modalinfo .modal-content" data-mensagem-sucesso="Adverso Cadastrado!">
+          Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>

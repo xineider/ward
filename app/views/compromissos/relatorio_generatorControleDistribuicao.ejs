@@ -1,0 +1,36 @@
+     
+<table id="relatorio_generator" class="centered uppercase">
+        <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+  <tbody>
+    <%
+    for (var j = 0; j < data.relatorio.length;j++) {
+      %>
+
+      <tr class="conteudo_table margin-t-10">
+        <td style="width:90px;"><%= data.relatorio[j].data_inicial_sem_horas %></td>
+        <td><%= data.relatorio[j].vara %></td>
+        <td><%= data.relatorio[j].numero %></td>
+        <td><%= data.relatorio[j].cliente %></td>
+        <td><%= data.relatorio[j].adverso %></td>
+        <td class="w40"><%= data.relatorio[j].complemento %></td>
+      </tr>
+
+      <tr>
+        
+      </tr>
+      <tr>
+        <td colspan="5" class="margin-t-5"></td>
+      </tr>
+
+      <%}%>
+    </tbody>
+  </table>

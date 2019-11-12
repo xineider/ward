@@ -1,0 +1,145 @@
+  	<div class="cream tab-archive">Configurações</div>
+
+    <div class="card cream archive">
+      <form method="POST" action="">
+
+        <input type="hidden" name="id" value="<%= data[0].id %>">
+
+        <div class="row">
+
+          <div class="col s12 center">
+
+            <a class="modal-mount" data-href="#modalinfo" data-link="/configuracoes/crop_imagem_perfil">
+              <img class="mount-modal"   src="<%= data[0].imagem %>" style="height: 150px;">
+            </a>
+
+            <div class="col s12">
+              <span style="font-weight: bold;font-size:15pt;"><%= data[0].nome %></span>
+            </div>
+
+            <div class="col s12">
+              <div class="file-field input-field col s12">
+                <div class="btn waves-effect waves-light bordo lighten-1" style="float:none;">
+                  <span>Alterar Imagem</span>
+                  <input type="file" data-href="/sistema/configuracoes/uploadimagem" id="upload_imagem_perfil" accept="image/*">
+                </div>
+                <div class="file-path-wrapper hide">
+                  <input class="file-path validate" type="text" placeholder="Ou arraste seu arquivo aqui">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="input-field input-group-control col s12 m6 l4">
+            <label for="nome">Nome *</label>
+            <input required="true" class="validate" type="text" name="nome" value="<%= data[0].nome %>">
+          </div>
+
+          <div class="input-field input-group-control col s12 m6 l4">
+            <label for="email">E-mail *</label>
+            <input required="true" class="validate" type="email" name="email" value="<%= data[0].email %>">
+          </div>
+
+          <div class="input-field input-group-control col s12 m6 l4">
+            <label for="telefone">Telefone</label>
+            <input class="tel" type="tel" name="telefone" value="<%= data[0].telefone %>">
+          </div>
+
+          <div class="input-field input-group-control col s12 m6 l4">
+            <label for="cpf">CPF</label>
+            <input class="cpf" type="text" name="cpf" value="<%= data[0].cpf %>">
+          </div>
+
+          <% if(data[0].cargo==1){%>
+
+          <div class="input-field input-group-control col s12 m6 l4">
+            <label for="oab">OAB</label>
+            <input class="oab" type="text" name="oab" value="<%= data[0].oab %>">
+          </div>
+
+          <%}%>
+
+        </div>
+
+        <div class="bordo-line"></div>
+
+        <div class="row">
+          <h5 class="center">Notificações</h5>
+
+          <div>
+            <p>
+             <label>
+              <input type="checkbox" checked disabled>
+              <span>Atribuído à um processo por outro usuário</span>
+            </label>
+          </p>
+
+          <p>
+           <label>
+            <input type="checkbox" checked disabled>
+            <span>Atribuído à um prazo por outro usuário</span>
+          </label>
+        </p>
+
+        <p>
+         <label>
+          <input type="checkbox" checked disabled>
+          <span>Quando alguém entrar em contato comigo pelo chat</span>
+        </label>
+      </p>
+
+      <p>
+       <label>
+        <input type="checkbox" checked disabled>
+        <span>Atribuído à um compromisso do tipo audiência</span>
+      </label>
+    </p>
+
+    <p>
+     <label>
+      <input type="checkbox" checked disabled>
+      <span>Atribuído à um compromisso do tipo Reunião</span>
+    </label>
+  </p>
+
+  <p>
+   <label>
+    <input type="checkbox" checked disabled>
+    <span>Atribuído à um compromisso do tipo Julgamento</span>
+  </label>
+</p>
+
+
+</div>
+</div>
+
+
+<div class="right-align">
+  <a href="/sistema/configuracoes/alterar-senha/" class="btn waves-effect waves-light golden darken-2 ajax-load bordo-text left">
+    Alterar Senha
+  </a>
+
+
+  <button data-href="/sistema/configuracoes/atualizar/" data-action="/sistema/configuracoes/" class="btn waves-effect waves-light bordo ajax-submit">
+    Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+  </button>
+</div>
+
+</form>
+
+
+
+</div>
+
+
+
+
+
+<!--       <input type="hidden" name="id" value="<%= typeof data[0] != 'undefined' ? data[0].id : 0 %>">
+      <label>Escolha a cor padrão do Optima: </label>
+      <input type="color" name="cor_padrao" style="border-width: 0; background-color: #fff;" value="<%= typeof data[0] != 'undefined' ? data[0].cor_padrao : '' %>"> -->
+
+

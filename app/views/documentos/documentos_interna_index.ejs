@@ -1,0 +1,37 @@
+<%
+if (typeof data != 'undefined' && data.length > 0) {
+  for (var i = data.length - 1; i >= 0; i--) {
+  	if (data[i].tipo == 1) {
+%>
+	<ul class="collapsible" data-collapsible="expandable">
+    <li>
+    	<div class="collapsible-header relative folder" data-ajax="1" data-id="<%= data[i].id %>">
+    		<i class="fa fa-folder bordo-text" aria-hidden="true"></i><%= data[i].arquivo %> - <%= data[i].data_cadastro %><div class="ar valign-wrapper" style="top: 0; height: 100%;"><i class="fa fa-times red-text remove-doc modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].arquivo %>'? " data-to="/sistema/documentos/desativar" data-back="/sistema/documentos" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+    	</div>
+    	<div class="collapsible-body">
+				<ul class="collapsible" data-collapsible="accordion">
+					Não existem arquivos nesta pasta
+				</ul>
+    	</div>
+    </li>
+  </ul>
+<%
+		} else {
+%>
+	<ul class="collapsible" data-collapsible="expandable">
+    <li>
+      <a class="black-text" href="/assets/uploads/<%= data[i].arquivo %>" download>
+      	<div class="collapsible-header relative">
+      		<i class="fa fa-file bordo-text" aria-hidden="true"></i><%= data[i].arquivo %> - <%= data[i].data_cadastro %><div class="ar valign-wrapper" style="top: 0; height: 100%;"><i class="fa fa-times red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].arquivo %>'? " data-to="/sistema/documentos/desativar" data-back="/sistema/documentos" aria-hidden="true"></i><i class="fa fa-download blue-text text-darken-1" aria-hidden="true"></i></div>
+      	</div>
+      </a>
+    </li>
+	</ul>
+<%
+  	}
+	}
+%>
+<br><hr>
+<%
+}
+%>

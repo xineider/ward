@@ -1,0 +1,168 @@
+ <div class="cream tab-archive numero_processo"><%= data.detalhes_processo[0].numero %></div>
+
+ <div class="card archive white">
+
+ 	<form method="POST" action="" enctype="multipart/form-data">
+ 		<input type="hidden" name="id" value="<%= data.detalhes_processo[0].id %>" id="id_processo">
+
+
+ 		<div class="row card padding-t-10 center ">
+ 			<h5>Status do Processo</h5>
+ 			<!-- 			<p class="center">* Quando selecionado uma das ações abaixo e o processo ser salvo, o cliente receberá um alerta pelo aplicativo sobre a ação escolhida.</p> -->
+
+ 			<div class='status-timeline-processo'>
+ 				<div class="status-timeline-processo-line hide-on-med-and-down"></div>
+ 				<p>
+ 					<label>
+ 						<input name="status" type="radio" id="processo_interno" <%= data.detalhes_processo[0].status == 0 ? 'checked':''%> value='0'>
+ 						<span for="processo_em_andamento"><span>Em Elaboração</span></span>
+ 					</label>
+ 					<label>
+ 						<input name="status" type="radio" id="processo_em_andamento" value='1' <%= data.detalhes_processo[0].status == 1 ? 'checked':''%>>
+ 						<span for="processo_em_andamento"><span>Em Andamento</span></span>
+ 					</label>
+ 					<label>
+ 						<input name="status" type="radio" id="processo_entrar_contato_cliente" value='2' <%= data.detalhes_processo[0].status == 2 ? 'checked':''%>>
+ 						<span for="processo_entrar_contato_cliente"><span>Entrar em Contato com o Escritório</span></span>
+ 					</label>
+ 					<label>
+ 						<input name="status" type="radio" id="processo_ajuizado" value='3' <%= data.detalhes_processo[0].status == 3 ? 'checked':''%>>
+ 						<span for="processo_ajuizado"><span>Ajuizado</span></span>
+ 					</label>
+ 					<label>
+ 						<input name="status" type="radio" id="processo_audiencia_marcada" value='4' <%= data.detalhes_processo[0].status == 4 ? 'checked':''%>>
+ 						<span for="processo_audiencia_marcada"><span>Processo Administrativo</span></span>
+ 					</label>
+ 				</p>
+
+ 			</div>
+
+ 		</div>
+
+
+ 		<div class="row card padding-b-10 padding-t-10">
+ 			<%- include('area_detalhes_processo'); %>
+ 		</div>
+
+
+
+
+
+
+ 		<div class="bordo-line"></div>
+
+ 		<div class="row card padding-b-10 padding-t-10">
+ 			<h5 class="center">Partes Envolvidas no Processo</h5>
+
+ 			<div class="col s12 margin-b-1rem">
+ 				<%- include('area_cliente_processo'); %>
+ 				<div class="container_cliente_load"></div>
+ 			</div>
+
+ 			<div class="col s12 margin-t-1rem">
+ 				<%- include('area_adverso_processo'); %>
+ 				<div class="container_adverso_load"></div>
+ 			</div>
+
+ 		</div>
+
+ 		<div class="bordo-line"></div>
+
+ 		<div class="row card padding-b-10 padding-t-10">
+ 			<%- include('area_andamento_processo'); %>
+ 		</div>
+
+ 		<div class="bordo-line"></div>
+
+ 		
+
+ 		<div class="row card padding-b-10 padding-t-10">
+ 			<%- include('area_outros_detalhes_processo'); %>
+ 		</div>
+
+ 		<div class="bordo-line"></div>
+
+ 		<div class="padding-b-10 padding-t-10 ">
+
+ 			<ul class="row card collapsible" data-collapsible="accordion">
+ 				<li>
+ 					<div class="collapsible-header" style="background-color:transparent;">
+ 						<div class="col s12">
+ 							<h5 class="center">Apensos do Processo</h5>
+ 						</div>
+ 						
+ 					</div>
+ 					
+ 					<div class="collapsible-body">
+ 						<%- include('index_apenso'); %>
+ 					</div>
+
+ 				</li>
+ 			</ul>
+ 		</div>
+
+
+
+ 		<div class="bordo-line"></div>
+
+ 		<div class="padding-b-10 padding-t-10">
+ 			<ul class="row card collapsible" data-collapsible="accordion">
+ 				<li>
+ 					<div class="collapsible-header" style="background-color:transparent;">
+ 						<div class="col s12">
+ 							<h5 class="center">Recursos do Processo</h5>
+ 						</div>
+ 					</div>
+ 					<div class="collapsible-body">
+ 						<%- include('index_recurso'); %>
+ 					</div>
+ 				</li>
+ 			</ul>		
+ 		</div>
+
+ 		<div class="bordo-line"></div>
+
+
+ 		<div class="row card padding-b-10 padding-t-10">
+ 			<h5 class="center">Compromissos do Processo</h5>
+ 			<%- include('area_compromisso_processo'); %>
+ 		</div>
+
+
+ 		<div class="fixed-action-btn" style="bottom:23%;">
+
+ 			<button style="position: absolute;" data-href="/sistema/processos/atualizar/" class="right btn-floating btn-large ruby darken-2 ajax-submit-no-back pulse tooltipped" data-position="left" data-tooltip="Salvar Processo" data-mensagem-sucesso="Processo Atualizado!">
+ 				<i class="fa fa-floppy-o bordo-text" aria-hidden="true"></i>
+ 			</button>
+
+
+ 			<button data-href="/sistema/processos/atualizar/" class="right btn-floating btn-large golden darken-2 ajax-submit-no-back pulse tooltipped" data-position="left" data-tooltip="Salvar Processo" data-mensagem-sucesso="Processo Atualizado!">
+ 				<i class="fa fa-floppy-o bordo-text" aria-hidden="true"></i>
+ 			</button>
+ 		</div>
+ 		
+
+
+ 		<div class="right-align">
+ 			<button data-href="/sistema/processos/atualizar/" data-action="/sistema/processos" class="btn waves-effect waves-light bordo ajax-submit">
+ 				Salvar e Sair <i class="fa fa-share-square-o" aria-hidden="true"></i>
+ 			</button>
+ 		</div>
+ 	</form>
+
+
+ </div>
+
+
+ <style>
+ .right-detalhes-processo .input-field input-group-control input{
+ 	width:80%
+ }
+
+ .bordo-line{
+ 	height: 2px;
+ 	margin: 30px 0;
+ 	background:linear-gradient(to right, rgba(224,208,172,0) 0%,rgb(103, 47, 56) 25%,rgb(87, 40, 48) 50%,rgb(90, 39, 48) 75%,rgba(224,198,137,0) 100%)
+ }
+
+</style>

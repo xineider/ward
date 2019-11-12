@@ -1,0 +1,148 @@
+	<a href="/sistema/tarefas" class="ajax-load">
+		<div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Início</div>
+	</a>
+
+	<a href="/sistema/tarefas/tarefas" class="ajax-load">
+		<div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Tarefas</div>
+	</a>
+
+	<div class="cream tab-archive">Criar Tarefas</div>
+
+	<a href="/sistema/tarefas/sac" class="ajax-load">
+		<div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">SAC</div>
+	</a>
+
+	<div class="card cream archive">
+		<form method="POST" action="" enctype="multipart/form-data">
+			<div class="right-align row">
+
+				<a href="/sistema/tarefas/" class="ajax-load">
+					<div class="left valign-wrapper">
+						<div class="btn-floating btn-large waves-effect waves-light bordo ">
+							<i class="fa fa-pencil" aria-hidden="true"></i>            
+						</div>
+						<div class="black-text margin-l-5">Editar Tarefas</div>  
+					</div>
+				</a>
+
+				<div class="right valign-wrapper">
+					<div class="black-text margin-r-5">Salvar Tarefa</div>
+					<button data-href="/sistema/tarefas/cadastrar/" data-action="/sistema/tarefas/" class="btn-floating btn-large waves-effect waves-light bordo ajax-submit">
+						<i class="fa fa-floppy-o" aria-hidden="true"></i>
+					</button>
+				</div>
+				
+			</div>
+			<div class="row">
+				<h5>
+					Informações sobre a tarefa
+				</h5>
+				<div class="input-field input-group-control col s12">
+					<b><label for="nome">Nome * </label></b>
+					<input required="true" class="validate" type="text" name="tarefa[nome]]">
+				</div>
+				<div class="col s12 m6 input-field input-group-control">
+					<b><label for="data_inicio" class="active">Data Prevista *</label></b>
+					<input required="true" class="datepicker" type="tel" name="tarefa[data_prevista]">
+				</div>
+				<div class="col s12 m6 input-field input-group-control">
+					<label for="tempo_previsto" class="active">Tempo Previsto</label>
+					<input class="time" type="tel" name="tarefa[tempo_previsto]">
+				</div>
+				<div class="col s12 m6 input-field input-group-control">
+					<label for="data_inicio" class="active">Data Inicial</label>
+					<input  class="datepicker" type="tel" name="tarefa[data_inicio]">
+				</div>
+				<div class="col s12 m6 input-field input-group-control">
+					<label for="data_final" class="active">Data Final</label>
+					<input class="datepicker" type="tel" name="tarefa[data_final]">
+				</div>
+				<div class="input-field col s12 input-group-control">
+					<label for="descricao">Descrição</label>
+					<textarea name="tarefa[descricao]" class="materialize-textarea"></textarea>
+				</div>
+				<div class="col s12 m6 select-field input-group-control">
+					<b><label>Usuário Responsável *</label></b>
+					<select required="true" class="browser-default" name="tarefa[id_usuario]">
+						
+						<% if(usuario.nivel != 3){%>
+						<option value="" disabled selected>Selecione</option>
+						<%						
+						if (typeof data.usuarios != 'undefined' && data.usuarios.length > 0) {
+							for (var i = data.usuarios.length - 1; i >= 0; i--) {
+								%>					
+
+								<option value="<%= data.usuarios[i].id %>"><%= data.usuarios[i].nome %></option>
+								<%
+							}
+						}
+					}else{ %>
+					<option value="<%= usuario.id%>" selected><%= usuario.nome%></option>
+
+					<%}%>
+					
+				</select>
+			</div>
+			<div class="col s12 m6 select-field input-group-control">
+				<b><label>Gerente Responsavel *</label></b>
+				<select required="true" class="browser-default" name="tarefa[id_responsavel]">
+					<option value="" disabled selected>Selecione</option>
+					<%
+					if (typeof data.gerentes != 'undefined' && data.gerentes.length > 0) {
+						for (var i = data.gerentes.length - 1; i >= 0; i--) {
+							%>
+							<option value="<%= data.gerentes[i].id %>"><%= data.gerentes[i].nome %></option>
+							<%
+						}
+					}
+					%>
+				</select>
+			</div>
+		</div>
+
+		<div class="row">
+			<h5>
+				Tópicos
+			</h5>
+
+			<div class="col s12">
+				<div class="topicos">
+					<%- include('tarefas_topico'); %>
+				</div>
+
+
+				<div class="row">
+					<div class="col s12 center-align">
+						<button class="btn-large bordo lighten-1 white-text ajax-add-to" data-href="/sistema/tarefas/gettopico/" data-to="topicos">Adicionar Novo Tópico</button>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="row uploads word-wrap">
+			<h5>
+				Uploads
+			</h5>
+			<div class="file-field input-field col s12 m7" style="height: 64px;">
+				<div class="btn white">
+					<span class="black-text">Procurar <i class="fa fa-search" aria-hidden="true"></i></span>
+					<input type="file" data-href="/sistema/documentos/uploadarquivo" id="arquivo">
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text" placeholder="Ou arraste seu arquivo aqui">
+				</div>
+			</div>
+			<div class="file-field input-field col s12 m5 center-align" style="height: 64px;">
+				<button type="button" style="width: 100%;" class="btn-large bordo-text golden darken-2 modal-mount" data-href="#modalinfo" data-link="/documentos/ver/usuario/<%= usuario.id %>">
+					Visualizar Arquivos
+				</button>
+			</div>
+		</div>
+		<div class="right-align">
+			<button data-href="/sistema/tarefas/cadastrar/" data-action="/sistema/tarefas/" class="btn waves-effect waves-light bordo ajax-submit">
+				Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+			</button>
+		</div>
+	</form>
+</div>

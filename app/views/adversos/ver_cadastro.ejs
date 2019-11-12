@@ -1,0 +1,65 @@
+<div class="col s12 card white" style='margin-top:30px;'> 
+  <div class="close_container_load">
+    <a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+    </a>
+  </div>
+  <div class="row">
+
+   <%
+   if (typeof data.adverso != 'undefined' && data.adverso.length > 0) {
+    for (var i = data.adverso.length - 1; i >= 0; i--) {
+      %>
+      <div class="col s12">
+        <ul>
+          <li>
+            <b>Nome:</b> <%= data.adverso[i].nome %>
+          </li>
+          <li>
+            <b>Tipo(pf/pj):</b> <%= data.adverso[i].tipo==1 ? 'Pessoa Jurídica' : 'Pessoa Física' %>
+          </li>
+          <li>
+            <b>CPF/CNPJ:</b> <%= data.adverso[i].cpf_cnpj %>
+          </li>
+          <li>
+            <b>Telefone:</b> <%= data.adverso[i].tel %>
+          </li>
+          <li>
+            <b>Email:</b> <%= data.adverso[i].email %>
+          </li>
+          <li>
+            <b>Contato:</b> <%= data.adverso[i].contato %>
+          </li>
+          <li>
+            <b>Advogado:</b> <%= data.adverso[i].advogado %>
+          </li>
+          <li>
+            <b>Rua:</b> <%= data.adverso[i].rua %>
+          </li>
+          <li>
+            <b>Bairro:</b> <%= data.adverso[i].bairro %>
+          </li>
+          <li>
+            <b>Cidade:</b> <%= data.adverso[i].cidade %>
+          </li>
+          <li>
+            <b>Estado:</b> <%= data.adverso[i].estado %>
+          </li>
+          <li>
+            <b>CEP:</b> <%= data.adverso[i].cep %>
+          </li>
+
+        </ul>
+      </div>
+      <%
+    }
+  } else {
+    %>
+    <div class="col s12">
+      Não existem dados no momento
+    </div>
+    <%
+  }
+  %>
+</div>
+</div>

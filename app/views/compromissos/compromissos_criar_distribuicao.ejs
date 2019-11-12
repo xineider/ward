@@ -1,0 +1,104 @@
+<div class="card white">
+  <div class="close_container_load">
+    <a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+    </a>
+  </div>
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type='hidden' name='id_usuario' value='<%= usuario.id%>'>
+
+    <div class="row">
+      <div class="input-field input-group-control col s12 m4">
+        <label for="nome">Descrição</label>
+        <input class="validate" type="text" name="nome">
+      </div>
+
+      <input type="hidden" name="tipo_compromisso" value="1">
+
+      <div class="select-field input-group-control col s12 m4">
+       <label>Tipo do Compromisso</label>
+        <select required='true' class="browser-default validate" name='tipo'>
+          <option value='0' selected>Acórdão/Sentença</option>
+          <option value='1'>Despacho/Decisões</option>
+          <option value='2'>Petições Diversas</option>
+          <option value='3'>Quesitos</option>
+          <option value='4'>Manif de Docs</option>
+          <option value='5'>Prazos Processos Físicos</option>
+          <option value='6'>Perito</option>
+          <option value='7'>Providência</option>
+        </select>
+
+      </div>
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Data Inicial do Compromisso</label>
+        <input required="true" type="text" class="datepicker" name="data_inicial" value="<%= data.tempo[0].hoje%>">
+      </div>
+      <div class="input-field input-group-control col s12 m4">
+        <label>Horário Inicial do Compromisso(Não Obrigatório)</label>
+        <input type="text" class="timepicker" name="hora_inicial">
+      </div>
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Data Final do Compromisso</label>
+        <input type="text" class="datepicker" name="data_final">
+      </div>
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Horário Final do Compromisso(Não Obrigatório)</label>
+        <input type="text" class="timepicker" name="hora_final">
+      </div>
+
+
+
+      <div class="input-field input-group-control-with-search col s12 m4">
+        <label for="desc_numero_processo">Número do Processo</label>
+        <input disabled value="" id="desc_numero_processo" type="text">
+        <a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-processos" data-href="#modalinfo" data-anchor-id="#id_processo" data-anchor-descricao="#desc_numero_processo">
+          <i class="fa fa-search"></i>
+        </a>
+        <input type="hidden" name="id_processo" id="id_processo">
+      </div>
+
+      <div class="input-field input-group-control-with-search col s12 m4">
+        <label for="desc_advogado_setor">Advogado Responsável do Setor</label>
+        <input disabled value="" id="desc_advogado_setor" type="text">
+        <a class="btn bordo lighten-1 modal-mount-anchor-advogado-setor-compromisso" data-link="/processos/selecionar-todos-advogados-do-setor-compromisso" data-modal="#modalinfo" data-anchor-id="#id_advogado_setor" data-anchor-descricao="#desc_advogado_setor" data-anchor-advogado-compromisso="#desc_advogado_compromisso" data-anchor-id-advogado-compromisso="#id_advogado_compromisso">
+          <i class="fa fa-search"></i>
+        </a>
+        <input type="hidden" name="id_advogado_setor" id="id_advogado_setor">
+      </div>
+
+      <div class="input-field input-group-control-with-search col s12 m4">
+        <label for="desc_advogado_compromisso">Advogado do Compromisso</label>
+        <input disabled value="" id="desc_advogado_compromisso" type="text">
+        <a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-advogados" data-href="#modalinfo" data-anchor-id="#id_advogado_compromisso" data-anchor-descricao="#desc_advogado_compromisso">
+          <i class="fa fa-search"></i>
+        </a>
+        <input type="hidden" name="id_advogado_compromisso" id="id_advogado_compromisso">
+      </div>
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Local</label>
+        <input type="text" name="local">
+      </div>
+
+      <div class="input-field input-group-control col s12 m8">
+        <label for="complemento">Observações</label>
+        <textarea type="text" name="complemento"></textarea>
+      </div>
+
+
+ </div>
+
+ <div class="row padding-b-10">
+  <div class="right-align padding-r-10">
+    <button data-href="/sistema/compromissos/cadastrar/" data-action="/sistema/compromissos/controle_distribuicao" class="btn waves-effect waves-light bordo ajax-submit">
+      Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+
+</form>
+
+</div>

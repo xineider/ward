@@ -1,0 +1,99 @@
+ <div class="cream tab-archive">Controle de Distribuição</div>
+ <a href="/sistema/compromissos/pauta_compromisso" class="ajax-load">
+ 	<div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Pauta de Compromissos</div>
+ </a>
+ <a href="/sistema/compromissos/pauta_julgamento" class="ajax-load">
+ 	<div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Pauta de Julgamentos</div>
+ </a>
+ <div class="card cream archive">
+ 	<div class="header row">
+
+ 		<div class="row">
+ 			<div class="col s12">
+ 				<div class="left valign-wrapper">
+ 					<a class="btn-floating btn-large waves-effect waves-light golden darken-2 gerar-relatorio" data-nome-provisorio="Distribuicao" data-container-relatorio="#tabela_interna_compromisso">
+ 						<i class="fa fa-file-pdf-o bordo-text" aria-hidden="true"></i>
+ 					</a>
+ 					<div class="black-text margin-l-5">Gerar Relatório</div>
+
+ 				</div>
+ 				<div class="right valign-wrapper">
+ 					<div class="black-text margin-r-5">Criar Compromisso</div>
+ 					<a class="btn-floating btn-large waves-effect waves-light bordo lighten-1 right tooltipped abrir_compromissos_criacao" data-position="top" data-tooltip="Cadastrar Compromisso" data-link="/sistema/compromissos/criar_distribuicao" data-href="#modalinfo" data-back="/sistema/compromissos"><i class="fa fa-plus" aria-hidden="true"></i></a>
+ 				</div>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="compromissos_container_criacao"></div>		
+ 		</div>
+
+
+ 	</div>
+
+
+ 	<div class="row">
+ 		<div class="card white">
+ 			<div class="row center">
+ 				<div class="col s12 f20 bold">Filtro Avançado</div>
+ 			</div>
+ 			<div class="row">
+ 				<%- include('compromissos_pesquisa');%>
+ 			</div>
+
+ 			<div class="row padding-b-10">
+ 				<div class="col s6 offset-s5">
+ 					<div class="center valign-wrapper">
+ 						<a class="btn waves-effect waves-light bordo gerar-relatorio-no-header" data-nome-provisorio="Dist_per" data-container-relatorio="#relatorio_generator">
+ 							Gerar Relatório Personalizado
+ 							<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+ 						</a>
+ 					</div>
+ 				</div>
+ 			</div>
+
+ 		</div>
+ 	</div>
+
+
+
+
+<!--  	<div class="filtro_pauta">
+
+ 		<label>	
+ 			<input type='checkbox' id='filtro_perito' name='filtros_pauta' checked='true'>
+ 			<span for='filtro_perito'>Perito</span>
+ 		</label>
+ 		<label>
+ 			<input type='checkbox' id='filtro_acordao' name='filtros_acordao' checked='true'>
+ 			<span for='filtro_acordao'>Acórdão/Sentença</span> 			
+ 		</label>
+ 		<label> 			
+ 			<input type='checkbox' id='filtro_despacho' name='filtros_pauta' checked='true'>
+ 			<span for='filtro_despacho'>Despacho/Decisões</span>
+ 		</label>
+ 		<label>
+ 			<input type='checkbox' id='filtro_peticoes' name='filtros_pauta' checked='true'>
+ 			<span for='filtro_peticoes'>Petições Diversas</span>
+ 		</label>
+ 		<label>
+ 			<input type='checkbox' id='filtro_quesitos' name='filtros_pauta' checked='true'>
+ 			<span for='filtro_quesitos'>Quesitos</span>
+ 		</label>
+ 		<label>
+ 			<input type='checkbox' id='filtro_manifestacao' name='filtros_pauta' checked='true'>
+ 			<span for='filtro_manifestacao'>Manif de Docs</span>
+ 		</label>
+ 		<label>
+ 			<input type='checkbox' id='filtro_prazosfisico' name='filtros_pauta' checked='true'>
+ 			<span for='filtro_prazosfisico'>Prazos Processos Físicos</span>
+ 		</label>
+
+ 	</div> -->
+
+ 	<div id="tabela_compromisso_e_relatorio">
+ 		<%- include('tabela_interna_e_relatorio');%>
+ 	</div>
+ 	
+
+ 	
+ </div>

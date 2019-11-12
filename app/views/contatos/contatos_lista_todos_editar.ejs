@@ -1,0 +1,27 @@
+<%
+if (typeof data.lista != 'undefined' && data.lista.length > 0) {
+  for (var i = data.lista.length - 1; i >= 0; i--) {
+%>
+<div class="col s12 pai">
+  <div class="input-field col s10">
+    <label>Contato</label>
+    <input type="text" name="lista_editar[contato][]"  value="<%= data.lista[i].contato %>">
+    <input type="hidden" name="lista_editar[id][]"  value="<%= data.lista[i].id %>">
+  </div>
+  <div class="col s2 center-align">
+    <a class="btn-floating btn-large waves-effect waves-light red remove_lista" data-id="<%= data.lista[i].id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+  </div>
+</div>
+<%
+	}
+}
+%>
+<div class="col s12 pai">
+  <div class="input-field col s10">
+    <label>Contato</label>
+    <input type="text" name="lista[contato][]" required="true">
+  </div>
+  <div class="col s2 center-align">
+    <a class="btn-floating btn-large waves-effect waves-light red remove"><i class="fa fa-times" aria-hidden="true"></i></a>
+  </div>
+</div>

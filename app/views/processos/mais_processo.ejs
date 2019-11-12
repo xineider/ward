@@ -1,0 +1,126 @@
+		
+<%
+if (typeof data.detalhes_processo != 'undefined' && data.detalhes_processo.length > 0) { %>
+<div class="row">
+	<div class="col s12 m7">
+
+		<div class="input-field input-group-control col s12 m8">
+			<label for="cliente_nome">Cliente</label>					
+			<input disabled value="<%= data.detalhes_processo[0].cliente %>" id="cliente_nome" type="text">
+		</div>
+
+		<div class="input-field input-group-control col s12 m4">
+			<label>Tipo do Cliente</label>
+			<input disabled value="<% switch(data.detalhes_processo[0].id_posicao_cliente){ 
+			case 1: %>Autor
+			<%break;
+			case 2:%>Réu
+			<%break;
+			case 3:%>Terceiro
+			<%break;}%> ">
+		</div>
+
+		<%if(typeof data.envolvidos_cliente != 'undefined' && data.envolvidos_cliente.length >0){
+			for (var i = data.envolvidos_cliente.length - 1; i >= 0; i--) {%>
+			<div class="input-field input-group-control col s12 m8">
+				<label for="envolvido">Envolvido Cliente</label>
+				<input disabled value="<%= data.envolvidos_cliente[i].nome %>" id="cliente_nome" type="text">
+			</div>
+			<div class="input-field col s12 m4 input-group-control">
+				<label>Posição</label>
+				<input disabled value="<%= data.envolvidos_cliente[i].posicao %>" id="cliente_nome" type="text">
+			</div>
+			<%}
+		}%>
+
+		<div class="row">
+			<div class="input-field input-group-control col s12">
+				<label for="adverso_nome">Adverso</label>					
+				<input disabled value="<%= data.detalhes_processo[0].adverso %>" id="adverso_nome" type="text">
+			</div>
+		</div>
+
+
+		<%if(typeof data.envolvidos_adverso != 'undefined' && data.envolvidos_adverso.length >0){
+			for (var i = data.envolvidos_adverso.length - 1; i >= 0; i--) {%>
+			<div class="input-field input-group-control col s12 m8">
+				<label for="envolvido">Envolvido Adverso</label>
+				<input disabled value="<%= data.envolvidos_adverso[i].nome %>" type="text">
+			</div>
+			<div class="input-field col s12 m4 input-group-control">
+				<label>Posição</label>
+				<input disabled value="<%= data.envolvidos_adverso[i].posicao %>" type="text">
+			</div>
+			<%} 
+		} %>
+
+
+
+		<div class="row">
+			<div class="input-field input-group-control col s12 m4">
+				<label for="valor_causa">Valor da Causa</label>					
+				<input disabled value="<%= data.detalhes_processo[0].valor_causa %>" id="valor_causa" type="text">
+			</div>
+
+			<div class="input-field input-group-control col s12 m4">
+				<label for="valor_causa">Distribuição</label>					
+				<input disabled value="<%= data.detalhes_processo[0].citacao %>" type="text">
+			</div>
+
+			<div class="input-field input-group-control col s12 m4">
+				<label for="valor_causa">Citacação</label>					
+				<input disabled value="<%= data.detalhes_processo[0].citacao %>" type="text">
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="col s12 m5">
+
+		<div class="input-field input-group-control col s12">
+			<label>Advogado Responsável</label>
+			<input disabled value="<%= data.detalhes_processo[0].advogado %>" id="advogado_responsavel" type="text">
+		</div>
+
+		<div class="input-field input-group-control col s12">
+			<label>Tipo da Causa</label>
+			<input disabled value="<%= data.detalhes_processo[0].tipo_causa %>" id="tipo_causa" type="text">			
+		</div>
+
+		<div class="input-field input-group-control col s12">
+			<label>Assunto</label>
+			<input disabled value="<%= data.detalhes_processo[0].assunto %>" id="assunto" type="text">			
+		</div>
+
+		<div class="input-field input-group-control col s12">
+			<label>Comarca</label>
+			<input disabled value="<%= data.detalhes_processo[0].comarca %>" id="comarca" type="text">			
+		</div>
+
+		<div class="input-field input-group-control col s12">
+			<label>Tipo da Ação/Rito</label>
+			<input disabled value="<%= data.detalhes_processo[0].tipo_acao_rito %>" id="tipo_acao_rito" type="text">			
+		</div>
+
+		<div class="input-field input-group-control col s12">
+			<label>Vara</label>
+			<input disabled value="<%= data.detalhes_processo[0].vara %>" id="vara" type="text">			
+		</div>
+
+		<div class="input-field input-group-control col s12">
+			<label>Categoria</label>
+			<input disabled value="<%= data.detalhes_processo[0].categoria %>" id="categoria" type="text">			
+		</div>
+
+		<div class="input-field input-group-control col s12">
+			<label>Fase</label>
+			<input disabled value="<%= data.detalhes_processo[0].fase %>" id="fase" type="text">			
+		</div>
+
+
+
+	</div>
+</div>	
+
+<% } %>			

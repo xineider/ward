@@ -1,0 +1,132 @@
+<div class="col s12 card white">
+  <div class="close_container_load">
+    <a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+    </a>
+  </div>
+
+  <%
+  if (typeof data.compromisso != 'undefined' && data.compromisso.length > 0) {
+    %>
+
+    <input type="hidden" value="<%= data.compromisso[0].id %>" name="id_compromisso">
+
+    <div class="input-field input-group-control col s12 m4">
+      <label for="nome_compromisso">Descrição</label>
+      <input class="validate" type="text" name="nome_compromisso" value="<%= data.compromisso[0].nome %>">
+    </div>
+
+    <div class="col s12 m4 select-field input-group-control">
+      <label for="tipo_compromisso">Categoria do Compromisso</label>
+      <select required="true" class="browser-default" name="tipo_compromisso" value="<%= data.compromisso[0].tipo_compromisso %>">
+
+        <option value='0' <%= data.compromisso[0].tipo_compromisso == 0 ? 'selected="true"' : '' %>>Pauta de Compromissos</option>
+        <option value='1' <%= data.compromisso[0].tipo_compromisso == 1 ? 'selected="true"' : '' %>>Controle de Distribuição</option>
+        <option value='2' <%= data.compromisso[0].tipo_compromisso == 2 ? 'selected="true"' : '' %>>Pauta de Julgamento</option>
+      </select>
+    </div>
+    
+    <div class="select-field input-group-control col s12 m4" id="select_tipo_compromisso">
+      <label>Tipo do Compromisso</label>
+      <select class="browser-default validate" name='tipo'>
+
+        <%if(data.compromisso[0].tipo_compromisso == 0){%>
+
+
+        <option <%= data.compromisso[0].tipo == 0 ? 'selected="true"' : '' %> value="0" >Audiência</option>
+
+        <option <%= data.compromisso[0].tipo == 1 ? 'selected="true"' : '' %> value="1">Reunião</option>
+
+        <option <%= data.compromisso[0].tipo == 2 ? 'selected="true"' : '' %> value="2">Perícia</option>
+
+        <%}else if(data.compromisso[0].tipo_compromisso == 1){%>
+        <option <%= data.compromisso[0].tipo == 0 ? 'selected="true"' : '' %> value="0">Acordão/Sentença</option>
+        <option <%= data.compromisso[0].tipo == 1 ? 'selected="true"' : '' %> value="1">Despacho/Decisões</option>
+
+        <option <%= data.compromisso[0].tipo == 2 ? 'selected="true"' : '' %> value="2">Petições Diversas</option>
+
+        <option <%= data.compromisso[0].tipo == 3 ? 'selected="true"' : '' %> value="3">Quesitos</option>
+
+        <option <%= data.compromisso[0].tipo == 4 ? 'selected="true"' : '' %> value="4">Manifestação de Documentos</option>
+
+        <option <%= data.compromisso[0].tipo == 5 ? 'selected="true"' : '' %> value="5">Prazos Processos Físicos</option>
+
+        <option <%= data.compromisso[0].tipo == 6 ? 'selected="true"' : '' %> value="6">Perito</option>
+
+        <option <%= data.compromisso[0].tipo == 7 ? 'selected="true"' : '' %> value="7">Providência</option>
+
+        <%}else if(data.compromisso[0].tipo_compromisso == 2){%>
+
+
+        <option <%= data.compromisso[0].tipo == 0 ? 'selected="true"' : '' %> value="0">Julgamento</option>
+
+        <%}%>
+
+
+      </select>
+    </div>
+
+    <div class="input-field input-group-control col s12 m4">
+      <label>Data Inicial do Compromisso</label>
+      <input required='true' type="text" class="datepicker" name="data_inicial_compromisso" value="<%= data.compromisso[0].data_inicial %>">
+    </div>
+    <div class="input-field input-group-control col s12 m4">
+      <label>Horário Inicial do Compromisso</label>
+      <input type="text" class="timepicker" name="hora_inicial_compromisso" value="<%= data.compromisso[0].hora_inicial %>">
+    </div>
+
+    <div class="input-field input-group-control col s12 m4">
+      <label>Data Final do Compromisso</label>
+      <input type="text" class="datepicker" name="data_final_compromisso" value="<%= data.compromisso[0].data_final %>">
+    </div>
+
+    <div class="row" style="margin-bottom: 0;">
+
+      <div class="input-field input-group-control col s12 m4">
+        <label>Horário Final do Compromisso</label>
+        <input type="text" class="timepicker" name="hora_final_compromisso" value="<%= data.compromisso[0].hora_final %>">
+      </div>
+
+
+      <div class="input-field input-group-control-with-search col s12 m4">
+        <label for="desc_advogado_setor">Advogado Responsável do Setor</label>
+        <input disabled value="<%= data.compromisso[0].nome_advogado_setor != null ? data.compromisso[0].nome_advogado_setor : '' %>" id="desc_advogado_setor" type="text">
+        <a class="btn bordo lighten-1 modal-mount-anchor-advogado-setor-compromisso" data-link="/processos/selecionar-todos-advogados-do-setor-compromisso" data-modal="#modalinfo" data-anchor-id="#id_advogado_setor" data-anchor-descricao="#desc_advogado_setor" data-anchor-advogado-compromisso="#desc_advogado_compromisso" data-anchor-id-advogado-compromisso="#id_advogado_compromisso">
+          <i class="fa fa-search"></i>
+        </a>
+        <input type="hidden" name="id_advogado_setor" id="id_advogado_setor" value="<%=  data.compromisso[0].id_advogado_setor != null ? data.compromisso[0].id_advogado_setor : '' %>">
+      </div>
+
+      <div class="input-field input-group-control-with-search col s12 m4">
+        <label for="desc_advogado_compromisso">Advogado do Compromisso</label>
+        <input disabled value="<%= data.compromisso[0].nome_advogado_compromisso != null ?data.compromisso[0].nome_advogado_compromisso : '' %>" id="desc_advogado_compromisso" type="text">
+        <a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-advogados" data-href="#modalinfo" data-anchor-id="#id_advogado_compromisso" data-anchor-descricao="#desc_advogado_compromisso">
+          <i class="fa fa-search"></i>
+        </a>
+        <input type="hidden" name="id_advogado_compromisso" id="id_advogado_compromisso" value="<%= data.compromisso[0].id_advogado_compromisso != null ? data.compromisso[0].id_advogado_compromisso : '' %>">
+      </div>
+
+    </div>
+
+    <div class="input-field input-group-control col s12 m4">
+      <label for="local_compromisso">Local</label>
+      <input type="text" name="local_compromisso" value="<%= data.compromisso[0].local %>">
+    </div>
+
+
+    <div class="input-field input-group-control col s12 m8">
+      <label for="complemento_compromisso">Observações</label>
+      <textarea name="complemento_compromisso"><%= data.compromisso[0].complemento %></textarea>
+    </div>
+
+    <%
+  }
+  %>
+
+  <div class="input-field col s12 margin-b-1rem" >
+
+    <button data-href="<%= data.cadastrar_link %>" class="btn waves-effect waves-light bordo ajax-submit-container-reload" data-container="#container_tabela_compromissos_reload" data-mensagem-sucesso="Compromisso Alterado!">
+      Atualizar Compromisso 
+    </button>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+    <table class="centered highlight responsive-table cell-border" id="tabela_interna_adverso" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CPF/CNPJ</th>
+          <th>Advogado</th>
+          <th>Ações</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        if (typeof data != 'undefined' && data.length > 0) {
+          for (var i = data.length - 1; i >= 0; i--) {
+            %>
+            <tr>
+              <td>
+                <%= data[i].nome %>
+              </td>
+              <td>
+                <%= data[i].cpf_cnpj %>
+              </td>
+              <td>
+                <%= data[i].advogado %>
+              </td>
+
+              <td>
+                <a href="/sistema/adversos/editar/<%= data[i].id %>" class="ajax-load"><i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i></a>
+                <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].nome %>'? " data-to="/sistema/adversos/desativar" data-back="/sistema/adversos" aria-hidden="true"></i>
+              </td>
+
+            </tr>
+            <%
+          }
+        }
+        %>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<%
+if (typeof data != 'undefined' && data.length > 0) {
+  for (var i = data.length - 1; i >= 0; i--) {
+    %>
+    <li>
+      <div class="collapsible-header position" data-id="<%= data[i].id %>">
+        <%= data[i].nome %>
+        <span class="right-position">
+          <a href="/sistema/adversos/editar/<%= data[i].id %>" class="ajax-load"><i class="fa fa-pencil-square-o bordo-text text-darken-2" aria-hidden="true"></i></a>
+          <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].nome %>'? " data-to="/sistema/adversos/desativar" data-back="/sistema/adversos" aria-hidden="true"></i>
+        </span>
+      </div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="col s12 m6">
+            <ul>
+              <li>
+                <b>Nome:</b> <%= data[i].nome %>
+              </li>
+              <li>
+                <b>Rua:</b> <%= data[i].rua %>
+              </li>
+              <li>
+                <b>Bairro:</b> <%= data[i].bairro %>
+              </li>
+              <li>
+                <b>Número:</b> <%= data[i].num %>
+              </li>
+              <li>
+                <b>Cidade:</b> <%= data[i].cidade %>
+              </li>
+              <li>
+                <b>Estado:</b> <%= data[i].estado %>
+              </li>
+              <li>
+                <b>CEP:</b> <%= data[i].cep %>
+              </li>
+            </ul>
+          </div>
+          <div class="col s12 m6">
+            <ul>
+              <li>
+                <b>Telefone:</b> <%= data[i].tel %>
+              </li>
+              <li>
+                <b>Email:</b> <%= data[i].email %>
+              </li>
+              <li>
+                <b>Advogado:</b> <%= data[i].advogado %>
+              </li>
+              <li>
+                <b>Contato:</b> <%= data[i].contato %>
+              </li>
+              <li>
+                <b>Tipo(pf/pj):</b> <%= data[i].tipo %>
+              </li>
+              <li>
+                <b>CPF/CNPJ:</b> <%= data[i].cpf_cnpj %>
+              </li>
+              <li>
+                <b>Perfil:</b> <%= data[i].perfil %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+    <%
+  }
+} else {
+  %>
+  <li>
+    <div class="collapsible-header position">
+      Não existem dados no momento
+    </div>
+  </li>
+  <%
+}
+%> -->

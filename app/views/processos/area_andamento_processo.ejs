@@ -1,0 +1,51 @@
+		<div class="col s12">
+			<h5 class="center">Andamentos do Processo</h5>
+			
+			<div class="col s12 valign-wrapper">
+				<div class="input-field input-group-control col s12 m6">
+					<label for="andamento_data">Data</label>
+					<input class="data_sem_hora data_hoje" type="text" name="andamento_data" maxlength="10" value="<%= data.tempo[0].hoje%>">
+				</div>
+				<div class="select-field input-group-control col s12 m6">
+					<label>Tipo do Andamento</label>
+					<select class="browser-default load_especifico_to_container_andamento_financeiro" name="andamento_tipo" data-container="container_andamento_financeiro" data-idload="1" data-link="/sistema/processos/andamento_financeiro_cadastro_dados_para_calculo/<%= data.detalhes_processo[0].id%>">
+						<option value="0">Jurídico</option>
+						<option value="1">Administrativo</option>
+						<option value="2">Financeiro</option>
+						<option value="3">Outro</option>
+					</select>
+				</div>
+
+
+				<div class="input-field input-group-control col s12">
+					<label for="andamento_descricao">Descrição</label>
+					<textarea name="andamento_descricao" class="validate"></textarea>
+				</div>				
+			</div>
+
+
+			<% if (typeof data.calculos_financeiro != 'undefined' && data.calculos_financeiro.length > 0) {%>
+
+			<div class="col s12 center container_botao_parcelas_existente">
+				<a class="btn bordo lighten-1 load_especifico_to_container" data-link="/sistema/processos/parcelas/<%= data.detalhes_processo[0].id %>" data-container="container_andamento_financeiro" data-idload="2">
+					<i class="fa fa-usd" aria-hidden="true"></i> Parcelas Financeiro
+				</a>
+			</div>
+
+			<%}%>
+			<div class="container_andamento_financeiro"></div>
+
+			<button data-href="/sistema/processos/andamentos_cadastrar" class="btn waves-effect waves-light bordo ajax-submit-container-reload right" data-container="#container_tabela_andamentos_reload" data-mensagem-sucesso="Andamento Cadastrado!">Salvar Novo Andamento</button>
+
+
+
+		</div>
+
+
+
+		<div class="col s12">
+			<div class="card white padding-a-15" id="container_tabela_andamentos_reload">
+				<%- include('tabela_andamentos_only'); %>
+			</div>
+
+		</div>

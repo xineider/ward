@@ -1,0 +1,51 @@
+<ul class="tabs tabbs">
+	<li class="tab">
+		<a href="#tab_container_mais_processo">
+			<div class="tab-archive numero_processo tab-more-details" id="numero_more_details">
+				<%= data.detalhes_processo[0].numero %>		
+			</div>
+		</a>
+	</li>
+	<li class="tab">
+		<a href="#tab_container_andamentos_processo">
+			<div class="tab-archive tab-more-details">Andamentos</div>
+		</a>
+	</li>
+	<li class="tab">
+		<a href="#tab_container_compromissos_processo">
+			<div class="tab-archive tab-more-details">Compromissos</div></li>
+		</a>
+	</ul>
+
+	<!-- 			<div class="col s12">
+				<ul class="tabs">
+					<li class="tab col s3">
+						<a href="#tab_container_mais_processo">Mais do Processo</a>
+					</li>
+					<li class="tab col s3">
+						<a href="#tab_container_andamentos_processo">Andamentos</a>
+					</li>
+					<li class="tab col s3">
+						<a href="#tab_container_compromissos_processo">Compromissos Agendados</a>
+					</li>
+				</ul>
+			</div> -->
+
+
+
+
+
+	<div class="card" style="margin-top:0;">
+		<div class="row">
+			<div id="tab_container_mais_processo" class="col s12">
+				<%- include('mais_processo'); %>
+			</div>
+
+			<div id="tab_container_andamentos_processo" class="col s12">
+				<%- include('andamentos');%>
+			</div>
+			<div id="tab_container_compromissos_processo" class="col s12">
+				<%- include('compromissos_processo');%>
+			</div>
+		</div>
+	</div>

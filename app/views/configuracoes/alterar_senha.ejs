@@ -1,0 +1,33 @@
+    <a href="/sistema/configuracoes/" class="ajax-load">
+      <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-l">Configurações</div>
+    </a>
+    <div class="cream tab-archive">Alterar Senha</div>
+
+    <div class="card cream archive">
+      <h4>Alterar Senha</h4>
+      <form method="POST" action="" enctype="multipart/form-data">
+
+        <div class="row">
+
+          <div class="input-field input-group-control col s12">
+            <label for="senha_atual">Senha Atual</label>
+            <input required="true" class="validate" type="password" name="senha_atual">
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label for="senha">Nova Senha</label>
+            <input required="true" class="validate" type="password" name="senha" id="alterar_senha">
+          </div>
+
+          <div class="input-field input-group-control col s12">
+            <label for="confirmar_senha">Confirme a Nova Senha</label>
+            <input required="true" class="validate" type="password" id="confirmar_alterar_senha">
+          </div>
+
+
+          <button data-href="/sistema/configuracoes/alterar-senha/" data-action="/sistema/configuracoes" class="btn waves-effect waves-light bordo alterar-senha-botao">
+            Alterar
+          </button>
+        </form>
+      </div>
+    </div>

@@ -1,0 +1,112 @@
+ <a href="/sistema/adversos/criar" class="ajax-load">
+  <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-l">Criar Adverso</div>
+</a>
+<a href="/sistema/adversos/" class="ajax-load">
+  <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Pesquisar/Editar</div>
+</a>
+<div class="cream tab-archive">Editar Adverso</div>
+
+<div class="card cream archive">
+
+  <form method="POST" action="" enctype="multipart/form-data">
+
+    <input type="hidden" name="id" value="<%= data[0].id %>">
+
+    <div class="right-align row">
+     <a href="/sistema/adversos/" class="ajax-load">
+       <div class="left valign-wrapper">
+        <div class="btn-floating btn-large waves-effect waves-light bordo lighten-1">
+          <i class="fa fa-search" aria-hidden="true"></i>            
+        </div>
+        <div class="black-text margin-l-5">Pesquisar Adversos</div>  
+      </div>
+    </a>
+
+    <div class="right valign-wrapper">
+      <div class="black-text margin-r-5">Salvar Adverso</div>
+      <button data-href="/sistema/adversos/atualizar/" data-action="/sistema/adversos/" class="btn-floating btn-large waves-effect waves-light bordo ajax-submit" title="Salvar">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <h5>Informações Pessoais</h5>
+    <div class="input-field input-group-control col s12 m6">
+      <b><label for="nome">Nome *(Obrigatório)</label></b>
+      <input required="true" class="validate" type="text" name="nome" value="<%= data[0].nome %>">
+    </div>
+    <div class="select-field input-group-control col s12 m6">
+      <b><label>Tipo de Pessoa *(Obrigatório)</label></b>
+      <select required="true" class="browser-default" name="tipo" value="<%= data[0].tipo %>">
+        <option value="" disabled selected>Selecione</option>
+        <option value="1" <%= data[0].tipo == 1 ? 'selected="true"' : '' %>>Pessoa Juridica</option>
+        <option value="2" <%= data[0].tipo == 2 ? 'selected="true"' : '' %>>Pessoa Fisica</option>
+      </select>
+    </div>
+    <div class="input-field input-group-control col s12 m3">
+      <b><label for="cpf_cnpj">CPF/CNPJ *(Obrigatório)</label></b>
+      <input required="true" class="validate" type="text" name="cpf_cnpj" value="<%= data[0].cpf_cnpj %>">
+    </div>
+    <div class="input-field input-group-control col s12 m3">
+      <label for="tel">Telefone</label>
+      <input class="validate tel" type="tel" name="tel" value="<%= data[0].tel %>">
+    </div>
+    <div class="input-field input-group-control col s12 m3">
+      <label for="email">E-mail</label>
+      <input class="validate" type="email" name="email" value="<%= data[0].email %>">
+    </div>
+    <div class="input-field input-group-control col s12 m3">
+      <label for="contato">Contato</label>
+      <input class="validate" type="text" name="contato" value="<%= data[0].contato %>">
+    </div>
+  </div>
+
+  <div class="row">
+  <h5>Informações do Endereço</h5>
+  <div class="input-field input-group-control full-width col s12 m3">
+    <label for="cep">CEP</label>
+    <input class="cep" type="text" name="cep" value="<%= data[0].cep %>">
+  </div>
+
+  <div class="input-field input-group-control col s12 m4">
+    <label for="bairro">Bairro *(Obrigatório)</label>
+    <input required="true" class="bairro validate" type="text" name="bairro" id="bairro" value="<%= data[0].bairro %>">
+  </div>
+
+  <div style="padding: 0;" class="col s12">
+    <div class="input-field input-group-control full-width input col s12 m5">
+      <label for="rua">Rua *(Obrigatório)</label>
+      <input required="true" class="rua validate" type="text" name="rua" value="<%= data[0].rua %>">
+    </div>
+
+    <div class="input-field input-group-control full-width col s12 m2 l1">
+      <label for="numero" style="left:0">Número *</label>
+      <input required="true" class="numero validate" type="text" name="numero" value="<%= data[0].numero %>">
+    </div>
+    <div class="input-field input-group-control full-width col s12 m5">
+      <label for="cidade">Cidade *(Obrigatório)</label>
+      <input required="true" class="cidade validate" type="text" name="cidade" value="<%= data[0].cidade %>">
+    </div>
+    <div class="input-field input-group-control full-width col s12 m2 l1">
+      <label for="estado">Estado *</label>
+      <input required="true" class="uf validate" type="text" name="estado" value="<%= data[0].estado %>">
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <h5>Outros</h5>
+    <div class="input-field input-group-control col s12">
+      <label for="advogado">Advogado</label>
+      <input class="validate" type="text" name="advogado" value="<%= data[0].advogado %>">
+    </div>
+  </div>
+  <div class="right-align">
+    <button data-href="/sistema/adversos/atualizar/" data-action="/sistema/adversos/" class="btn waves-effect waves-light bordo ajax-submit">
+      Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+</form>
+</div>

@@ -1,0 +1,114 @@
+<div class="col s12 card white" style='margin-top:30px;'> 
+  <div class="close_container_load">
+    <a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+    </a>
+  </div>
+  <div class="row">
+
+   <%
+   if (typeof data.cliente != 'undefined' && data.cliente.length > 0) {
+    for (var i = data.cliente.length - 1; i >= 0; i--) {
+      %>
+      <div class="col s12 m6">
+        <ul>
+          <li>
+            <b>Nome:</b> <%= data.cliente[i].nome %>
+          </li>
+          <b>Tipo(pf/pj):</b> <%= data.cliente[i].tipo==1 ? 'Pessoa Jurídica' : 'Pessoa Física' %>
+          <li>
+            <b>Perfil:</b> <%= data.cliente[i].perfil %>
+          </li>
+          <li>
+            <b>Observações:</b> <%= data.cliente[i].observacoes %>
+          </li>
+          <li>
+            <b>Grupo:</b> <%= data.cliente[i].grupo %>
+          </li>
+          <li>
+            <b>Endereço:</b> <%= data.cliente[i].endereco %>
+          </li>
+          <li>
+            <b>Bairro:</b> <%= data.cliente[i].bairro %>
+          </li>
+          <li>
+            <b>Cidade:</b> <%= data.cliente[i].cidade %>
+          </li>
+          <li>
+            <b>Estado:</b> <%= data.cliente[i].estado %>
+          </li>
+          <li>
+            <b>CEP:</b> <%= data.cliente[i].cep %>
+          </li>
+          <li>
+            <b>CPF/CNPJ:</b> <%= data.cliente[i].cpf_cnpj %>
+          </li>
+          <li>
+            <b>RG:</b> <%= data.cliente[i].rg %>
+          </li>
+          <li>
+            <b>Estado Civil:</b> <%= data.cliente[i].estado_civil %>
+          </li>
+        </ul>
+      </div>
+      <div class="col s12 m6">
+        <ul>
+          <li>
+            <b>Série:</b> <%= data.cliente[i].serie %>
+          </li>
+          <li>
+            <b>Nº Pis:</b> <%= data.cliente[i].n_pis %>
+          </li>
+          <li>
+            <b>Nº Beneficio:</b> <%= data.cliente[i].n_beneficio %>
+          </li>
+          <li>
+            <b>Nascimento:</b> <%= data.cliente[i].nascimento %>
+          </li>
+          <li>
+            <b>Profissão:</b> <%= data.cliente[i].profissao %>
+          </li>
+          <li>
+            <b>Telefone Pessoal:</b> <%= data.cliente[i].tel_pessoal %>
+          </li>
+          <li>
+            <b>Telefone do Trabalho:</b> <%= data.cliente[i].tel_trabalho%>
+          </li>
+          <li>
+            <b>Telefone de Contato:</b> <%= data.cliente[i].tel_contato %>
+          </li>
+          <li>
+            <b>Telefone Outro:</b> <%= data.cliente[i].tel_outro %>
+          </li>
+          <li>
+            <b>Email:</b> <%= data.cliente[i].email %>
+          </li>
+          <li>
+            <b>Incrição Estadual:</b> <%= data.cliente[i].inscricao_estadual %>
+          </li>
+          <li>
+            <b>Banco:</b> <%= data.cliente[i].banco %>
+          </li>
+          <li>
+            <b>Agência:</b> <%= data.cliente[i].agencio %>
+          </li>
+          <li>
+            <b>Nº da Conta Corrente:</b> <%= data.cliente[i].n_conta_corrente %>
+          </li>
+          <li>
+            <b>Atualização:</b> <%= data.cliente[i].atualizacao %>
+          </li>
+        </ul>
+      </div>
+      <%
+    }
+  } else {
+    %>
+    <div class="col s12">
+      Não existem dados no momento
+    </div>
+    <%
+  }
+  %>
+</div>
+</div>

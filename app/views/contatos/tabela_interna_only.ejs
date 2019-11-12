@@ -1,0 +1,62 @@
+    <table class="centered highlight responsive-table cell-border" id="tabela_interna_contato" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Ações</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        if (typeof data != 'undefined' && data.length > 0) {
+          for (var i = data.length - 1; i >= 0; i--) {
+            %>
+            <tr>
+              <td>
+                <%= data[i].nome %>
+              </td>
+
+              <td>
+                <a href="/sistema/contatos/editar/<%= data[i].id %>" class="ajax-load"><i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i></a>
+                <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].nome %>'? " data-to="/sistema/contatos/desativar" data-back="/sistema/contatos" aria-hidden="true"></i>
+              </td>
+
+            </tr>
+            <%
+          }
+        }
+        %>
+      </tbody>
+    </table>
+
+
+
+
+
+
+<!-- <%
+if (typeof data != 'undefined' && data.length > 0) {
+  for (var i = data.length - 1; i >= 0; i--) {
+    %>
+    <li>
+      <div class="collapsible-header position ContatosLoad" data-id="<%= data[i].id %>">
+        <%= data[i].nome %>
+        <span class="right-position">
+          <a href="/sistema/contatos/editar/<%= data[i].id %>" class="ajax-load"><i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i></a>
+          <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].nome %>'? " data-to="/sistema/contatos/desativar" data-back="/sistema/contatos" aria-hidden="true"></i>
+        </span>
+      </div>
+      <div class="collapsible-body" id="<%= data[i].id %>">
+      </div>
+    </li>
+    <%
+  }
+} else {
+  %>
+  <li>
+    <div class="collapsible-header position">
+      Não existem dados no momento
+    </div>
+  </li>
+  <%
+}
+%> -->

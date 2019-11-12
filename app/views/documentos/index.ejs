@@ -1,0 +1,93 @@
+ <div class="cream tab-archive">Documentos</div>
+ <div class="card cream archive">
+ 	<div class="header row">
+ 		<div class="right ">
+
+ 			<div class="right valign-wrapper">
+ 				<div class="black-text margin-r-5">Criar Documento</div>
+ 				<a class="btn-floating btn-large waves-effect waves-light bordo lighten-1 right modal-mount margin-l-5" data-link="/documentos/adicionar" data-href="#modalinfo">
+ 					<i class="fa fa-plus" aria-hidden="true"></i>
+ 				</a>
+ 			</div>
+
+ 			
+ 			<div class="left valign-wrapper hide-on-med-and-up">
+ 				<div class="black-text margin-r-5">Scanear</div>
+ 				<a class="btn-floating btn-large waves-effect waves-light bordo right margin-r-5" title='Scanear'>
+ 					<i class="fa fa-camera" aria-hidden='true'></i>
+ 				</a>
+ 			</div>
+
+ 		</div>
+ 	</div>
+ 	<%- include('documentos_pesquisa'); %>
+
+ 	<ul class="collapsible" id="documento" data-collapsible="expandable">
+ 		<%
+ 		if (typeof data.docs != 'undefined' && data.docs.length > 0) {
+ 			for (var i = data.docs.length - 1; i >= 0; i--) {
+ 				%>
+ 				<li>
+ 					<div class="collapsible-header relative folder" data-ajax="1" data-id="<%= data.docs[i].id %>">
+ 						<i class="fa fa-folder bordo-text" aria-hidden="true"></i><%= data.docs[i].arquivo %><i class="fa fa-caret-down ar" aria-hidden="true"></i>
+ 					</div>
+ 					<div class="collapsible-body">
+ 						<ul class="collapsible" data-collapsible="expandable">
+ 							Não existem arquivos nesta pasta
+ 						</ul>
+ 					</div>
+ 				</li>
+ 				<%
+ 			}
+ 		}
+ 		%>
+ 		<li>
+ 			<div class="collapsible-header relative folder">
+ 				<i class="fa fa-folder bordo-text" aria-hidden="true"></i>Documentos das Tarefas
+ 				<i class="fa fa-caret-down ar" aria-hidden="true"></i>
+ 			</div>
+ 			<div class="collapsible-body">
+ 				<%
+ 				if (typeof data.tarefas != 'undefined' && data.tarefas.length > 0) {
+ 					for (var i = data.tarefas.length - 1; i >= 0; i--) {
+ 						%>
+ 						<ul class="collapsible" data-collapsible="expandable">
+ 							<li>
+ 								<a class="black-text" href="/assets/uploads/<%= data.tarefas[i].arquivo %>" download>
+ 									<div class="collapsible-header relative">
+ 										<i class="fa fa-file bordo-text" aria-hidden="true"></i><%= data.tarefas[i].arquivo %><i class="fa fa-download ar blue-text text-darken-1" aria-hidden="true"></i>
+ 									</div>
+ 								</a>
+ 							</li>
+ 						</ul>
+ 						<%
+ 					}
+ 				}else{%>
+ 				<ul class="collapsible" data-collapsible="expandable">
+ 					<li>Não existem arquivos nesta pasta</li>
+ 				</ul>
+
+ 				<%}%>
+ 			</div>
+ 		</li>
+ 	</ul>
+ </div>
+ <style type="text/css">
+ .collapsible-body {
+ 	padding: 0 25px;
+ }
+ .collapsible {
+ 	margin: 0;
+ }
+ .collapsible .collapsible {
+ 	box-shadow: 0px 0 black;
+ 	border-width: 0;
+ 	margin-bottom: -1px;
+ }
+ .collapsible .collapsible-header {
+ 	transition: 0.5s;
+ }
+ .collapsible .collapsible-header:hover {
+ 	background-color: #f9f9f9;
+ }
+</style>

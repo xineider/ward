@@ -1,0 +1,47 @@
+<a class="btn waves-effect waves-light golden darken-2 bordo-text gerar-relatorio" data-nome-provisorio="<%= data.nome_relatorio%>" data-container-relatorio="#tabela_interna">
+  <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+  Gerar Relatório
+</a>
+
+<%if(data.mensagem!=undefined || data.mensagem!=''){%>
+  <div class="bordo-text margin-t-1rem margin-b-1rem"><%= data.mensagem %></div>
+<%}%>
+
+<table class="centered highlight tabela_loc_processos tabela_filtrada responsive-table" id="tabela_interna">
+  <thead>
+    <tr>
+      <th>
+        Selecionar
+      </th>
+      <th>
+        Descrição Geral
+      </th>
+      <% if(data.nome_campo_extra_oab != undefined){%>
+      <th>
+        <%= data.nome_campo_extra_oab %>
+      </th>
+      <%}%>
+    </tr>
+  </thead>
+  <tbody>
+    <%
+    if (typeof data.dados != 'undefined' && data.dados.length > 0) {
+      for (var i = data.dados.length - 1; i >= 0; i--) {
+        %>
+        <tr>
+         <td>
+          <a class="btn bordo selecionar-advogados-setor-compromisso" 
+          data-id="<%= data.dados[i].id%>" 
+          data-descricao="<%= data.dados[i].descricao %>" 
+          >Selecionar</a>
+        </td>
+        <td><%= data.dados[i].descricao %></td>
+        <% if(data.nome_campo_extra_oab != undefined){%>
+        <td><%= data.dados[i].oab%></td>
+        <%}%>
+      </tr>
+
+      <%}}else{ %>
+      <tr>Não há Dados</tr>
+
+      <% } %>

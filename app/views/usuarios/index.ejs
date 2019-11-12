@@ -1,0 +1,112 @@
+<a href="/sistema/usuarios/criar" class="ajax-load">
+  <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-l">Criar Usuários</div>
+</a>
+<div class="cream tab-archive">Pesquisar/Editar</div>
+
+
+<% if(usuario.nivel == 1){%>
+
+<div class="card cream archive">
+
+  <div class="header row">
+
+    <div class="left valign-wrapper">
+      <a class="btn-floating btn-large waves-effect waves-light golden darken-2 ajax-load" href="/sistema/usuarios/permissoes" >
+        <i class="fa fa-lock bordo-text" aria-hidden="true"></i>
+      </a>
+      <div class="black-text margin-l-5">Permissões dos Usuários</div>
+
+    </div>
+
+
+
+    <div class="right valign-wrapper">
+      <div class="black-text margin-r-5">Criar Usuário</div>
+      <a class="btn-floating btn-large waves-effect waves-light bordo right ajax-load" href="/sistema/usuarios/criar"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <div class="card" style="max-height: 50%">
+    <div class="pane" style="padding-top:10px;">
+
+      <table class="centered highlight responsive-table cell-border" id="tabela_interna_usuario" style="width:100%;">
+        <thead>
+          <tr>
+            <th>Login</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th> 
+            <th>Nível</th>
+            <th>Setor</th>
+            <th>Ações</th>    
+          </tr>
+        </thead>
+        <tbody>
+          <%
+          if (typeof data != 'undefined' && data.length > 0) {
+            for (var i = data.length - 1; i >= 0; i--) {
+              %>
+              <tr>
+                <td href="/sistema/usuarios/editar/<%= data[i].id %>" class="ajax-load pointer">
+                  <%= data[i].login %>
+                </td>
+                <td href="/sistema/usuarios/editar/<%= data[i].id %>" class="ajax-load pointer">
+                  <%= data[i].nome %>
+                </td>
+                <td href="/sistema/usuarios/editar/<%= data[i].id %>" class="ajax-load pointer">
+                  <%= data[i].email %>
+                </td>
+                <td href="/sistema/usuarios/editar/<%= data[i].id %>" class="ajax-load pointer">
+                  <%= data[i].telefone %>
+                </td>
+                <td href="/sistema/usuarios/editar/<%= data[i].id %>" class="ajax-load pointer">     
+
+                  <% switch(data[i].nivel){
+                    case 1:%>
+                    Administrador
+                    <% break;
+                    case 2:%>
+                    Gerente
+                    <%break;
+                    case 3:%>
+                    Usuário
+                    <%break;}%>
+
+                  </td>
+                  <td href="/sistema/usuarios/editar/<%= data[i].id %>" class="ajax-load pointer">
+                    <%= data[i].setor %>                        
+                  </td>
+                  
+                  <td>
+
+                    <a class="modal-mount" data-href="#modalinfo" data-link="/usuarios/alterarSenha/<%= data[i].id %>">
+                      <i class="fa fa-key yellow-text text-darken-2"></i>
+                    </a>
+
+                    <a href="/sistema/usuarios/editar/<%= data[i].id %>" class="ajax-load"><i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i></a>
+
+                    <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].nome %>'? " data-to="/sistema/usuarios/desativar" data-back="/sistema/usuarios" aria-hidden="true"></i>
+                  </td>
+
+
+                </tr>
+
+                <%
+              }
+            }
+            %>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <%}else{%>
+  <div class="card cream archive">
+    <p>Sinto Muito, você não possuí autoridade para visualizar esta página</p>
+    <a href="/sistema">Clique aqui para voltar</a>
+  </div>
+
+
+  <%}%>

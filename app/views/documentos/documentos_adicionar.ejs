@@ -1,0 +1,42 @@
+<form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="id_usuario" value="<%= usuario.id %>">
+    <input type="hidden" name="onde" value="2">
+    <h4>
+        Enviar Arquivo
+    </h4>
+    <div class="row">
+        <div class="col s12">
+            <select class="browser-default" name="id_doc_pai" id="id_doc_pai" required="true">
+                <option disabled="true">Selecione a pasta</option>
+                <%
+                if (typeof data != 'undefined' && data.length > 0) {
+                  for (var i = data.length - 1; i >= 0; i--) {
+                %>
+                <option value="<%= data[i].id %>"><%= data[i].arquivo %></option>
+                <%
+                    }
+                }
+                %>
+                <option>Criar nova</option>
+            </select>
+        </div>
+        <div class="col s12">
+            <div class="row uploads word-wrap">
+                <div class="file-field input-field col s12" style="height: 64px;">
+                  <div class="btn white">
+                    <span class="black-text">Procurar <i class="fa fa-search" aria-hidden="true"></i></span>
+                    <input type="file" data-href="/sistema/documentos/uploadarquivo" id="arquivo">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Ou arraste seu arquivo aqui">
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-align">
+        <button data-href="/sistema/documentos/cadastrar/" data-action="/sistema/documentos/" class="btn waves-effect waves-light bordo ajax-submit">
+            Confirmar <i class="fa fa-share-square" aria-hidden="true"></i>
+        </button>
+    </div>
+</form>

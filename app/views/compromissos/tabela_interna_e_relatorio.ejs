@@ -1,0 +1,101 @@
+    <div class="overflow-auto">
+      <table id="tabela_interna_compromisso" class="centered responsive-table cell-border">
+        <thead>
+          <tr>
+            <th>Número do Processo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Data e Hora de Início</th>
+            <th>Data e Hora Final</th>
+            <th>Local</th>
+            <th>Advogado Responsável do Setor</th>
+            <th>Advogado do Compromisso</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%
+          for (var i = data.compromisso.length - 1; i >= 0; i--) {
+            %>
+            <tr>
+              <td><%= data.compromisso[i].numero %></td>
+              <td>
+                <%if(data.compromisso[i].tipo_compromisso == 0){%>
+
+                <%if(data.compromisso[i].tipo==0){%>
+                Audiência
+                <%}else if(data.compromisso[i].tipo==1){%>
+                Reunião
+                <%}else if(data.compromisso[i].tipo==2){%>
+                Perícia
+                <%}}else if(data.compromisso[i].tipo_compromisso == 1){%>
+                <%if(data.compromisso[i].tipo==0) {%>
+                Acordão/Sentença
+                <%}else if(data.compromisso[i].tipo==1){%>
+                Despacho/Decisões
+                <%}else if(data.compromisso[i].tipo==2){%>
+                Petições Diversas
+                <%}else if(data.compromisso[i].tipo==3){%>
+                Quesitos
+                <%}else if(data.compromisso[i].tipo==4){%>
+                Manifestação de Documentos
+                <%}else if(data.compromisso[i].tipo==5){%>
+                Prazos Processos Físicos
+                <%}else if(data.compromisso[i].tipo==6){%>
+                Perito
+                <%}else if(data.compromisso[i].tipo==7){%>
+                Providência
+                <%}}else if(data.compromisso[i].tipo_compromisso == 2){%>
+                <%if(data.compromisso[i].tipo==0) {%>
+                Julgamento
+                <%}}else{%>
+                Não Há
+                <%}%>
+              </td>
+              <td><%= data.compromisso[i].nome %></td>
+              <td>
+                <span class="hide"><%= data.compromisso[i].data_inicial_table_filtro %></span>
+                <%= data.compromisso[i].data_inicial %>
+              </td>
+              <td>
+                <span class="hide"><%= data.compromisso[i].data_final_table_filtro %></span>
+                <%= data.compromisso[i].data_final %>
+              </td>
+              <td><%= data.compromisso[i].local %></td>
+              <td><%= data.compromisso[i].advogado_responsavel_setor %></td>
+              <td><%= data.compromisso[i].advogado_compromisso %></td>
+              <td>
+                <%if(data.compromisso[i].id_usuario == usuario.id || data.compromisso[i].id_advogado_setor == usuario.id || usuario.nivel == 1) {%>
+                <a data-link="/compromissos/<%= data.link_editar %>/<%= data.compromisso[i].id %>" class="modal-mount" data-href="#modalinfo">
+                  <i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data.compromisso[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data.compromisso[i].nome %>'? " data-to="/sistema/compromissos/desativar" data-back="/sistema/compromissos/<%= data.back %>" aria-hidden="true"></i>
+                <% }%>
+              </td>
+            </tr>
+
+            <%}%>
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <%if (typeof data.compromisso != 'undefined' && data.compromisso.length > 0) {%>
+
+
+      <%if(data.compromisso[0].tipo_compromisso == 1){%>
+      <div class="row white hide">
+        <%- include('relatorio_generatorControleDistribuicao');%>     
+      </div>
+
+      <%}else{%>
+      <div class="row white hide">
+        <%- include('relatorio_generator');%>     
+      </div>
+
+      <%}%>
+
+
+      <%}%>

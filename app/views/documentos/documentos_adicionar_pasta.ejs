@@ -1,0 +1,32 @@
+<form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="tipo" value="1">
+    <input type="hidden" name="onde" value="2">
+    <h4>
+        Criar Pasta
+    </h4>
+    <div class="row">
+        <div class="col s12">
+            <select class="browser-default" name="id_doc_pai" required="true">
+                <option disabled="true">Selecione a pasta</option>
+                <%
+                if (typeof data != 'undefined' && data.length > 0) {
+                  for (var i = data.length - 1; i >= 0; i--) {
+                %>
+                <option value="<%= data[i].id %>"><%= data[i].arquivo %></option>
+                <%
+                    }
+                }
+                %>
+            </select>
+        </div>
+        <div class="col s12 input-field">
+            <input type="text" name="arquivo">
+            <label>Nome da Pasta</label>
+        </div>
+    </div>
+    <div class="right-align">
+        <button data-href="/sistema/documentos/cadastrar/pasta" data-action="/sistema/documentos/" class="btn waves-effect waves-light bordo ajax-submit">
+            Confirmar <i class="fa fa-share-square" aria-hidden="true"></i>
+        </button>
+    </div>
+</form>

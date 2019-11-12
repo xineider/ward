@@ -1,0 +1,49 @@
+<div class="row">
+	<form method="POST" action="" enctype="multipart/form-data">
+
+		<input type="hidden" name="id" value="<%= data.captacao[0].id_captacao %>" id="id_processo">
+		<input type="hidden" name="id_processo" value="<%= data.detalhes_processo[0].id %>" id="id_processo">
+
+		<div class="input-field input-group-control col s6 m2">
+			<label for="data_captacao">Data</label>					
+			<input id="data_captacao" type="text" class="data_sem_hora" value="<%= data.captacao[0].data_captacao %>"  name="data">
+		</div>
+
+
+		<div class="input-field input-group-control-with-search col s8 m5">		
+			<label for="captador_inicial">Captador Inicial</label>						
+			<input disabled value="<%= data.captacao[0].nome_captador %>" id="captador_inicial" type="text">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-captadores" data-href="#modalinfo2" data-anchor-id="#id_captador" data-anchor-descricao="#captador_inicial">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_captador" id="id_captador">	
+		</div>
+
+		<div class="input-field input-group-control-with-search col s4 m5">
+
+			<label for="origem_captacao_inicial">Origem da Inicial</label>						
+			<input disabled value="<%= data.captacao[0].origem %>" id="origem_captacao_inicial" type="text">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-origem-captacao" data-href="#modalinfo2" data-anchor-id="#id_origem" data-anchor-descricao="#origem_captacao_inicial">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_origem" id="id_origem">	
+
+		</div>
+
+		<div class="input-field input-group-control col s12">
+			<label for="observacoes" class="">Observações</label>
+			<textarea name="observacoes"><%= data.captacao[0].observacoes %></textarea>
+		</div>
+
+		<div class="col s12">
+			<button data-href="/sistema/processos/captacao_cadastrar" class="btn bordo ajax-submit modal-close">Salvar
+				<i class="fa fa-floppy-o" aria-hidden="true"></i>
+			</button>
+			<a data-href="/sistema/processos/captacao_excluir" class="btn red darken-2 ajax-submit modal-close">Excluir
+				<i class="fa fa-times" aria-hidden="true"></i></a>
+				<a  class="btn grey darken-2 modal-close">Cancelar</a>
+
+			</div>
+		</form>
+
+	</div>

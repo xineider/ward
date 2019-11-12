@@ -1,0 +1,193 @@
+<div class="row">
+  <input type="hidden" name="id" value="<%= data[0].id %>">
+
+  <% if(data[0].tipo_cliente == 2) {%>
+  <div class="s12 center">
+    <i class="fa fa-star yellow-text text-darken-2" style="font-size: 1.64rem;"></i>
+    <strong style="font-size: 1.64rem;">Cliente VIP!</strong>
+  </div>
+
+  <%}%>
+
+  <h4>Informações Pessoais</h4>
+
+  <div class="input-field input-group-control col s12 m6 l4">
+    <b><label for="nome">Nome *(Obrigatório)</label></b>
+    <input required="true" class="validate" type="text" name="nome" value="<%= data[0].nome %>">
+  </div>
+
+  <div class="select-field input-group-control col s12 m6 l4">
+    <b><label>Tipo de Pessoa *(Obrigatório)</label></b>
+    <select required="true" class="browser-default" name="tipo" value="<%= data[0].tipo %>">
+      <option value="" disabled>Selecione</option>
+      <option value="1" <%= data[0].tipo == 1 ? 'selected="true"' : '' %>>Pessoa Juridica</option>
+      <option value="2" <%= data[0].tipo == 2 ? 'selected="true"' : '' %>>Pessoa Fisica</option>
+    </select>
+  </div>
+
+  <div class="select-field input-group-control col s12 m6 l4">
+    <label>Tipo de Cliente </label>
+    <select required="true" class="browser-default validate" name="tipo_cliente" value="<%= data[0].tipo_cliente %>">
+      <option value="0" <%= data[0].tipo_cliente == 0 ? 'selected="true"' : '' %> >Normal</option>
+      <option value="1" <%= data[0].tipo_cliente == 1 ? 'selected="true"' : '' %>>Dirigente Sindical</option>
+      <option value="2" <%= data[0].tipo_cliente == 2 ? 'selected="true"' : '' %>>Vip</option>
+    </select>
+  </div>
+
+
+  <div class="select-field input-group-control col s12 m4">
+    <b><label>Categoria *(Obrigatório)</label></b>
+    <select required="true" class="browser-default grupo" name="id_grupo" value="<%= data[0].id_grupo %>">
+      <option value="" disabled selected>Selecione o Grupo</option>
+      <option>Criar Novo</option>
+      <option value="0" <%= data[0].id_grupo == 0 ? 'selected="true"' : '' %>>Nenhum</option>
+      <%
+      if (typeof data.grupos != 'undefined' && data.grupos.length > 0) {
+        for (var i = data.grupos.length - 1; i >= 0; i--) {
+          %>
+          <option value="<%= data.grupos[i].id %>" <%= data[0].id_grupo == data.grupos[i].id ? 'selected="true"' : '' %>><%= data.grupos[i].nome %></option>
+          <%
+        }
+      }
+      %>
+    </select>
+  </div> 
+
+
+
+
+  <div class="input-field input-group-control col s12 m4">
+    <b><label for="cpf_cnpj">CPF/CNPJ *(Obrigatório)</label></b>
+    <input required="true" class="validate" type="text" name="cpf_cnpj" value="<%= data[0].cpf_cnpj %>">
+  </div>
+
+  <div class="input-field input-group-control col s12 m4">
+   <label for="email">E-mail</label>
+   <input class="validate" type="email" name="email" value="<%= data[0].email %>">
+ </div>
+
+ <div class="input-field input-group-control col s12 m4">
+  <label for="rg">RG</label>
+  <input class="validate rg" type="text" name="rg" value="<%= data[0].rg %>">
+</div>
+<div class="input-field input-group-control col s12 m4">
+  <label for="ctps">CTPS</label>
+  <input type="text" name="ctps" value="<%= data[0].ctps %>">
+</div>
+<div class="input-field input-group-control col s12 m4">
+  <label for="serie">Série</label>
+  <input type="text" name="serie" value="<%= data[0].serie %>">
+</div>
+<div class="input-field input-group-control col s12 m4">
+  <label for="n_pis">Nº Pis</label>
+  <input type="text" name="n_pis" value="<%= data[0].n_pis %>">
+</div>
+
+<div class="input-field input-group-control col s12 m4">
+  <label for="n_beneficio">Nº Beneficio</label>
+  <input type="text" name="n_beneficio" value="<%= data[0].n_beneficio %>">
+</div>
+<div class="select-field input-group-control col s12 m4">
+  <label>Estado Civil</label>
+  <select class="browser-default" name="estado_civil" value="<%= data[0].estado_civil %>">
+    <option value="" disabled selected>Selecione</option>
+    <option value="1" <%= data[0].estado_civil == 1 ? 'selected="true"' : '' %>>Solteiro</option>
+    <option value="2" <%= data[0].estado_civil == 2 ? 'selected="true"' : '' %>>Casado</option>
+    <option value="3" <%= data[0].estado_civil == 3 ? 'selected="true"' : '' %>>Separado</option>
+    <option value="4" <%= data[0].estado_civil == 4 ? 'selected="true"' : '' %>>Divorciado</option>
+    <option value="5" <%= data[0].estado_civil == 5 ? 'selected="true"' : '' %>>Viúvo</option>
+  </select>
+</div>
+<div class="input-field input-group-control col s12 m4">
+  <label for="profissao">Profissão</label>
+  <input type="text" name="profissao" value="<%= data[0].profissao %>">
+</div>
+<div class="input-field input-group-control col s12 m4">
+  <label for="nascimento">Nascimento</label>
+  <input class="data_sem_hora" type="text" name="nascimento" value="<%= data[0].nascimento %>">
+</div>
+<div class="input-field input-group-control col s12 m4">
+  <label for="inscricao_estadual">Incrição Estadual</label>
+  <input type="text" name="inscricao_estadual" value="<%= data[0].inscricao_estadual %>">
+</div>
+
+
+
+<div class="input-field input-group-control col s12 m3 l3">
+  <label for="tel_pessoal">Telefone Pessoal</label>
+  <input class="tel" type="tel" name="tel_pessoal" value="<%= data[0].tel_pessoal %>">
+</div>
+
+<div class="input-field input-group-control col s12 m3 l3">
+  <label for="tel_trabalho">Telefone do Trabalho</label>
+  <input class="tel" type="tel" name="tel_trabalho" value="<%= data[0].tel_trabalho %>">
+</div>
+
+<div class="input-field input-group-control col s12 m3 l3">
+  <label for="tel_contato">Telefone de Contato</label>
+  <input class="tel" type="tel" name="tel_contato" value="<%= data[0].tel_contato %>">
+</div>
+
+<div class="input-field input-group-control col s12 m3 l3">
+  <label for="tel_outro">Telefone Outro</label>
+  <input class="tel" type="tel" name="tel_outro" value="<%= data[0].tel_outro %>">
+</div>
+
+
+<div class="input-field input-group-control col s12">
+  <label for="observacoes">Observacoes</label>
+  <textarea type="text" name="observacoes"><%= data[0].observacoes %></textarea>
+</div>
+
+
+</div>
+
+<div class="row">
+  <h5>Informações Bancárias</h5>
+  <div class="input-field input-group-control col s12 m4">
+    <label for="banco">Banco</label>
+    <input type="text" name="banco" value="<%= data[0].banco %>">
+  </div>
+  <div class="input-field input-group-control col s12 m4">
+    <label for="agencia">Agência</label>
+    <input type="text" name="agencia" value="<%= data[0].agencia %>">
+  </div>
+  <div class="input-field input-group-control col s12 m4">
+    <label for="n_conta_corrente">Nº Conta Corrente</label>
+    <input type="text" name="n_conta_corrente" value="<%= data[0].n_conta_corrente %>">
+  </div>
+</div>
+
+
+<div class="row">
+  <h5>Informações do Endereço</h5>
+  <div class="input-field input-group-control full-width col s12 m3">
+    <label for="cep">CEP</label>
+    <input required="true" class="cep" type="text" name="cep" value="<%= data[0].cep %>">
+  </div>
+
+  <div class="input-field input-group-control col s12 m4">
+    <label for="bairro">Bairro *(Obrigatório)</label>
+    <input required="true" class="bairro validate" type="text" name="bairro" id="bairro" value="<%= data[0].bairro %>">
+  </div>
+
+  <div style="padding: 0;" class="col s12">
+    <div class="input-field input-group-control full-width input col s12 m5">
+      <label for="rua">Rua *(Obrigatório)</label>
+      <input required="true" class="rua validate" type="text" name="rua" value="<%= data[0].rua %>">
+    </div>
+
+    <div class="input-field input-group-control full-width col s12 m2 l1">
+      <label for="numero" style="left:0">Número *</label>
+      <input required="true" class="numero validate" type="text" name="numero" value="<%= data[0].numero %>">
+    </div>
+    <div class="input-field input-group-control full-width col s12 m5">
+      <label for="cidade">Cidade *(Obrigatório)</label>
+      <input required="true" class="cidade validate" type="text" name="cidade" value="<%= data[0].cidade %>">
+    </div>
+    <div class="input-field input-group-control full-width col s12 m2 l1">
+      <label for="estado">Estado *</label>
+      <input required="true" class="uf validate" type="text" name="estado" value="<%= data[0].estado %>">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<table id="pauta_compromisso" class="centered responsive-table cell-border">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Descrição</th>
+      <th>Data e Hora de Início</th>
+      <th>Data e Hora Final</th>
+      <th>Local</th>
+      <th>Advogado Responsável</th>
+      <th>Advogado do Compromisso</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%              
+    for (var i = data.compromissos.length - 1; i >= 0; i--) {
+      %>
+      <tr>
+        <td>
+
+          <%if(data.compromissos[i].tipo_compromisso == 0){%>
+
+          <%if(data.compromissos[i].tipo==0){%>
+          Audiência
+          <%}else if(data.compromissos[i].tipo==1){%>
+          Reunião
+          <%}else if(data.compromissos[i].tipo==2){%>
+          Perícia
+          <%}}else if(data.compromissos[i].tipo_compromisso == 1){%>
+          <%if(data.compromissos[i].tipo==0) {%>
+          Acordão/Sentença
+          <%}else if(data.compromissos[i].tipo==1){%>
+          Despacho/Decisões
+          <%}else if(data.compromissos[i].tipo==2){%>
+          Petições Diversas
+          <%}else if(data.compromissos[i].tipo==3){%>
+          Quesitos
+          <%}else if(data.compromissos[i].tipo==4){%>
+          Manifestação de Documentos
+          <%}else if(data.compromissos[i].tipo==5){%>
+          Prazos Processos Físicos
+          <%}else if(data.compromissos[i].tipo==6){%>
+          Perito
+          <%}else if(data.compromissos[i].tipo==7){%>
+          Providência
+          <%}}else if(data.compromissos[i].tipo_compromisso == 2){%>
+          <%if(data.compromissos[i].tipo==0) {%>
+          Julgamento
+          <%}}else{%>
+          Não Há
+          <%}%>
+
+
+        </td>
+        <td><%= data.compromissos[i].nome %></td>
+        <td><%= data.compromissos[i].data_inicial %></td>
+        <td><%= data.compromissos[i].data_final %></td>
+        <td><%= data.compromissos[i].local %></td>
+        <td><%= data.compromissos[i].advogado %></td>
+        <td><%= data.compromissos[i].advogado_compromisso %></td>
+        <td>
+          <%if(data.compromissos[i].id_usuario == usuario.id || data.compromissos[i].id_advogado_setor == usuario.id || usuario.nivel == 1) {%>
+          <a data-link="/sistema/processos/editar-compromisso/<%= data.compromissos[i].id %>" class="load_especifico_to_container pointer" data-idload="<%=i%>" data-container="container_adicionar_compromisso_load">
+            <i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i>
+          </a>
+          <i class="fa fa-times-circle red-text modal-remover-mount-reload pointer" data-href="#modaldeletar_reload" data-id="<%= data.compromissos[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data.compromissos[i].nome %>'? " data-to="/sistema/processos/desativar-compromisso/<%= data.detalhes_processo[0].id%>" data-container="#container_tabela_compromissos_reload" aria-hidden="true"></i>
+
+
+          <% }%>
+        </td>
+      </tr>
+
+      <%}%>
+    </tbody>
+
+
+
+  </table>

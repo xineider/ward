@@ -1,0 +1,97 @@
+		<div class="col s12">
+			<div class="input-field input-group-control col s12 m4">
+				<label for="numero_processo">N° Processo</label>
+				<input value="<%= data.detalhes_processo[0].numero %>" id="numero_processo" name="numero" type="text" class="numero_processo">
+			<!--  				<button class="right" title="Informar a página jurídica sobre este processo"><i class="fa fa-arrow-circle-down"></i></button>
+				<button class="right" title="Consultar este processo na internet"><i class="fa fa-arrow-circle-right"></i></button> -->
+				<input class="hide" type="checkbox" id="nexiste" value="0"/>
+				<label>
+					<input type="checkbox" id="numero_processo_npadrao">
+					<span for="numero_processo_npadrao">N° Fora do Padrão?</span>
+				</label>
+			</div>
+
+<!-- 			<div class="input-field input-group-control col s6 m1">
+				<label for="pasta_processo">Pasta</label>					
+				<input disabled value="79183" id="pasta_processo" type="text">
+			</div> -->
+
+			<div class="input-field input-group-control col s12 m2">
+				<label for="cliente_numero">Cliente</label>					
+				<input disabled value="<%=data.detalhes_processo[0].id_cliente %>" id="cliente_numero" type="text">
+			</div>
+
+			<div class="input-field input-group-control col s12 m2">
+				<label for="adverso_numero">Adverso</label>					
+				<input disabled value="<%=data.detalhes_processo[0].id_adverso %>" id="adverso_numero" type="text">
+			</div>
+
+			<div class="input-field input-group-control col s12 m4">
+				<label for="distribuicao">Distribuição</label>					
+				<input class="datepicker" type="text" name="distribuicao" value="<%= data.processos[0].distribuicao %>">
+			</div>
+
+
+		</div>
+
+		<div class="col s12">
+
+
+			<div class="input-field input-group-control col s12 m4">
+				<label for="citacao">Citação</label>					
+				<input class="datepicker" type="text" name="citacao" value="<%= data.processos[0].citacao %>">
+			</div>
+
+			<div class="input-field input-group-control col s12 m4">
+				<label for="cadastro">Cadastro</label>					
+				<input disabled value="<%= data.processos[0].data_cadastro %>" id="cadastro" type="text">
+			</div>
+
+			<div class="input-field input-group-control col s12 m4">
+				<label for="valor_causa">Valor da Causa</label>					
+				<input value="<%= data.detalhes_processo[0].valor_causa %>" id="valor_causa" type="text">
+			</div>
+
+
+
+<!-- 			<div class="input-field input-group-control col s12 m4">
+				<label for="anexar_grupos">Anexar a grupos</label>					
+				<input disabled value="<%= %>" id="anexar_grupos" type="text">
+			</div> -->
+<!-- 			<div class="input-field input-group-control col s12 m4">
+				<label for="perito">Perito</label>					
+				<input disabled value="<%= %>" id="perito" type="text">
+			</div> -->
+		</div>
+
+		<div class="col s12">
+
+			<div class="col s3 m5">
+				<label>		
+					<input type="checkbox" id="vip" value="1"/>
+					<span class="black-text" for="vip">Vip</span>
+				</label>
+			</div>
+			<div class="col s4 m2">
+				<label>Processo Ativo?</label>
+				<p>
+					<label>
+						<input class="with-gap" type="radio" name="deletado" value="0" <%= data.detalhes_processo[0].deletado == 0 ? 'checked':''%> >
+						<span>Ativo</span>
+					</label>
+					<label>
+						<input class="with-gap" type="radio" name="deletado" value="1" <%= data.detalhes_processo[0].deletado == 1 ? 'checked':''%> >
+						<span>Desativado</span>
+					</label>
+				</p>
+
+			</div>
+
+			<div class="col s12 m5">
+				<a class="btn bordo lighten-1 modal-mount right margin-r-5" data-link="/processos/captacao/<%= data.detalhes_processo[0].id %>" data-href="#modalinfo">Captação</a>
+			</div>
+
+
+
+
+		</div>

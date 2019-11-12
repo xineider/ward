@@ -1,0 +1,48 @@
+<div class="col s12 card white">
+
+	<div class="close_container_load">
+		<a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+		</a>
+	</div>
+
+
+	<form method="POST" action="" enctype="multipart/form-data">
+
+		<div class="row">
+
+			<div class="input-field input-group-control col s6 m3">
+				<label for="numero_recurso">Número do Recurso</label>
+				<input value="<%= data.detalhes_processo[0].numero %>" id="numero_recurso" name="numero_recurso" type="text">
+			</div>
+
+			<div class="select-field input-group-control col s12 m6">
+				<label>Origem</label>
+				<select class="browser-default" name="origem_recurso">
+					<%
+					if (typeof data.origem != 'undefined' && data.origem.length > 0) {
+						for (var l = data.origem.length - 1; l >= 0; l--){
+							%>
+							<option value="<%= data.origem[l].id %>">
+								<%= data.origem[l].numero %>								
+							</option>
+							<%}
+						}%>
+					</select>
+				</div>
+
+
+
+				<div class="col s3">
+
+					<button class="btn waves-effect waves-light bordo ajax-submit" data-href="/sistema/processos/cadastrar_recurso_simples" style="margin-top:40px;">
+						Salvar
+					</button>
+				</div>
+
+
+			</div>
+
+		</form>	
+
+	</div>

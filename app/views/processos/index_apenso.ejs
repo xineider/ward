@@ -1,0 +1,184 @@
+<div class="row">
+
+	<div class="col s12">
+		<h5>Apensos</h5>
+		<div class="card white padding-a-15">
+			<table id="tabela_todos_apensos" class="centered responsive-table cell-border">
+				<thead>
+					<tr>
+						<th>Numero do Apenso</th>
+						<th>Tipo da Causa</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for (var i = data.apensos.length - 1; i >= 0; i--) {
+						%>
+						<tr>
+							<td><%= data.apensos[i].numero %></td>
+							<td><%= data.apensos[i].tipo_da_causa %></td>
+							<td>
+								<a style="font-size: 1.4em;cursor: pointer;" data-link="/sistema/processos/editar-apenso/<%= data.apensos[i].id %>" class="load_especifico_to_container" data-container="container_adicionar_apenso_load" data-idload="2">
+									<i class="fa fa-pencil bordo-text" aria-hidden="true"></i>
+								</a>
+
+								<a href="" style="font-size: 1.4em;">
+									<i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data.apensos[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data.apensos[i].numero %>'? " data-to="/sistema/processos/desativar-apenso" data-back="/sistema/processos/abrir/<%= data.detalhes_processo[0].id %>" aria-hidden="true"></i>
+								</a>
+							</td>
+						</tr>
+
+						<%}%>
+					</tbody>
+
+
+
+				</table>
+			</div>
+		</div>
+
+		<div class="col s12 center">
+
+			<a class="btn waves-effect waves-light bordo lighten-1 tooltipped load_especifico_to_container" data-idload="1" data-href="#modalinfo" data-position="top" data-tooltip="Adicionar Apenso" data-link="/sistema/processos/adicionar-apenso-simples/" data-container="container_adicionar_apenso_load">
+				Adicionar Apenso
+			</a>
+
+		</div>
+
+		<div class="container_adicionar_apenso_load"></div>
+
+	</div>
+
+	<div class="bordo-line"></div>
+
+	<div class="row">
+
+		<h5>Compromissos dos Apensos</h5>
+
+
+		<div class="card white padding-a-15">
+			<table id="tabela_todos_compromissos_dos_apensos" class="centered responsive-table cell-border">
+				<thead>
+					<tr>
+						<th>Número do Apenso</th>
+						<th>Tipo</th>
+						<th>Descrição</th>
+						<th>Data e Hora de Início</th>
+						<th>Data e Hora Final</th>
+						<th>Local</th>
+						<th>Advogado Responsável</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for (var i = data.compromissos_apensos.length - 1; i >= 0; i--) {
+						%>
+						<tr>
+							<td><%= data.compromissos_apensos[i].numero %></td>
+							<td>
+								<%if(data.compromissos_apensos[i].tipo_compromisso == 0){%>
+								<%if(data.compromissos_apensos[i].tipo==0){%>
+								Audiência
+								<%}else if(data.compromissos_apensos[i].tipo==1){%>
+								Reunião
+								<%}else if(data.compromissos_apensos[i].tipo==2){%>
+								Perícia
+								<%}}else if(data.compromissos_apensos[i].tipo_compromisso == 1){%>
+								<%if(data.compromissos_apensos[i].tipo==0) {%>
+								Acordão/Sentença
+								<%}else if(data.compromissos_apensos[i].tipo==1){%>
+								Despacho/Decisões
+								<%}else if(data.compromissos_apensos[i].tipo==2){%>
+								Petições Diversas
+								<%}else if(data.compromissos_apensos[i].tipo==3){%>
+								Quesitos
+								<%}else if(data.compromissos_apensos[i].tipo==4){%>
+								Manifestação de Documentos
+								<%}else if(data.compromissos_apensos[i].tipo==5){%>
+								Prazos Processos Físicos
+								<%}else if(data.compromissos_apensos[i].tipo==6){%>
+								Perito
+								<%}else if(data.compromissos_apensos[i].tipo==7){%>
+								Providência
+								<%}}else if(data.compromissos_apensos[i].tipo_compromisso == 2){%>
+								<%if(data.compromissos_apensos[i].tipo==0) {%>
+								Julgamento
+								<%}}else{%>
+								Não Há
+								<%}%>
+							</td>
+							<td><%= data.compromissos_apensos[i].nome %></td>
+							<td><%= data.compromissos_apensos[i].data_inicial %></td>
+							<td><%= data.compromissos_apensos[i].data_final %></td>
+							<td><%= data.compromissos_apensos[i].local %></td>
+							<td><%= data.compromissos_apensos[i].advogado %></td>
+						</tr>
+
+						<%}%>
+
+					</tbody>
+				</table>
+			</div>
+
+
+
+		</div>
+
+		<div class="bordo-line"></div>
+
+		<div class="row">
+
+			<h5>Andamentos dos Apensos</h5>
+
+
+			<div class="card white padding-a-15">
+				<table id="tabela_todos_andamentos_dos_apensos" class="centered responsive-table cell-border">
+					<thead>
+						<tr>
+							<th>Número do Apenso</th>
+							<th>Data</th>
+							<th>Descrição</th>
+							<th>Usuário</th>
+							<th>Tipo de Andamento</th>
+							<th>Data Cadastro</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						for (var i = data.andamentos_apensos.length - 1; i >= 0; i--) {
+							%>
+							<tr>
+								<td><%= data.andamentos_apensos[i].numero %></td>
+								<td><%= data.andamentos_apensos[i].data %></td>
+								<td><%= data.andamentos_apensos[i].descricao %></td>
+								<td><%= data.andamentos_apensos[i].usuario %></td>
+								<td>
+
+									<% switch(data.andamentos_apensos[i].tipo){
+										case 0:%>
+										Juridico
+										<% break;
+										case 1:%>
+										Administrativo
+										<%break;
+										case 2:%>
+										Financeiro
+										<%break;
+										case 3:%>
+										Outro
+										<%break;}%>
+
+									</td>
+									<td><%= data.andamentos_apensos[i].data_cadastro %></td>
+								</tr>
+
+								<%}%>
+
+							</tbody>
+						</table>
+					</div>
+
+
+
+				</div>

@@ -1,0 +1,88 @@
+<div class="col s12 card white" style='margin-top:30px;'>
+  <div class="close_container_load">
+    <a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+    </a>
+  </div>
+
+  <div class="row">
+    <input type="hidden" name="adverso_ver_cad_id" value="<%= data.adversoCad[0].id %>">
+
+    <div class="input-field input-group-control col s12 m6">
+      <b><label for="nome">Nome *(Obrigatório)</label></b>
+      <input required="true" class="validate" type="text" name="adverso_ver_cad_nome" value="<%= data.adversoCad[0].nome %>">
+    </div>
+    <div class="select-field input-group-control col s12 m6">
+      <b><label>Tipo de Pessoa *(Obrigatório)</label></b>
+      <select required="true" class="browser-default" name="adverso_ver_cad_tipo" value="<%= data.adversoCad[0].tipo %>">
+        <option value="" disabled selected>Selecione</option>
+        <option value="1" <%= data.adversoCad[0].tipo == 1 ? 'selected="true"' : '' %>>Pessoa Juridica</option>
+        <option value="2" <%= data.adversoCad[0].tipo == 2 ? 'selected="true"' : '' %>>Pessoa Fisica</option>
+      </select>
+    </div>
+    <div class="input-field input-group-control col s12 m3">
+      <b><label for="cpf_cnpj">CPF/CNPJ *(Obrigatório)</label></b>
+      <input required="true" class="validate" type="text" name="adverso_ver_cad_cpf_cnpj" value="<%= data.adversoCad[0].cpf_cnpj %>">
+    </div>
+    <div class="input-field input-group-control col s12 m3">
+      <label for="tel">Telefone</label>
+      <input class="validate tel" type="tel" name="adverso_ver_cad_tel" value="<%= data.adversoCad[0].tel %>">
+    </div>
+    <div class="input-field input-group-control col s12 m3">
+      <label for="email">E-mail</label>
+      <input class="validate" type="email" name="adverso_ver_cad_email" value="<%= data.adversoCad[0].email %>">
+    </div>
+    <div class="input-field input-group-control col s12 m3">
+      <label for="contato">Contato</label>
+      <input class="validate" type="text" name="adverso_ver_cad_contato" value="<%= data.adversoCad[0].contato %>">
+    </div>
+  </div>
+
+  <div class="row">
+    <h5>Informações do Endereço</h5>
+    <div class="input-field input-group-control full-width col s12 m3">
+      <label for="cep">CEP</label>
+      <input class="cep" type="text" name="adverso_ver_cad_cep" value="<%= data.adversoCad[0].cep %>">
+    </div>
+
+    <div class="input-field input-group-control col s12 m4">
+      <label for="bairro">Bairro *(Obrigatório)</label>
+      <input required="true" class="bairro validate" type="text" name="adverso_ver_cad_bairro" id="bairro" value="<%= data.adversoCad[0].bairro %>">
+    </div>
+
+    <div style="padding: 0;" class="col s12">
+      <div class="input-field input-group-control full-width input col s12 m5">
+        <label for="rua">Rua *(Obrigatório)</label>
+        <input required="true" class="rua validate" type="text" name="adverso_ver_cad_rua" value="<%= data.adversoCad[0].rua %>">
+      </div>
+
+      <div class="input-field input-group-control full-width col s12 m2 l1">
+        <label for="numero" style="left:0">Número *</label>
+        <input required="true" class="numero validate" type="text" name="adverso_ver_cad_numero" value="<%= data.adversoCad[0].numero %>">
+      </div>
+      <div class="input-field input-group-control full-width col s12 m5">
+        <label for="cidade">Cidade *(Obrigatório)</label>
+        <input required="true" class="cidade validate" type="text" name="adverso_ver_cad_cidade" value="<%= data.adversoCad[0].cidade %>">
+      </div>
+      <div class="input-field input-group-control full-width col s12 m2 l1">
+        <label for="estado">Estado *</label>
+        <input required="true" class="uf validate" type="text" name="adverso_ver_cad_estado" value="<%= data.adversoCad[0].estado %>">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h5>Outros</h5>
+    <div class="input-field input-group-control col s12">
+      <label for="advogado">Advogado</label>
+      <input class="validate" type="text" name="adverso_ver_cad_advogado" value="<%= data.adversoCad[0].advogado %>">
+    </div>
+  </div>
+
+  <div class="row center">
+    <button data-href="/sistema/adversos/atualizar_adverso_no_processo/" class="btn waves-effect waves-light bordo ajax-submit-container-reload" data-container=".container_adverso_load" data-mensagem-sucesso="Adverso Alterado!">
+      Atualizar Adverso <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,39 @@
+<div class="card" style="max-height: 50%">
+  <div class="pane" style="padding-top:10px;">
+    <table class="centered highlight responsive-table tabela_loc_processos cell-border" id="tabela_interna_notificacoes" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Usuário que Criou</th>
+          <th>Texto</th>
+          <th>Data Cadastro</th>
+          <th>Acessar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        for (var i = data.length - 1; i >= 0; i--) {
+          %>
+          <tr class="<%= data[i].visto == 0 ? "bold": ""%> notificacao_ver ajax-load pointer"data-id="<%= data[i].id %>" href="/sistema<%= data[i].link%>">
+            <td >
+              <%= data[i].nome_criador %>
+            </td>
+            <td>
+              <%= data[i].texto %>
+            </td>
+            <td>
+              <%= data[i].data_cadastro %>
+            </td>
+            <td>
+
+              <a href="/sistema<%= data[i].link%>" class="notificacao_ver ajax-load"  data-id="<%= data[i].id %>">
+                <i class="fa fa-share-square-o bordo-text" aria-hidden="true"></i>
+              </a>
+            </td>
+          </tr>
+          <%
+        }
+        %>
+      </tbody>
+    </table>
+  </div>
+</div>

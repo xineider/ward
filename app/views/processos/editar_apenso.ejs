@@ -1,0 +1,258 @@
+<div class="col s12 card white">
+
+	<div id="modaleditarapenso" class="modal">
+		<div class="modal-content">
+		</div>
+	</div>
+
+	<div class="close_container_load">
+		<a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+		</a>
+	</div>
+
+	<div class="row">
+
+		<div class="input-field input-group-control col s6 m3">
+			<label for="numero_apenso">N° do Apenso</label>
+			<input value="<%= data.apenso[0].numero %>" id="numero_apenso" name="numero_apenso" type="text">
+		</div>
+
+		<input type="hidden" name="id_apenso" value="<%= data.apenso[0].id %>">
+
+		<div class="input-field input-group-control col s6 m2">
+			<label for="distribuicao_apenso">Distribuição</label>					
+			<input class="datepicker" type="text" name="distribuicao_apenso" value="<%= data.apenso[0].distribuicao %>">
+		</div>
+
+		<div class="input-field input-group-control col s6 m2">
+			<label for="citacao_apenso">Citação</label>					
+			<input class="datepicker" type="text" name="citacao_apenso" value="<%= data.apenso[0].citacao %>">
+		</div>
+
+		<div class="input-field input-group-control col s6 m2">
+			<label for="sentenca_apenso">Sentença</label>					
+			<input class="datepicker" type="text" name="sentenca_apenso" value="<%= data.apenso[0].sentenca %>">
+		</div>
+
+		<div class="input-field input-group-control col s12 m3">
+			<label for="valor_causa">Valor da Causa</label>					
+			<input id="valor_causa" type="text" value="<%= data.apenso[0].valor_causa %>">
+		</div>
+
+		<div class="input-field input-group-control-with-search col s12 m4">
+			<label for="desc_tipo_causa_apenso">Tipo da Causa(Apenso)</label>
+			<input id="desc_tipo_causa_apenso" type="text" value="<%= data.apenso[0].tipo_causa %>">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-tipo-causa-apenso"  data-href="#modaleditarapenso" data-target="#modaleditarapenso" data-anchor-id="#id_tipo_causa_apenso" data-anchor-descricao="#desc_tipo_causa_apenso">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_tipo_causa_apenso" id="id_tipo_causa_apenso">
+		</div>
+
+		<div class="input-field input-group-control-with-search col s12 m4">
+			<label for="desc_posicao_apenso">Posição</label>
+			<input id="desc_posicao_apenso" type="text" value="<%= data.apenso[0].posicao %>">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-posicao-apenso" data-href="#modalinfo" data-anchor-id="#id_posicao_apenso" data-anchor-descricao="#desc_posicao_apenso">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_posicao_apenso" id="id_posicao_apenso">
+		</div>
+
+
+		<div class="input-field input-group-control-with-search col s12 m4">
+			<label for="desc_comarca_apenso">Comarca</label>
+			<input type="text" id="desc_comarca_apenso" value="<%= data.apenso[0].comarca %>">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-comarca" data-href="#modalinfo" data-anchor-id="#id_comarca_apenso" data-anchor-descricao="#desc_comarca_apenso">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_comarca_apenso" id="id_comarca_apenso">
+		</div>
+
+		<div class="input-field input-group-control-with-search col s12 m4">
+			<label for="desc_vara_apenso">Vara</label>
+			<input id="desc_vara_apenso" type="text" value="<%= data.apenso[0].vara %>">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-vara" data-href="#modalinfo" data-anchor-id="#id_vara_apenso" data-anchor-descricao="#desc_vara_apenso">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_vara_apenso" id="id_vara_apenso">					
+		</div>
+
+		<div class="input-field input-group-control-with-search col s12 m4">
+			<label for="desc_foro_apenso">Foro</label>
+			<input id="desc_foro_apenso" type="text" value="<%= data.apenso[0].foro %>">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-foro" data-href="#modalinfo" data-anchor-id="#id_foro_apenso" data-anchor-descricao="#desc_foro_apenso">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_foro_apenso" id="id_foro_apenso">					
+		</div>
+
+		<div class="input-field input-group-control-with-search col s12 m4">
+			<label for="desc_situacao_apenso">Situacao do Apenso</label>
+			<input id="desc_situacao_apenso" type="text" value="<%= data.apenso[0].situacao %>">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-vara" data-href="#modalinfo" data-anchor-id="#id_situacao_apenso" data-anchor-descricao="#desc_situacao_apenso">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_situacao_apenso" id="id_situacao_apenso">					
+		</div>
+
+
+		<div class="input-field input-group-control-with-search col s12 m4">
+			<label for="desc_advogado_apenso">Advogado Responsável</label>
+			<input value="<%= data.detalhes_processo[0].advogado %>" id="desc_advogado_apenso" type="text">
+			<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-advogados" data-href="#modalinfo" data-anchor-id="#id_advogado_apenso" data-anchor-descricao="#desc_advogado_apenso">
+				<i class="fa fa-search"></i>
+			</a>
+			<input type="hidden" name="id_advogado_apenso" id="id_advogado_apenso" value="<%= data.detalhes_processo[0].id_advogado %>">
+		</div>
+	</div>
+
+	<div class="bordo-line"></div>
+
+
+	<div class="row">
+		
+		<div class="col s12">
+
+			<h5 class="center">Compromissos do Apenso</h5>
+
+			<table id="tabela_compromissos_do_apenso" class="centered responsive-table cell-border">
+				<thead>
+					<tr>
+						<th>Tipo</th>
+						<th>Descrição</th>
+						<th>Data e Hora de Início</th>
+						<th>Data e Hora Final</th>
+						<th>Local</th>
+						<th>Advogado Responsável</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for (var i = data.compromissos_apenso.length - 1; i >= 0; i--) {
+						%>
+						<tr>
+							<td>
+								<%if(data.compromissos_apenso[i].tipo==0){%>
+								Acordão/Sentença
+								<%}else if(data.compromissos_apenso[i].tipo==1){%>
+								Despacho/Decisões
+								<%}else if(data.compromissos_apenso[i].tipo==2){%>
+								Petições Diversas
+								<%}else if(data.compromissos_apenso[i].tipo==3){%>
+								Quesitos
+								<%}else if(data.compromissos_apenso[i].tipo==4){%>
+								Manifestação de Documentos
+								<%}else if(data.compromissos_apenso[i].tipo==5){%>
+								Prazos Processos Físicos
+								<%}else if(data.compromissos_apenso[i].tipo==6){%>
+								Perito
+								<%}else {%>
+								Não há
+								<%}%>
+							</td>
+							<td><%= data.compromissos_apenso[i].nome %></td>
+							<td><%= data.compromissos_apenso[i].data_inicial %></td>
+							<td><%= data.compromissos_apenso[i].data_final %></td>
+							<td><%= data.compromissos_apenso[i].local %></td>
+							<td><%= data.compromissos_apenso[i].advogado %></td>
+						</tr>
+
+						<%}%>
+					</tbody>
+				</table>
+
+			</div>
+
+			<div class="col s12 margin-b-1rem center">
+
+				<a class="btn waves-effect waves-light bordo lighten-1 tooltipped load_especifico_to_container" data-idload="1" data-position="top" data-tooltip="Adicionar Compromisso ao Apenso" data-link="/sistema/processos/adicionar-compromisso-apenso/" data-container="container_adicionar_compromisso_apenso_load">
+					Adicionar Compromisso ao Apenso<i class="fa fa-plus" aria-hidden="true"></i>
+				</a>
+
+			</div>
+
+			<div class="container_adicionar_compromisso_apenso_load"></div>
+
+		</div>
+
+		<div class="bordo-line"></div>
+
+		<div class="row">
+			<h5 class="center">Andamentos do Apenso</h5>
+
+			<table id="tabela_andamentos_do_apenso" class="cell-border">
+				<thead>
+					<tr>
+						<th>Data</th>
+						<th>Descrição</th>
+						<th>Usuário</th>
+						<th>Tipo do Andamento</th>
+						<th>Data Cadastro</th>
+					</tr>
+				</thead>							
+				<tbody>		
+
+					<%
+					for (var k = data.andamentos_apenso.length - 1; k >= 0; k--){
+						%>
+						<tr>
+							<td><%= data.andamentos_apenso[k].data %></td>
+							<td><%= data.andamentos_apenso[k].descricao %></td>
+							<td><%= data.andamentos_apenso[k].usuario %></td>
+							<td>
+
+								<% switch(data.andamentos_apenso[k].tipo){
+									case 0:%>
+									Juridico
+									<% break;
+									case 1:%>
+									Administrativo
+									<%break;
+									case 2:%>
+									Financeiro
+									<%break;
+									case 3:%>
+									Outro
+									<%break;}%>
+
+								</td>
+								<td><%= data.andamentos[k].data_cadastro %></td>
+							</tr>			
+
+							<%}%>
+						</tbody>
+					</table>
+
+					<div class="col s12 margin-b-1rem center">
+						<a class="btn waves-effect waves-light bordo lighten-1 tooltipped load_especifico_to_container" data-idload="1" data-position="top" data-tooltip="Adicionar Compromisso ao Apenso" data-link="/sistema/processos/adicionar-andamento-apenso/" data-container="container_adicionar_andamento_apenso_load">
+							Adicionar Andamentos ao Apenso<i class="fa fa-plus" aria-hidden="true"></i>
+						</a>
+
+
+					</div>
+
+					<div class="container_adicionar_andamento_apenso_load"></div>
+
+
+				</div>
+
+
+
+
+				<div class="col s12 margin-b-1rem">
+					<button data-href="/sistema/processos/editar-apenso/" class="btn waves-effect waves-light bordo ajax-submit" data-action="/sistema/processos/abrir/<%= data.detalhes_processo[0].id %>">
+						Salvar Apenso 
+					</button>
+				</div>
+			</div>
+
+
+			<script>
+
+				$(document).ready( function(){
+					$('#modaleditarapenso').modal({
+						      startingTop: '55%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+  });
+				});
+			</script>

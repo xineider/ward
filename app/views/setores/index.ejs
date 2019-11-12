@@ -1,0 +1,53 @@
+<div class="card-panel white">
+  <div class="header row">
+    <h4>Setores</h4>
+    <div class="right-align">
+      <a class="btn-floating btn-large waves-effect waves-light blue darken-2 right ajax-load" href="/sistema/setores/criar"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <table class="centered responsive-table">
+    <thead>
+      <tr>
+        <th>
+          Nome
+        </th>
+        <th>
+          Qtd. Usuarios
+        </th>
+        <th>
+          Data Cadastro
+        </th>
+        <th>
+          Ações
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+      if (typeof data != 'undefined' && data.length > 0) {
+        for (var i = data.length - 1; i >= 0; i--) {
+      %>
+      <tr>
+        <td>
+          <%= data[i].nome %>
+        </td>
+        <td>
+          <%= data[i].qtd_usuario %>
+        </td>
+        <td>
+          <%= data[i].data_cadastro %>
+        </td>
+        <td>
+          <a style="font-size: 1.4em;" href="/sistema/setores/editar/<%= data[i].id %>" class="ajax-load"><i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i></a>
+          <a href="" style="font-size: 1.4em;">
+            <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data[i].nome %>'? " data-to="/sistema/setores/desativar" data-back="/sistema/setores" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+      <%
+        }
+      }
+      %>
+    </tbody>
+  </table>
+</div>

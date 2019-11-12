@@ -1,0 +1,180 @@
+    <table class="centered highlight responsive-table cell-border" id="tabela_interna_cliente" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CPF/CNPJ</th>
+          <th>Email</th>
+          <th>Ações</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        if (typeof data.clientes != 'undefined' && data.clientes.length > 0) {
+          for (var i = data.clientes.length - 1; i >= 0; i--) {
+            %>
+            <tr class="<%= data.clientes[i].tipo_cliente == 2 ? "yellow darken-2": ""%>">
+              <td>
+                <%= data.clientes[i].nome %>
+              </td>
+              <td>
+                <%= data.clientes[i].cpf_cnpj %>
+              </td>
+              <td>
+                <%= data.clientes[i].email %>
+              </td>
+
+              <td>
+
+                <a href="/sistema/clientes/editar/<%= data.clientes[i].id %>" class="ajax-load">
+                  <i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data.clientes[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data.clientes[i].nome %>'? " data-to="/sistema/clientes/desativar" data-back="/sistema/clientes" aria-hidden="true"></i>
+              </td>
+
+            </tr>
+            <%
+          }
+        }
+        %>
+      </tbody>
+    </table>
+
+
+
+
+<!-- <ul class="collapsible popout" data-collapsible="accordion, expandable" id="tabela_interna">
+
+  <%
+  if (typeof data.clientes != 'undefined' && data.clientes.length > 0) {
+    for (var i = data.clientes.length - 1; i >= 0; i--) {
+      %>
+      <li>
+        <div class="collapsible-header position" data-id="<%= data.clientes[i].id %>">
+          <%= data.clientes[i].nome %>
+          <span class="right-position">
+            <div class="fixed-action-btn horizontal">
+              <a class="">
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+              </a>
+              <ul>
+                <li><a class="ajax-load btn-floating blue darken-2 btn tooltipped center-align" data-position="bottom" data-delay="50" data-tooltip="Documentos" href="/sistema/documentos/cliente/<%= data.clientes[i].id %>"><i class="fa fa-file-text" aria-hidden="true"></i></a></li>
+                <li><a class="ajax-load btn-floating blue darken-2 btn tooltipped center-align" data-position="bottom" data-delay="50" data-tooltip="Compromissos" href="/sistema/compromissos/cliente/<%= data.clientes[i].id %>"><i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+                <li><a class="ajax-load btn-floating blue darken-2 btn tooltipped center-align" data-position="bottom" data-delay="50" data-tooltip="Histórico" href="/sistema/clientes/historico/<%= data.clientes[i].id %>"><i class="fa fa-history" aria-hidden="true"></i></a></li>
+                <li><a class="ajax-load btn-floating blue darken-2 btn tooltipped center-align" data-position="bottom" data-delay="50" data-tooltip="Imprimir Dados do Cliente" href="/sistema/clientes/imprimir/<%= data.clientes[i].id %>"><i class="fa fa-print" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+            <a href="/sistema/clientes/editar/<%= data.clientes[i].id %>" class="ajax-load"><i class="fa fa-pencil-square-o bordo-text" aria-hidden="true"></i></a>
+            <i class="fa fa-times-circle red-text modal-remover-mount" data-href="#modaldeletar" data-id="<%= data.clientes[i].id %>" data-texto="Você tem certeza que quer deletar '<%= data.clientes[i].nome %>'? " data-to="/sistema/clientes/desativar" data-back="/sistema/clientes" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="collapsible-body">
+          <div class="row">
+            <div class="col s12 m6">
+              <ul>
+                <li>
+                  <b>Nome:</b> <%= data.clientes[i].nome %>
+                </li>
+                <li>
+                  <b>Tipo(pf/pj):</b> <%= data.clientes[i].tipo %>
+                </li>
+                <li>
+                  <b>Perfil:</b> <%= data.clientes[i].perfil %>
+                </li>
+                <li>
+                  <b>Observações:</b> <%= data.clientes[i].observacoes %>
+                </li>
+                <li>
+                  <b>Grupo:</b> <%= data.clientes[i].grupo %>
+                </li>
+                <li>
+                  <b>Endereço:</b> <%= data.clientes[i].endereco %>
+                </li>
+                <li>
+                  <b>Bairro:</b> <%= data.clientes[i].bairro %>
+                </li>
+                <li>
+                  <b>Cidade:</b> <%= data.clientes[i].cidade %>
+                </li>
+                <li>
+                  <b>Estado:</b> <%= data.clientes[i].estado %>
+                </li>
+                <li>
+                  <b>CEP:</b> <%= data.clientes[i].cep %>
+                </li>
+                <li>
+                  <b>CPF/CNPJ:</b> <%= data.clientes[i].cpf_cnpj %>
+                </li>
+                <li>
+                  <b>RG:</b> <%= data.clientes[i].rg %>
+                </li>
+                <li>
+                  <b>Estado Civil:</b> <%= data.clientes[i].estado_civil %>
+                </li>
+              </ul>
+            </div>
+            <div class="col s12 m6">
+              <ul>
+                <li>
+                  <b>Série:</b> <%= data.clientes[i].serie %>
+                </li>
+                <li>
+                  <b>Nº Pis:</b> <%= data.clientes[i].n_pis %>
+                </li>
+                <li>
+                  <b>Nº Beneficio:</b> <%= data.clientes[i].n_beneficio %>
+                </li>
+                <li>
+                  <b>Nascimento:</b> <%= data.clientes[i].nascimento %>
+                </li>
+                <li>
+                  <b>Profissão:</b> <%= data.clientes[i].profissao %>
+                </li>
+                <li>
+                  <b>Telefone Pessoal:</b> <%= data.clientes[i].tel_pessoal %>
+                </li>
+                <li>
+                  <b>Telefone do Trabalho:</b> <%= data.clientes[i].tel_trabalho %>
+                </li>
+                <li>
+                  <b>Telefone de Contato:</b> <%= data.clientes[i].tel_contato %>
+                </li>
+                <li>
+                  <b>Telefone Outro:</b> <%= data.clientes[i].tel_outro %>
+                </li>
+
+                <li>
+                  <b>Email:</b> <%= data.clientes[i].email %>
+                </li>
+                <li>
+                  <b>Incrição Estadual:</b> <%= data.clientes[i].inscricao_estadual %>
+                </li>
+                <li>
+                  <b>Banco:</b> <%= data.clientes[i].banco %>
+                </li>
+                <li>
+                  <b>Agência:</b> <%= data.clientes[i].agencio %>
+                </li>
+                <li>
+                  <b>Nº da Conta Corrente:</b> <%= data.clientes[i].n_conta_corrente %>
+                </li>
+                <li>
+                  <b>Atualização:</b> <%= data.clientes[i].atualizacao %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <%
+    }
+  } else {
+    %>
+    <li>
+      <div class="collapsible-header position">
+        Não existem dados no momento
+      </div>
+    </li>
+    <%
+  }
+  %>
+</ul> -->

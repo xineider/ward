@@ -1,0 +1,103 @@
+  <div class="cream tab-archive">Criar Usuário</div>
+  <a href="/sistema/usuarios/" class="ajax-load">
+    <div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Pesquisar/Editar</div>
+  </a>
+
+  <% if(usuario.nivel == 1){%>
+  <div class="card cream archive">
+    <form method="POST" action="" enctype="multipart/form-data">
+
+      <div class="right-align row">
+        <a href="/sistema/usuarios/" class="ajax-load">
+          <div class="left valign-wrapper">
+            <div class="btn-floating btn-large waves-effect waves-light bordo lighten-1">
+              <i class="fa fa-search" aria-hidden="true"></i>            
+            </div>
+            <div class="black-text margin-l-5">Pesquisar Usuários</div>  
+          </div>
+          
+        </a>
+
+        <div class="right valign-wrapper">
+          <div class="black-text margin-r-5">Salvar Usuário</div>
+          <button data-href="/sistema/usuarios/cadastrar/" class="btn-floating btn-large waves-effect waves-light bordo ajax-submit" data-action="/sistema/usuarios/">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>          
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="input-field input-group-control col s12 m6 full-width">
+          <label for="nome">Login</label>
+          <input required="true" class="validate" type="text" name="login">
+          <div class="erro_container_cadastro_usuario hide red">
+            <div class="error_cadastro_usuario_mensagem white-text center"></div>
+          </div> 
+        </div>
+        <div class="input-field input-group-control col s12 m6 full-width">
+          <label for="nome">Nome</label>
+          <input required="true" class="validate" type="text" name="nome">
+        </div>
+        <div class="input-field input-group-control col s12 m6 full-width">
+          <label for="email">Email</label>
+          <input required="true" class="validate" type="text" name="email">
+        </div>
+        <div class="input-field input-group-control col s12 m6 full-width">
+          <label for="telefone">Telefone</label>
+          <input required="true" class="validate tel" type="tel" name="telefone">
+        </div>
+        <div class="col s12 m6 select-field input-group-control full-width">
+          <label>Nível</label>
+          <select required="true" class="browser-default" name="nivel">
+            <option value="" disabled selected>Selecione</option>
+            <option value="1">Administrador</option>
+            <option value="2">Gerente</option>
+            <option value="3">Funcionário</option>
+          </select>
+        </div>
+        <div class="col s12 m6 select-field input-group-control full-width">
+          <label>Setor</label>
+          <select required="true" class="browser-default" name="id_setor">
+            <option value="" disabled selected>Selecione</option>
+            <%
+            if (typeof data.setores != 'undefined' && data.setores.length > 0) {
+              for (var i = data.setores.length - 1; i >= 0; i--) {
+                %>
+                <option value="<%= data.setores[i].id %>"><%= data.setores[i].nome %></option>
+                <%
+              }
+            }
+            %>
+          </select>
+        </div>
+
+        <div class="col s12 m6 select-field input-group-control full-width">
+          <label>Cargo</label>
+          <select required="true" class="browser-default" name="cargo" id="cargo_usuario">
+            <option value="0" selected>Nenhum</option>
+            <option value="1">Advogada(o)</option>
+          </select>
+        </div>
+
+        <div class="input-field input-group-control col s12 m6 full-width container_campo_extra_usuario">
+        </div>
+      </div>
+
+      <div class="right-align">
+        <button data-href="/sistema/usuarios/cadastrar/" data-action="/sistema/usuarios/" class="btn waves-effect waves-light bordo ajax-submit-cadastrar-usuario">
+          Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <%}else{%>
+  <div class="card cream archive">
+    <p>Sinto Muito, você não possuí autoridade para visualizar esta página</p>
+    <a href="/sistema">Clique aqui para voltar</a>
+  </div>
+
+
+  <%}%>

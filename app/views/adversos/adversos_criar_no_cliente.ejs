@@ -1,0 +1,101 @@
+<div class="row">
+  <h5 class="center">Adverso não encontrado por favor cadastrá-lo ao preencher os campos abaixo!</h5>
+</div>
+
+<div class="row">
+  <div class="input-field input-group-control-with-search col s12 m6">
+    <b><label for="nome_adverso">Nome *(Obrigatório)</label></b>
+    <input id="nome_adverso" required="true" class="validate" type="text" name="nome_adverso">
+    <a id="selecionar_adverso" class="btn bordo lighten-1 modal-mount-anchor-id-adverso" data-link="/adversos/selecionar-todos-dados-modal" 
+    data-href="#modalinfo" 
+    data-anchor-id="#id_adverso" 
+    data-anchor-descricao="#nome_adverso" 
+    data-anchor-tipo="#tipo_pessoa_adverso" 
+    data-anchor-cpf="#cpf_cnpj_adverso"
+    data-anchor-telefone="#telefone_adverso"
+    data-anchor-email="#email_adverso"
+    data-anchor-contato="#contato_adverso"
+    data-anchor-advogado="#advogado_adverso"
+    data-anchor-cep="#cep_adverso"
+    data-anchor-rua="#rua_adverso"
+    data-anchor-bairro="#bairro_adverso"
+    data-anchor-numerocasa="#numero_casa_adverso"
+    data-anchor-cidade="#cidade_adverso"
+    data-anchor-estado="#estado_adverso">
+    <i class="fa fa-search"></i>
+  </a>
+  <input type="hidden" name="id_adverso" id="id_adverso">
+</div>
+
+
+<div class="select-field input-group-control col s12 m6">
+  <b><label>Tipo de Pessoa *(Obrigatório)</label></b>
+  <select required="true" class="browser-default" name="tipo_adverso" id="tipo_pessoa_adverso">
+    <option value="" disabled selected>Selecione</option>
+    <option value="1">Pessoa Juridica</option>
+    <option value="2">Pessoa Fisica</option>
+  </select>
+</div>
+
+<div class="input-field input-group-control col s12 m3">
+  <b><label for="cpf_cnpj_adverso">CPF/CNPJ *(Obrigatório)</label></b>
+  <input required="true" class="validate" type="text" name="cpf_cnpj_adverso" id="cpf_cnpj_adverso" value="<%= data.cpf_cnpj%>">
+</div>
+<div class="input-field input-group-control col s12 m3">
+  <label for="tel_adverso">Telefone</label>
+  <input class="validate tel" type="tel" name="tel_adverso" id="telefone_adverso">
+</div>
+<div class="input-field input-group-control col s12 m3">
+  <label for="email_adverso">E-mail</label>
+  <input class="validate" type="email" name="email_adverso" id="email_adverso">
+</div>
+<div class="input-field input-group-control col s12 m3">
+  <label for="contato_adverso">Contato</label>
+  <input class="validate" type="text" name="contato_adverso" id="contato_adverso">
+</div>
+
+
+
+</div>
+
+<div class="row">
+  <h5>Informações do Endereço do Adverso</h5>
+  <div class="input-field input-group-control full-width col s12 m3">
+    <label for="cep_adverso">CEP</label>
+    <input class="cep validate" type="text" name="cep_adverso" id="cep_adverso">
+  </div>
+  <div class="input-field input-group-control col s12 m4">
+    <label for="bairro_adverso">Bairro *(Obrigatório)</label>
+    <input required="true" class="bairro validate" type="text" name="bairro_adverso" id="bairro_adverso">
+  </div>
+  <div style="padding: 0;" class="col s12">
+    <div class="input-field input-group-control full-width input col s12 m5">
+      <label for="rua_adverso">Rua *(Obrigatório)</label>
+      <input required="true" class="rua validate" type="text" name="rua_adverso" id="rua_adverso">
+    </div>
+
+    <div class="input-field input-group-control full-width col s12 m2 l1">
+      <label for="numero_adverso" style="left:0">Número *</label>
+      <input required="true" class="numero validate" type="text" name="numero_adverso" id="numero_casa_adverso">
+    </div>
+
+    <div class="input-field input-group-control full-width col s12 m5">
+      <label for="cidade_adverso">Cidade *(Obrigatório)</label>
+      <input required="true" class="cidade validate" type="text" name="cidade_adverso" id="cidade_adverso">
+    </div>
+
+    <div class="input-field input-group-control full-width col s12 m2 l1">
+      <label for="estado_adverso">Estado *</label>
+      <input required="true" class="uf validate" type="text" name="estado_adverso" 
+      id="estado_adverso">
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <h5>Outros do Adverso</h5>
+  <div class="input-field input-group-control col s12">
+    <label for="advogado_adverso">Advogado</label>
+    <input class="validate" type="text" name="advogado_adverso" id="advogado_adverso">
+  </div>
+</div>

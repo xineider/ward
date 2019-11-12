@@ -1,0 +1,87 @@
+<div class="col s12 card">
+	<div class="close_container_load">
+		<a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+		</a>
+	</div>
+
+	<div class="input-field input-group-control col s12 m4">
+		<label for="nome_compromisso_apenso">Descrição</label>
+		<input class="validate" type="text" name="nome_compromisso_apenso">
+	</div>
+
+	<div class="select-field input-group-control col s12 m4">
+		<label>Categoria do Compromisso</label>
+		<select class="browser-default validate" name="tipo_compromisso_apenso">
+			<option value="0" selected>Pauta de Compromissos</option>
+			<option value="1">Controle de Distribuição</option>
+			<option value="2">Pauta de Julgamentos</option>
+		</select>
+	</div>
+
+	<div class="select-field input-group-control col s12 m4" id="select_tipo_compromisso_apenso">
+		<label>Tipo do Compromisso</label>
+		<select required='true' class="browser-default validate" name='tipo_apenso'>
+			<option value='0' selected>Audiência</option>         
+			<option value='1'>Reunião</option>
+			<option value='2'>Perícia</option>
+		</select>
+	</div>
+
+	<div class="input-field input-group-control col s12 m4">
+		<label>Data Inicial do Compromisso</label>
+		<input required='true' type="text" class="datepicker" name="data_inicial_compromisso_apenso">
+	</div>
+	<div class="input-field input-group-control col s12 m4">
+		<label>Horário Inicial do Compromisso</label>
+		<input type="text" class="timepicker" name="hora_inicial_compromisso_apenso">
+	</div>
+
+	<div class="input-field input-group-control col s12 m4">
+		<label>Data Final do Compromisso</label>
+		<input type="text" class="datepicker" name="data_final_compromisso_apenso">
+	</div>
+
+	<div class="input-field input-group-control col s12 m4">
+		<label>Horário Final do Compromisso</label>
+		<input type="text" class="timepicker" name="hora_final_compromisso_apenso">
+	</div>
+
+
+	<div class="input-field input-group-control-with-search col s12 m4">
+		<label for="desc_advogado_setor_apenso">Advogado Responsável do Setor</label>
+		<input disabled value="<%= data.detalhes_processo[0].advogado %>" id="desc_advogado_setor_apenso" type="text">
+		<a class="btn bordo lighten-1 modal-mount-anchor-advogado-setor-compromisso" data-link="/processos/selecionar-todos-advogados-do-setor-compromisso" data-modal="#modalinfo" data-anchor-id="#id_advogado_setor_apenso" data-anchor-descricao="#desc_advogado_setor_apenso" data-anchor-advogado-compromisso="#desc_advogado_compromisso" data-anchor-id-advogado-compromisso="#id_advogado_compromisso_apenso">
+			<i class="fa fa-search"></i>
+		</a>
+		<input type="hidden" name="id_advogado_setor_apenso" id="id_advogado_setor_apenso" value="<%= data.detalhes_processo[0].id_advogado %>">
+	</div>
+
+	<div class="input-field input-group-control-with-search col s12 m4">
+		<label for="desc_advogado_compromisso">Advogado do Compromisso</label>
+		<input disabled value="<%= data.detalhes_processo[0].advogado %>" id="desc_advogado_compromisso" type="text">
+		<a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/processos/selecionar-todos-advogados" data-href="#modalinfo" data-anchor-id="#id_advogado_compromisso_apenso" data-anchor-descricao="#desc_advogado_compromisso">
+			<i class="fa fa-search"></i>
+		</a>
+		<input type="hidden" name="id_advogado_compromisso_apenso" id="id_advogado_compromisso_apenso" value="<%= data.detalhes_processo[0].id_advogado %>">
+	</div>
+
+
+	<div class="input-field input-group-control col s12">
+		<label for="local_compromisso_apenso">Local</label>
+		<input type="text" name="local_compromisso_apenso">
+	</div>
+
+
+	<div class="input-field input-group-control col s12">
+		<label for="complemento_compromisso_apenso">Complemento</label>
+		<textarea name="complemento_compromisso_apenso"></textarea>
+	</div>
+
+	<div class="input-field col s12 margin-b-1rem" >
+
+		<button data-href="<%= data.cadastrar_link %>" class="btn waves-effect waves-light bordo ajax-submit" data-action="/sistema/processos/abrir/<%= data.detalhes_processo[0].id %>">
+			Salvar Novo Compromisso 
+		</button>
+	</div>
+</div>

@@ -1,0 +1,66 @@
+<form method="POST" action="" data-link="/sistema/clientes/pesquisar/">
+	<div class="row caixa_pesquisa">
+		<ul class="collapsible" data-collapsible="accordion">
+			<li>
+				<div class="collapsible-header">
+					Pesquisa Avançada
+				</div>
+				<div class="collapsible-body row">
+
+					<div class="col s12 m4 l3 input-field input-group-control">
+						<label for="nome">Nome</label>
+						<input type="text" name="nome" class="pesquisa" data-container="#tabela_interna_cliente">
+					</div>
+
+					<div class="col s12 m4 l3 input-field input-group-control">
+						<label for="cpf_cnpj">CPF/CNPJ</label>
+						<input type="text" name="cpf_cnpj" class="pesquisa" data-container="#tabela_interna_cliente">
+					</div>
+
+					<div class="col s12 m4 l3 select-field input-group-control">
+						<label for="tipo">Tipo</label>
+						<select class="browser-default pesquisa" name="tipo" data-container="#tabela_interna_cliente">
+							<option value="" selected>Selecione</option>
+							<option value="1">Pessoa Juridica</option>
+							<option value="2">Pessoa Fisica</option>
+						</select>
+					</div>
+
+					<div class="col s12 m4 l3 select-field input-group-control">
+						<label for="id_grupo">Grupo</label>
+						<select class="browser-default pesquisa" name="id_grupo" data-container="#tabela_interna_cliente">
+							<option value="" selected>Selecione</option>
+							<%
+							if (typeof data.grupos != 'undefined' && data.grupos.length > 0) {
+								for (var i = data.grupos.length - 1; i >= 0; i--) {
+									%>
+									<option value="<%= data.grupos[i].id %>"><%= data.grupos[i].nome %></option>
+									<%
+								}
+							}
+							%>
+						</select>
+					</div>
+
+					<div class="col s12 m4 l3 input-field input-group-control">
+						<label for="email">Email</label>
+						<input type="text" name="email" class="pesquisa" data-container="#tabela_interna_cliente">
+					</div>
+
+
+					<div class="col s12 m4 l3 input-field input-group-control">
+						<label for="cidade">Cidade</label>
+						<input type="text" name="cidade" class="pesquisa" data-container="#tabela_interna_cliente">
+					</div>
+					<div class="col s12 m4 l3 input-field input-group-control">
+						<label for="estado">Estado</label>
+						<input type="text" name="estado" class="pesquisa" data-container="#tabela_interna_cliente">
+					</div>
+
+
+					
+
+				</div>
+			</li>
+		</div>
+	</form>

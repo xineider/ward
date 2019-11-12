@@ -1,0 +1,68 @@
+<form method="POST" action="" data-link="/sistema/processos/pesquisar/">
+  <div class="row caixa_pesquisa">
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header">
+         Pesquisa Avançada
+       </div>
+       <div class="collapsible-body row" style="background:#fff">
+
+        <div class="input-field input-group-control col s12 m6">
+          <label for="numero">Número do Processo</label>          
+          <input id="numero" type="text" class="pesquisa" name="numero" data-container="#tabela_interna_processo">
+        </div>
+        <div class="input-field input-group-control col s12 m6 ">
+         <label for="cnpj">Cnpj do Cliente</label>
+         <input type="text" name="cnpj" class="pesquisa" data-container="#tabela_interna_processo">
+       </div>
+
+       <div class="col s12 m4 select-field input-group-control">
+        <label>Responsável</label>
+        <select class="browser-default pesquisa" name="id_usuario" data-container="#tabela_interna_processo">
+          <option value="" selected>Selecione</option>
+          <%
+          if (typeof data.usuarios != 'undefined' && data.usuarios.length > 0) {
+            for (var i = data.usuarios.length - 1; i >= 0; i--) {
+              %>
+              <option value="<%= data.usuarios[i].id %>"><%= data.usuarios[i].nome %></option>
+              <%
+            }
+          }
+          %>
+        </select>
+      </div>
+      <div class="col s12 m4 select-field input-group-control">
+       <label>Cliente</label>
+       <select class="browser-default pesquisa" name="id_cliente" data-container="#tabela_interna_processo">
+        <option value="" selected>Selecione</option>
+        <%
+        if (typeof data.clientes != 'undefined' && data.clientes.length > 0) {
+          for (var i = data.clientes.length - 1; i >= 0; i--) {
+            %>
+            <option value="<%= data.clientes[i].id %>"><%= data.clientes[i].nome %></option>
+            <%
+          }
+        }
+        %>
+      </select>
+    </div>
+    <div class="col s12 m4 select-field input-group-control">
+     <label>Adverso</label>
+     <select class="browser-default pesquisa" name="id_adverso" data-container="#tabela_interna_processo">
+      <option value="" selected>Selecione</option>
+      <%
+      if (typeof data.adversos != 'undefined' && data.adversos.length > 0) {
+        for (var i = data.adversos.length - 1; i >= 0; i--) {
+          %>
+          <option value="<%= data.adversos[i].id %>"><%= data.adversos[i].nome %></option>
+          <%
+        }
+      }
+      %>
+    </select>
+  </div>
+</div>
+</li>
+</ul>
+</div>
+</form>

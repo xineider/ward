@@ -1,0 +1,39 @@
+<div class="col s12 card white" style='margin-top:30px;'> 
+  <div class="close_container_load">
+    <a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>  
+    </a>
+  </div>
+  <div class="row">
+
+   <%
+   if (typeof data.adverso != 'undefined' && data.adverso.length > 0) {
+    for (var i = data.adverso.length - 1; i >= 0; i--) {
+      %>
+      <div class="col s12" style="margin-top:10px;">
+        <div class="input-field input-group-control-with-search col s12 m8">
+          <label for="nome_adverso">Adverso</label>            
+          <input disabled value="<%= data.adverso[0].nome %>" id="nome_adverso" type="text">
+          <a class="btn bordo lighten-1 modal-mount-anchor-id" data-link="/adversos/selecionar-todos-modal" data-href="#modalinfo" data-anchor-id="#id_adverso" data-anchor-descricao="#nome_adverso">
+            <i class="fa fa-search"></i>
+          </a>
+          <input type="hidden" name="id_adverso" id="id_adverso" value="<%= data.adverso[0].id %>">
+        </div>
+
+        <div class="col s12 m4">
+          <button style="margin-top:35px;" class="btn waves-effect waves-light bordo ajax-submit right" data-href='/sistema/processos/alterar_adverso_processo/' data-id='<%= data.adverso[0].id %>' data-action="/sistema/processos/abrir/<%= data.detalhes_processo[0].id %>">Salvar</button>
+        </div>
+      </div>
+      
+      <%
+    }
+  } else {
+    %>
+    <div class="col s12">
+      Não existem dados no momento
+    </div>
+    <%
+  }
+  %>
+</div>
+</div>

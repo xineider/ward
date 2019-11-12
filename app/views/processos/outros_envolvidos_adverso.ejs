@@ -1,0 +1,65 @@
+<div class="col s12 card white" style='margin-top:30px;'>
+	<div class="close_container_load">
+		<a class="btn btn-floating btn-medium grey darken-1 tooltipped" data-position="left" data-tooltip="Clique aqui para ocultar este bloco">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>	
+		</a>
+	</div>
+	<div class="row">
+		<%
+		if (typeof data.outros != 'undefined' && data.outros.length > 0) {
+			for (var i = 0; i < data.outros.length; i++) {          
+				%>
+
+				<div class="col s12" style="margin-top:10px;">
+
+					<div class="input-field input-group-control col s12 m4">
+						<p><strong>Nome:</strong> <%= data.outros[i].nome %></p>
+						<input type='hidden' name='id_outros' value='<%= data.outros[i].id%>'>
+						<input type='hidden' name='id_adverso' value='<%= data.outros[i].id_adverso%>'>
+					</div>
+
+					<div class="col s12 m4">
+
+						<select name="id_outros_tipo" class="browser-default">
+							<% if (typeof data.outros_posicoes != 'undefined' && data.outros_posicoes.length > 0) { %>
+							<% for (var j = data.outros_posicoes.length - 1; j >= 0; j--) {          
+								%>
+								<option value="<%= data.outros_posicoes[j].id%>" <% if(data.outros[i].id_outros_tipo == data.outros_posicoes[j].id){ %>' selected <%}%> >
+									<%= data.outros_posicoes[j].descricao %>
+								</option>
+								<%}}%>
+							</select>
+
+
+						</div>
+
+						<div class="col s12 m4">
+
+
+							<button class="btn waves-effect waves-light red modal-remover-mount-reload tooltipped" data-href="#modaldeletar_reload" data-position="left" data-tooltip="Remover Outro Interessado" data-id="<%= data.outros[i].id%>" data-texto="Você tem certeza que quer deletar '<%= data.outros[i].nome %>'? " data-to="/sistema/processos/desativar-outros-envolvidos-adverso/<%= data.id_processo%>" data-container=".container_adverso_load">Remover
+								<i class="fa fa-times white-text" aria-hidden="true"></i>
+							</button>
+
+
+							<button class="btn waves-effect waves-light bordo ajax-submit-no-back right" data-href='/sistema/processos/atualizar_envolvido_adverso/<%=i%>' data-id='<%= data.outros[i].id%>' data-mensagem-sucesso="Outro Envolvido do Adverso Atualizado!">Salvar</button>
+						</div>
+
+					</div>
+
+
+
+					<%}}else{%>
+					<div class="col s12 center">Não há outras pessoas envolvidos no Processo pela parte do Adverso!</div>
+					<% }%>
+
+					<div class="col s12">
+						<hr>
+					</div>
+
+					<div class="col s12 center">
+						<a class="btn bordo lighten-1 modal-mount-create" data-link="/processos/selecionar-todos-adversos-outros/<%= data.id_adverso[0].id_adverso%>/<%= data.id_processo%>" data-modal="#modalinfo">
+							Selecionar Adverso
+						</a>
+					</div>
+				</div>
+			</div>

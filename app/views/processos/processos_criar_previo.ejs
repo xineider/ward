@@ -1,0 +1,132 @@
+<div class="cadastro-processo">
+	
+	<div class="cream tab-archive">Criar Processo</div>
+	<a href="/sistema/processos/" class="ajax-load">
+		<div class="cream darken-3 tab-archive tab-nivel-2 tab-nivel-2-r">Pesquisar/Editar</div>
+	</a>
+
+	<div class="card cream archive">
+		<form method="POST" action="" enctype="multipart/form-data">
+			<div class="row valign-wrapper">
+
+				<div class="col m4 hide-on-med-and-down">
+					<div class="archive-cover-image cream">
+						<img src="/assets/imgs/cover-cadastro-processo.png">
+					</div>
+				</div>
+
+				<div class="col s12 m8">
+					<div class="row">
+
+						<div class="cadastro-processo-titulo">
+							<strong class="bordo-text"> Quem é seu cliente?</strong>
+						</div>
+
+						<div class="radio_posicao_cliente_container">
+
+							<div class="col s12 m3 offset-m2">
+								<label>
+									<div class="radio_posicao_cliente bordo">
+										<div class="cream darken-1 radio_posicao_image">							
+											<input name="id_posicao_cliente" type="radio" id="autorRadio" value="1">
+											<img src="/assets/imgs/icon_autor.png">
+										</div>
+										<div class="center">Autor</div>
+									</div>
+								</label>
+							</div>
+
+							<div class="col s12 m3">						
+								<label>
+									<div class="radio_posicao_cliente bordo">
+										<input name="id_posicao_cliente" type="radio" id="reuRadio" value="2">
+										<div class="cream darken-1 radio_posicao_image">							
+											<img src="/assets/imgs/icon_reu_v2.png">
+										</div>
+										<div class="center">Réu</div>
+									</div>
+								</label>
+							</div>
+
+							<div class="col s12 m3">
+								<label>
+									<div class="radio_posicao_cliente bordo">
+										<input name="id_posicao_cliente" type="radio" id="terceiroRadio" value="3">
+										<div class="cream darken-1 radio_posicao_image">							
+											<img src="/assets/imgs/icon_terceiro.png">
+										</div>
+										<div class="center">Terceiro</div>
+									</div>
+								</label>
+							</div>
+
+						</div>
+					</div>
+
+					<input type="hidden" name="id_usuario" id="id_usuario" value="<%= usuario.id%>">
+
+
+					<div id="input-group-cadastro-container" class="row"></div>
+
+					<div class="cadastro-button-group">
+						<a href="/sistema/" class="btn waves-effect waves-light bordo ajax-load">
+							<i class="fa fa-arrow-left" aria-hidden="true"></i>
+							Voltar
+						</a>
+
+						<button data-href="/sistema/processos/cadastrar-previo/" id="btn_cadastrar_processo" class="btn waves-effect waves-light bordo ajax-submit-no-back disabled" data-mensagem-sucesso="Processo Cadastrado!">
+							Próximo <i class="fa fa-arrow-right" aria-hidden="true"></i>
+						</button>
+
+
+					</div>
+
+<!-- 				<label>Posição:</label>
+				<input name="id_posicao_cliente" type="radio" id="autorRadio" value="1">
+				<label for="autorRadio">Autor</label>
+				<input name="id_posicao_cliente" type="radio" id="reuRadio" value="2">
+				<label for="reuRadio">Réu</label>
+				<input name="id_posicao_cliente" type="radio" id="terceiroRadio" value="3">
+				<label for="terceiroRadio">Terceiro</label> -->
+				
+		<!-- 		<div class="row" id="container_tipo_processo">
+					<div class="input-field col s12">
+						<input disabled required="true" type="text" name="nome_cliente" id="nome_cliente">
+						<label for="nome_cliente">Cliente</label>
+						<a class="btn grey modal-mount-anchor-id" data-link="/clientes/selecionar-todos-modal" data-href="#modalinfo" data-anchor-id="#id_cliente" data-anchor-descricao="#nome_cliente">
+							<i class="fa fa-search"></i>
+						</a>
+						<input type="hidden" name="id_cliente" id="id_cliente">
+					</div>
+					<div class="input-field col s12">
+						<input disabled required="true" type="text" name="nome_adverso" id="nome_adverso">
+						<label for="nome_adverso">Adverso</label>
+						<a class="btn grey modal-mount-anchor-id" data-link="/adversos/selecionar-todos-modal" data-href="#modalinfo" data-anchor-id="#id_adverso" data-anchor-descricao="#nome_adverso" >
+							<i class="fa fa-search"></i>
+						</a>
+						<input type="hidden" name="id_adverso" id="id_adverso">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s12">
+						<input required="true" type="text" name="numero">
+						<label for="numero">Número do Processo</label>
+					</div>
+				</div>
+
+				<div class="">
+					<button data-href="/sistema/processos/cadastrar-previo/" data-action="" class="btn waves-effect waves-light blue darken-2 ajax-submit-no-back">
+						Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div> -->
+		</form>
+	</div>
+</div>
+
+<style>
+#container_tipo_processo .input-field input{
+	width:80%
+}
+</style>
