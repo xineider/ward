@@ -24,9 +24,9 @@ var crypto = require('crypto');
 
 var config = {
 	"host"     : "mysql669.umbler.com",
-	"user"     : "admin-young-adv",
-	"password" : "6O(ayS4?{q{Ci",
-	"database" : "young-adv"
+	"user"     : "admin-ward-adv",
+	"password" : "4mX/4pJ4BfV#r",
+	"database" : "ward-adv"
 };
 
 // // CONEXÃO MYSQL
