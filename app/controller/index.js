@@ -50,4 +50,11 @@ router.post('/', function(req, res, next) {
 
 });
 
+router.get('/logout', function(req, res, next) {
+	req.session.destroy(function(err) {
+		console.log(err);
+	});
+	res.render('login/index', {});
+});
+
 module.exports = router;
