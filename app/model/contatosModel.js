@@ -80,6 +80,12 @@ class ContatosModel {
 		if (typeof data.lista_editar == 'undefined') {
 			data.lista_editar = {};
 		}
+
+		console.log('JJJJJJJJJJJJJ DATA ATUALIZAR JJJJJJJJJJJ');
+		console.log(data);
+		console.log('JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ');
+
+
 		return new Promise(function(resolve, reject) {
 			helper.Update('contatos', data.contatos).then(id_contato => {
 				helper.UpdateMultiple('contatos_lista', data.remover).then(id_lista_rmv => {

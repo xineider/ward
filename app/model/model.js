@@ -8,12 +8,12 @@ var crypto = require('crypto');
 // 				"password" : "q8nqdc8xp8oce1eq",
 // 				"database" : "wof4znfai0ls5ct3"
 // 			};
-// var config = {
-// 						    "host"     : "localhost",
-// 						    "user"     : "root",
-// 						    "password" : "root",
-// 						    "database" : "sistema_juridico"
-// 					  	};
+var config = {
+						    "host"     : "localhost",
+						    "user"     : "root",
+						    "password" : "root",
+						    "database" : "sistema_juridico"
+					  	};
 
 // var config = {
 // 					"host"     : "us-cdbr-iron-east-04.cleardb.net",
@@ -22,12 +22,12 @@ var crypto = require('crypto');
 // 					"database" : "heroku_f7df11955c8ff5d"
 // 					  	};
 
-var config = {
-	"host"     : "mysql669.umbler.com",
-	"user"     : "admin-ward-adv",
-	"password" : "4mX/4pJ4BfV#r",
-	"database" : "ward-adv"
-};
+// var config = {
+// 	"host"     : "mysql669.umbler.com",
+// 	"user"     : "admin-ward-adv",
+// 	"password" : "4mX/4pJ4BfV#r",
+// 	"database" : "ward-adv"
+// };
 
 // // CONEXÃO MYSQL
 var mysql      = require('mysql');
