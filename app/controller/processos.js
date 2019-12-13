@@ -221,7 +221,7 @@ router.get('/editar-parcela/:id',function(req, res, next){
 	model.SelecionarParcelaPorId(id).then(data_parcela =>{
 		data.parcela = data_parcela;
 		console.log('EEEEEEEEEEEEEEEEEEEE EDITAR PARCELA EEEEEEEEEEEEEEEEEEEEEEE');
-		console.log(data);
+		console.log(data.parcela);
 		console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE');
 		res.render(req.isAjaxRequest() == true ? 'api' : 'montador', {html: 'processos/editar_parcela_financeiro', data: data, usuario: req.session.usuario});
 	});
