@@ -9,11 +9,11 @@ var crypto = require('crypto');
 // 				"database" : "wof4znfai0ls5ct3"
 // 			};
 var config = {
-						    "host"     : "localhost",
-						    "user"     : "root",
-						    "password" : "root",
-						    "database" : "sistema_juridico"
-					  	};
+	"host"     : "localhost",
+	"user"     : "root",
+	"password" : "root",
+	"database" : "sistema_juridico"
+};
 
 // var config = {
 // 					"host"     : "us-cdbr-iron-east-04.cleardb.net",
@@ -50,11 +50,11 @@ function handleDisconnect() {
       handleDisconnect();                         // lost due to either server restart, or a
     } else {                                      // connnection idle timeout (the wait_timeout
       throw err;                                  // server variable configures this)
-    }
-  });
-                                        }
+  }
+});
+                                      }
 
-                                        handleDisconnect();
+                                      handleDisconnect();
 
 // var connection = mysql.createConnection(config['mysql']);
 // connection.connect();
@@ -171,6 +171,13 @@ class Helper {
   				array[key2] = [];
   				values[key2] = [];
   			}
+
+
+  			if(typeof data[key][key2] == 'string'){
+  				data[key][key2] = data[key][key2].toUpperCase();
+  			}
+
+
   			values[key2].push('?');
   			array[key2].push(data[key][key2]);
   		}
@@ -201,9 +208,15 @@ class Helper {
   	var values = '';
   	var names = '';
   	var array = [];
+
   	for (var key in data) {
   		names += ','+key;
   		values += ',?';
+
+  		if(typeof data[key] == 'string'){
+  			data[key] = data[key].toUpperCase();
+  		}
+
   		array.push(data[key]);
   	}
   	names = names.slice(1);
@@ -225,6 +238,7 @@ class Helper {
 			} else {
 				// ADICIONA OS NOMES DOS VALORES
 				var keys = [];
+
 				for (var key in data) {
 					keys.push(key);
 				}
@@ -241,6 +255,11 @@ class Helper {
 								where = ' WHERE id = '+valor+' AND deletado = 0';
 							} else {
 								text += ','+nome+'=?';
+
+								if(typeof valor == 'string'){
+									valor = valor.toUpperCase();
+								}
+
 								array.push(valor);
 							}
 						}
@@ -258,7 +277,6 @@ class Helper {
 		});
   }
   Update(table, data) {
-  	console.log(data);
   	var values = '';
   	var array = [];
   	for (var key in data) {
@@ -266,6 +284,11 @@ class Helper {
   			var where = ' WHERE id = ' + data[key];
   		} else {
   			values += ','+key + '= ?';
+
+  			if(typeof data[key] == 'string'){
+  				data[key] = data[key].toUpperCase();
+  			}
+
   			array.push(data[key]);
   		}
   	}

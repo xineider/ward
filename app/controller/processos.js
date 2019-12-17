@@ -1133,9 +1133,6 @@ router.post('/editar_parcela/', function(req, res, next) {
 		model.AtualizarParcela(data_insert).then(data_atu_parc => {
 			model.SelecionarParcelasDoProcesso(POST.id).then(data_parcelas =>{
 				data.parcelas = data_parcelas;
-				console.log('ºººººººººººººººººº data Atualizada parcelas ºººººººººº');
-				console.log(data.parcelas);
-				console.log('ºººººººººººººººººººººººººººººººººººººººººººººººººººººº');
 				res.render(req.isAjaxRequest() == true ? 'api' : 'montador', {html: 'processos/tabela_parcelas_only', data: data, usuario: req.session.usuario});
 			});
 		});

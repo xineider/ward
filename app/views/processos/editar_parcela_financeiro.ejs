@@ -30,27 +30,27 @@
 
 		<div class="input-field input-group-control col s6 m3">
 			<label for="acessor_juridico">A. J.</label>
-			<input value="0" name="acessor_juridico" value="<%= data.parcela[0].acessor_juridico %>">
+			<input name="acessor_juridico" value="<%=data.parcela[0].acessor_juridico%>">
 		</div>
 
 		<div class="input-field input-group-control col s6 m3">
 			<label for="imposto_renda_parcela">Imposto de Renda</label>
-			<input value="0" name="imposto_renda_parcela" value="<%= data.parcela[0].imposto_renda %>">
+			<input name="imposto_renda_parcela" value="<%= data.parcela[0].imposto_renda %>">
 		</div>
 
 		<div class="input-field input-group-control col s6 m3">
 			<label for="inss_parcela">INSS</label>
-			<input value="0" name="inss_parcela" value="<%= data.parcela[0].inss %>">
+			<input name="inss_parcela" value="<%= data.parcela[0].inss %>">
 		</div>
 
 		<div class="input-field input-group-control col s6 m3">
 			<label for="outros_descontos_parcela">Outros Descontos</label>
-			<input value="0" name="outros_descontos_parcela" value="<%= data.parcela[0].outros_descontos %>">
+			<input name="outros_descontos_parcela" value="<%= data.parcela[0].outros_descontos %>">
 		</div>
 
 		<div class="input-field input-group-control col s12">
 			<label for="observacoes_parcela">Observações da Parcela</label>
-			<textarea type="text" nmae="observacoes_parcela"><%= data.parcela[0].observacoes %></textarea>
+			<textarea type="text" name="observacoes_parcela"><%= data.parcela[0].observacoes %></textarea>
 		</div>
 
 		<div class="col s12">
