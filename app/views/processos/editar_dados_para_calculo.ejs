@@ -6,6 +6,8 @@
 	</div>
 	<div class="row margin-b-0">
 
+		<h5 class="center">Editar Dados Para o Cálculo</h5>
+
 		<input type="hidden" name="id_dados_calculo" value ="<%=data.calculos_financeiro[0].id%>">
 
 		<div class="input-field input-group-control col s12 m4">
@@ -27,6 +29,17 @@
 			<label for="porc_imposto_renda">Imposto de Renda</label>
 			<input value="<%=data.calculos_financeiro[0].porc_imposto_renda%>" name="porc_imposto_renda" type="number"> %
 		</div>
+
+		<div class="input-field input-group-control col s6 m6">
+			<label for="valor_total_principal_parcela">Valor Total</label>
+			<input value="<%=data.calculos_financeiro[0].valor_total_parcela%>" name="valor_total_principal_parcela" type="number">
+		</div>
+
+		<div class="input-field input-group-control col s6 m6">
+			<label for="valor_total_aj_parcela">Valor Total A.J</label>
+			<input value="<%=data.calculos_financeiro[0].valor_total_acessor_juridico%>" name="valor_total_acessor_juridico_parcela" type="number">
+		</div>
+
 
 		<div class="col s12 margin-b-10">
 			<button data-href="/sistema/processos/editar-dados-para-calculo" class="btn bordo ajax-submit-no-back" data-mensagem-sucesso="Dados para Cálculo Atualizados!">Atualizar Dados Para Cálculo				

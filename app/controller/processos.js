@@ -834,7 +834,7 @@ router.post('/cadastrar_parcela', function(req, res, next) {
 		}
 
 
-		var valor_pagar_reclamante = valorParcelaOriginal - vheParcela - vhpParcela - virParcela - acessor_juridico - imposto_renda - inss - outros_descontos;
+		var valor_pagar_reclamante = valorParcelaOriginal - vheParcela - vhpParcela - virParcela - imposto_renda - inss - outros_descontos;
 		if(valor_pagar_reclamante<0){
 			valor_pagar_reclamante = 0;
 		}
@@ -1049,7 +1049,9 @@ router.post('/editar-dados-para-calculo/', function(req, res, next) {
 	data_insert = {id:POST.id_dados_calculo,id_processo:POST.id, data_sentenca_acordo: POST.data_sentenca_acordo, 
 		porc_honorario_escritorio:vhe,
 		porc_honorario_perito:vhp,
-		porc_imposto_renda:vir
+		porc_imposto_renda:vir,
+		valor_total_parcela:POST.valor_total_principal_parcela,
+		valor_total_acessor_juridico:POST.valor_total_acessor_juridico_parcela
 	};
 
 
@@ -1110,7 +1112,7 @@ router.post('/editar_parcela/', function(req, res, next) {
 		}
 
 
-		var valor_pagar_reclamante = valorParcelaOriginal - vheParcela - vhpParcela - virParcela - acessor_juridico - imposto_renda - inss - outros_descontos;
+		var valor_pagar_reclamante = valorParcelaOriginal - vheParcela - vhpParcela - virParcela  - imposto_renda - inss - outros_descontos;
 		if(valor_pagar_reclamante<0){
 			valor_pagar_reclamante = 0;
 		}

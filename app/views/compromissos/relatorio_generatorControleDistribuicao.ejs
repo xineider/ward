@@ -21,7 +21,10 @@
         <td><%= data.relatorio[j].numero %></td>
         <td><%= data.relatorio[j].cliente %></td>
         <td><%= data.relatorio[j].adverso %></td>
-        <td class="w40"><%= data.relatorio[j].complemento %></td>
+        <td class="w40">
+          <p>OBSERVAÇÕES:</p>
+          <p><%= data.relatorio[j].complemento %></p>
+        </td>
       </tr>
 
       <tr>

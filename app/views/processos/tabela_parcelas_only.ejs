@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Valor da Parcela</th>
+      <th>Valor A.J</th>
       <th>Data Vencimento</th>
       <th>Data Rec. Rda.</th>
       <th>Data Pago Rte.</th>
@@ -17,6 +18,7 @@
 
       <tr>
         <td>R$<%= data.parcelas[i].valor %></td>
+        <td>R$<%= data.parcelas[i].acessor_juridico %></td>
         <td>
           <span class="hide"><%= data.parcelas[i].data_vencimento_filtro %></span>
           <%= data.parcelas[i].data_vencimento %>

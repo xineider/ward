@@ -30,7 +30,31 @@
 	<div class="row margin-b-0">
 
 
-		<div class="left valign-wrapper">
+		<div class="col s12 center">
+			<b>Valor Total Principal</b>: R$<%= data.calculos_financeiro[0].valor_total_parcela%>
+			<br>
+			<b>Valor Total A.J</b>: R$<%= data.calculos_financeiro[0].valor_total_acessor_juridico%>
+			<br>
+			<b>Valor Total do Escritório</b>: R$<%= (data.calculos_financeiro[0].valor_total_parcela  * data.calculos_financeiro[0].porc_honorario_escritorio)/100 %> (<%=data.calculos_financeiro[0].porc_honorario_escritorio%>%)
+			<br>
+			<b>Valor Total do Perito</b>: R$<%= (data.calculos_financeiro[0].valor_total_parcela  * data.calculos_financeiro[0].porc_honorario_perito)/100 %> (<%=data.calculos_financeiro[0].porc_honorario_perito%>%)
+			<br>
+			<b>Valor Total do Imposto de Renda</b>: R$<%= (data.calculos_financeiro[0].valor_total_parcela  * data.calculos_financeiro[0].porc_imposto_renda)/100  %> (<%=data.calculos_financeiro[0].porc_imposto_renda%>%)
+			<br>
+			<b>Valor Total Rte.</b>: R$<%= (data.calculos_financeiro[0].valor_total_parcela  * (100 - 
+				data.calculos_financeiro[0].porc_honorario_escritorio - 
+			data.calculos_financeiro[0].porc_honorario_perito
+			- data.calculos_financeiro[0].porc_imposto_renda))/100 %> (<%= 100 - 
+			data.calculos_financeiro[0].porc_honorario_escritorio - 
+			data.calculos_financeiro[0].porc_honorario_perito - 
+			data.calculos_financeiro[0].porc_imposto_renda%>%)
+
+
+		</div>
+
+
+
+		<div class="col s12 left valign-wrapper margin-t-10">
 			<a class="btn-floating btn-large waves-effect waves-light golden darken-2 gerar-relatorio" data-nome-provisorio="Parcela" data-container-relatorio="#tabela_parcelas">
 				<i class="fa fa-file-pdf-o bordo-text" aria-hidden="true"></i>
 			</a>
