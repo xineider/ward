@@ -1,5 +1,5 @@
      
-<table id="relatorio_generator" class="centered uppercase">
+<table id="relatorio_generator" class="centered uppercase" style="width: 100%;">
         <thead>
         <tr>
           <th></th>
@@ -15,14 +15,14 @@
     for (var j = 0; j < data.relatorio.length;j++) {
       %>
 
-      <tr class="conteudo_table margin-t-10">
+      <tr class="conteudo_table margin-t-10" style="display: inline-block;border-top: 1px solid #ccc;">
         <td style="width:90px;"><%= data.relatorio[j].data_inicial_sem_horas %></td>
-        <td><%= data.relatorio[j].vara %></td>
+        <td style="border-right: 2px solid #ccc;"><%= data.relatorio[j].vara %></td>
         <td><%= data.relatorio[j].numero %></td>
         <td><%= data.relatorio[j].cliente %></td>
         <td><%= data.relatorio[j].adverso %></td>
         <td class="w40">
-          <p>OBSERVAÇÕES:</p>
+          <span style="font-weight: bold;color: red;"><p>OBSERVAÇÕES:</p></span>
           <p><%= data.relatorio[j].complemento %></p>
         </td>
       </tr>

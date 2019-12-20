@@ -9,12 +9,15 @@ var data = {};
 var app = express();
 app.use(require('express-is-ajax-request'));
 
+
 /* GET pagina de login. */
 router.get('/', function(req, res, next) {
 	model.SelecionarEventos().then(data => {
 		res.render(req.isAjaxRequest() == true ? 'api' : 'montador', {html: 'compromissos/index', data: data, usuario: req.session.usuario});
 	});
 });
+
+
 
 
 router.get('/criar_pessoal', function(req, res, next) {

@@ -286,6 +286,7 @@ $(document).on('ready', function () {
 		var nomeProvisorio = $(this).data('nome-provisorio');
 		var container_relatorio = $(this).data('container-relatorio');
 		autoTablePdf(container_relatorio,nomeProvisorio);
+		//autoTablePdf2(container_relatorio,nomeProvisorio);
 	});
 
 	$(document).on('click', '.gerar-relatorio-no-header', function(e) {
@@ -293,6 +294,7 @@ $(document).on('ready', function () {
 		var nomeProvisorio = $(this).data('nome-provisorio');
 		var container_relatorio = $(this).data('container-relatorio');
 		autoTablePdfnoHeader(container_relatorio,nomeProvisorio);
+		//autoTablePdf2(container_relatorio,nomeProvisorio);
 	});
 
 	$(document).on('click', '.crop-image-servidor', function(e) {
@@ -3274,6 +3276,86 @@ function autoTablePdf(element,nomeProvisorio){
 	var pdf_nome = relatorioText +' - '+ nomeProvisorio + ' - ' + dia + '-' + mes + ' - ' + numeroAleatorio + '.pdf';
 
 	doc.save(pdf_nome);
+}
+
+
+
+function autoTablePdf2(elemento,nomeProvisorio){
+	var doc = new jsPDF();
+	// You can use html:
+	// doc.autoTable({html: element});
+
+	console.log('estou no autoTablePdf2');
+
+	console.log('♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣ Relatorio Elemento ♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣');
+	console.log(elemento);
+	console.log('♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣');
+
+	console.log('nomeProvisorio:'+nomeProvisorio);
+
+	// doc.html($('#relatorio_generator')[0], {
+	// 	callback: function (doc) {
+	// 		doc.save();
+	// 	}
+	// });
+
+	var specialElementHandlers = {
+		"#editor":function(element,renderer){
+			return true
+		}
+	};
+
+	//pega o html, mas não pega o css, mas pega o inline, mas é bugado, não pega borda
+	// e o display também não funciona direito
+
+	// doc.fromHTML($('#relatorio_generator').html(),{
+	// 	"elementHandlers":specialElementHandlers
+	// });
+
+
+	//tira uma print do elemento, mas fica bem ruim
+
+	// html2canvas(document.getElementById('relatorio_generator')).then(function (canvas) {
+
+	// 	var img = canvas.toDataURL("image/png");
+	// 	var doc = new jsPDF();
+	// 	doc.addImage(img, 'JPEG', 10, 10);
+	// 	doc.save('test.pdf');
+
+	// });
+
+
+
+	doc.save();
+
+
+
+	// doc.addHTML($('#relatorio_generator'),function(){
+	// 	console.log('estou no addHtml');
+	// 	doc.save();
+
+	// });
+
+
+	// doc.autoTable({
+	// 	html:element,
+	// 	headStyles:{
+	// 		fillColor:[79, 33, 40],
+	// 		textColor:[255,255,255]
+	// 	}
+	// });
+
+
+	/*só para gerar um nome único*/
+	// var relatorioText = 'relatorio';
+	// var numeroAleatorio = Math.floor((Math.random() * 900000) + 100000);
+	// var diaHoje = new Date();
+	// var mes = diaHoje.getMonth() + 1;
+	// var dia = diaHoje.getDate();
+
+	// var pdf_nome = relatorioText +' - '+ nomeProvisorio + ' - ' + dia + '-' + mes + ' - ' + numeroAleatorio + '.pdf';
+
+	// doc.save(pdf_nome);
 }
 
 
