@@ -15,6 +15,59 @@ body.row{
   margin-bottom:0;
 }
 
+
+/*Ínicio Cabeçalho*/
+
+.logo-wrapper {
+  padding: 5px 0 !important; 
+  width: 300px; 
+  height: 50px; 
+  margin: 0 0 0 -15px; 
+  text-align: center; 
+  background-color: #6e4f28;
+}
+.logo-wrapper img {
+  max-width: 100%; 
+  max-height: 40px;
+}
+
+#nav-links, #nav-links li a i {
+  line-height: 50px;
+  max-height: 50px;
+  font-size: 30px;
+}
+
+#nav-links li a {
+  max-width: 70px;
+  max-height: 50px;
+  margin: 0;
+  padding: 3 10px;
+}
+
+#nav-links li .head-icon {
+  max-width: 30px;
+  margin-top: 10px;
+}
+
+#nav-links li .img-user {
+  height: 30px;
+  width: 30px;
+  margin-top:10px;
+  margin-left: 20px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#nav-links li .img-user img{
+  height:100%;
+  width: 100%;
+      display: block;
+}
+
+
+/*Fim Cabeçalho*/
+
 .cocoa{
   /*background-color:#4a3214;*/
   background:linear-gradient(to bottom, rgb(156, 156, 156) 0%,rgb(204, 204, 204) 50%,rgb(204, 204, 204) 50%,rgba(156, 156, 156, 1) 100%);
@@ -184,6 +237,13 @@ body.row{
   background: rgb(249, 213, 59);
 }
 
+.golden.darken-3{
+  background: #dc9f06;
+}
+
+.golden.darken-3:hover{
+  background: #ca9103;
+}
 
 .ruby.darken-2{
   background-color:#562a31;
@@ -362,6 +422,11 @@ body.row{
 .f22{
   font-size: 22px;
 }
+
+.f24{
+  font-size: 24px;
+}
+
 
 .strong{
   font-weight: bold;
@@ -1931,19 +1996,19 @@ table td {
 
 #dashboard_menu .icon-square img{
   position: absolute;
-  max-width: 100%;
+  max-width: 70%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 #dashboard_menu .icon-square:hover img{
-  width: 110%;
+  max-width: 100%;
 }
 
 #dashboard_menu .icon-square a span{
   position: absolute;
-  bottom: 0px;
+  bottom: 5px;
   font-weight: bold;
   color: #fdfdc5;
   width: 100%;

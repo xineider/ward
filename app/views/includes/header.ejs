@@ -21,7 +21,7 @@
 	<!-- <script src="/assets/js/html2pdf.js"></script> -->
 	<script src="/assets/js/jspdf/addhtml.js"></script>
 	<script src="/assets/js/jspdf.plugin.autotable.js"></script>
-<!-- 	<script src="/assets/js/jspdf/from_html.js"></script> -->
+	<!-- 	<script src="/assets/js/jspdf/from_html.js"></script> -->
 	<script src="/assets/js/jspdf/html.js"></script>
 	<script src="/assets/js/main.js"></script>
 	<script src="/assets/js/datatables.min.js"></script>
@@ -156,47 +156,49 @@
 					<input id='search_header' name='busca' placeholder="Buscar por nome, cpf, cnpj">
 					<i class='fa fa-search' aria-hidden='true'></i>
 				</div>
-	        <!-- <div class="input-field col s5">
-	          <i class="fa fa-search" style="font-size: 30px; line-height: 50px;"></i>
-	          <input id="icon_prefix" type="text" class="validate">
-	          <label for="icon_prefix">Pesquisar</label>
-	      </div> -->
-	      <ul id="nav-links" class="right hide-on-med-and-down">
-	      	<li><a href="http://www.pje.jus.br/navegador/" target="_blank">
-	      		<img style="margin-top:10px;" class="head-icon" src="/assets/imgs/icons/pje.png">
-	      	</a></li>
-	      	<li><a class="ajax-load" href="/sistema/compromissos/">
-	      		<img class="head-icon" src="/assets/imgs/icons/weekly-calendar.png">
-	      	</a></li>
-	      	<li><a class="ajax-load" href="/sistema/tarefas/">
-	      		<img class="head-icon" src="/assets/imgs/icons/notes-2.png">
-	      	</a></li>
-	      	<li>
-	      		<a id="notificacoes">
-	      			<img class="head-icon" src="/assets/imgs/icons/alarm.png">
-	      			<%
-	      			if (typeof data.qtdnotificacoes != 'undefined' && data.qtdnotificacoes.length > 0) { 
-	      				for (var i = 0 ; i < data.qtdnotificacoes.length; i++) {%>
+
+				<ul id="nav-links" class="right hide-on-med-and-down">
+					<li>
+						<a href="http://www.pje.jus.br/navegador/" target="_blank" title="Processo Judicial Eletrônico">
+							<img style="margin-top:17px;" class="head-icon" src="/assets/imgs/icons/pje.png">
+						</a>
+					</li>
+					<li>
+						<a class="ajax-load" href="/sistema/compromissos/" title="Compromissos">
+							<img class="head-icon" src="/assets/imgs/icons/weekly-calendar.png">
+						</a>
+					</li>
+					<li>
+						<a class="ajax-load" href="/sistema/tarefas/" title="Tarefas">
+							<img class="head-icon" src="/assets/imgs/icons/notes-2.png">
+						</a>
+					</li>
+					<li>
+						<a id="notificacoes" title="Notificações">
+							<img class="head-icon" src="/assets/imgs/icons/alarm.png">
+							<%
+							if (typeof data.qtdnotificacoes != 'undefined' && data.qtdnotificacoes.length > 0) { 
+								for (var i = 0 ; i < data.qtdnotificacoes.length; i++) {%>
 
 
-	      				<% if(data.qtdnotificacoes[i].qtdNova > 0){%>	        
-	      				<label class="notificacoes-numero">	      				
-	      					<%=data.qtdnotificacoes[i].qtdNova%>
-	      				</label>
-	      				<%}
-	      			}
-	      		}%>  
-	      	</a>
-	      </li>
-	      <li><a id="user-dropdown" class="user-dropdown">
-	      	<div class="img-user">
-	      		<img src="<%= usuario.imagem %>"> 			
-	      	</div>
-	      </a></li>
-	      <li><a class="user-dropdown"><i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-	  </ul>
-	</div>
-</nav>
+								<% if(data.qtdnotificacoes[i].qtdNova > 0){%>	        
+								<label class="notificacoes-numero">	      				
+									<%=data.qtdnotificacoes[i].qtdNova%>
+								</label>
+								<%}
+							}
+						}%>  
+					</a>
+				</li>
+				<li><a id="user-dropdown" class="user-dropdown" title="Usuário">
+					<div class="img-user">
+						<img src="<%= usuario.imagem %>"> 			
+					</div>
+				</a></li>
+				<li><a class="user-dropdown"><i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+			</ul>
+		</div>
+	</nav>
 </header>
 
 <div class="notificacao-content hide">
@@ -267,49 +269,4 @@
 
 </div>
 
-<style type="text/css">
-	/*.logo-wrapper {margin-left: -15px; width: 300px; height: 50px; text-align: center; background-color: #6e4f28;}*/
-	.logo-wrapper {padding: 5px 0 !important; width: 300px; height: 50px; margin: 0 0 0 -15px; text-align: center; background-color: #6e4f28;}
-	.logo-wrapper img {max-width: 100%; max-height: 40px;}
-	#nav-links, #nav-links li a i {
-		line-height: 50px !important;
-		max-height: 50px !important;
-		font-size: 35px !important;
-	}
-	#nav-links li a {
-		max-width: 70px;
-		max-height: 50px;
-		margin: 0;
-		padding: 3 10px;
-	}
-	#nav-links li .head-icon {
-		max-width: 44px;
-	}
-	#nav-links li .img-user {
-		height: 42px;
-		width: 42px;
-		margin: 4px;
-		margin-left: 20px;
-		border: 1px solid #fff;
-		border-radius: 50%;
-		overflow: hidden;
-		/*		background: url('/assets/imgs/user-padrao.jpg') no-repeat center;*/
-		background-size: cover;
-	}
-
-	#nav-links li .img-user img{
-		height:100%;
-		width: 100%;
-	}
-/*  		#nav-links li .img-user img {
-  			max-width: 100%;
-  			}*/
-/*  		.bg-weekly_calendar {
-			  width: 40px;
-			  height: 40px;
-			  margin: 5px 0;
-			  background: url('/assets/imgs/sprites/css_sprites.png') -5px -4703px no-repeat;
-			  background-size: 7.81%;
-			  }*/
-			</style>
 

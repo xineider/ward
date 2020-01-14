@@ -4,6 +4,8 @@
   </a>
 
   <div class="card cream archive">
+
+    <div class="container">
     <form method="POST" action="" enctype="multipart/form-data">
 
 
@@ -33,9 +35,11 @@
       <div class="row">
 
         <div class="row">
-          <h4>Cadastro de Cliente</h4>
+          <h4 class="f24">Cadastro de Cliente</h4>
 
-          <div class="col s12">
+          <span> * Campos de preenchimento obrigatório</span>
+
+          <div class="col s12 margin-t-10">
 
             <div class="input-field input-group-control col s12 m4 l3">
               <label for="cpf_cnpj_cliente_pesquisa">CPF/CNPJ Cliente</label>
@@ -58,7 +62,7 @@
 
 
         <div class="row">
-          <h4>Cadastro de Adverso</h4>
+          <h4 class="f24">Cadastro de Adverso</h4>
 
           <div class="col s12">
 
@@ -82,7 +86,7 @@
         <div class="bordo-line"></div>
 
         <div class="row">
-          <h4>Cadastro do Processo</h4>
+          <h4 class="f24">Cadastro do Processo</h4>
           <b><span>Selecione o Tipo do Cliente *(Obrigatório)</span></b>
 
           <div class="radio_posicao_cliente_container">
@@ -139,13 +143,14 @@
 
       </div>
 
-      <span> * Campos de preenchimento obrigatório</span>
+      
       <div class="right-align">
         <button data-href="/sistema/clientes/cadastrar/" class="btn waves-effect waves-light bordo ajax-submit-no-back">
           Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i>
         </button>
       </div>
     </form>
+    </div>
   </div>
 
 
