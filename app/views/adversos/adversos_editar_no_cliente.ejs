@@ -54,34 +54,37 @@
 
 <div class="row">
   <h5 class="f20">Informações do Endereço do Adverso</h5>
-  <div class="input-field input-group-control full-width col s12 m3">
+  <div class="input-field input-group-control col s12 m3">
     <label for="cep_adverso">CEP</label>
     <input  class="cep validate" type="text" name="cep_adverso" id="cep_adverso" value="<%= data.adverso[0].cep%>">
   </div>
 
-  <div class="input-field input-group-control col s12 m4">
-    <label for="bairro_adverso">Bairro *(Obrigatório)</label>
-    <input required="true" class="bairro validate" type="text" name="bairro_adverso" id="bairro_adverso" value="<%= data.adverso[0].bairro%>">
+
+  <div class="input-field input-group-control input col s12 m7">
+    <label for="rua_adverso">Rua *(Obrigatório)</label>
+    <input required="true" class="rua validate" type="text" name="rua_adverso" id="rua_adverso" value="<%= data.adverso[0].rua%>">
   </div>
+
+  <div class="input-field input-group-control col s12 m2">
+    <label for="numero_adverso"  style="left:0">Número *</label>
+    <input required="true" class="numero validate" type="text" name="numero_adverso" id="numero_casa_adverso" value="<%= data.adverso[0].numero%>">
+  </div>
+
+
 
   <div style="padding: 0;" class="col s12">
 
-    <div class="input-field input-group-control full-width input col s12 m5">
-      <label for="rua_adverso">Rua *(Obrigatório)</label>
-      <input required="true" class="rua validate" type="text" name="rua_adverso" id="rua_adverso" value="<%= data.adverso[0].rua%>">
+    <div class="input-field input-group-control col s12 m6">
+      <label for="bairro_adverso">Bairro *(Obrigatório)</label>
+      <input required="true" class="bairro validate" type="text" name="bairro_adverso" id="bairro_adverso" value="<%= data.adverso[0].bairro%>">
     </div>
 
-    <div class="input-field input-group-control full-width col s12 m2 l1">
-      <label for="numero_adverso"  style="left:0">Número *</label>
-      <input required="true" class="numero validate" type="text" name="numero_adverso" id="numero_casa_adverso" value="<%= data.adverso[0].numero%>">
-    </div>
-
-    <div class="input-field input-group-control full-width col s12 m5">
+    <div class="input-field input-group-control col s12 m4">
       <label for="cidade_adverso">Cidade *(Obrigatório)</label>
       <input required="true" class="cidade validate" type="text" name="cidade_adverso" id="cidade_adverso" value="<%= data.adverso[0].cidade%>">
     </div>
 
-    <div class="input-field input-group-control full-width col s12 m2 l1">
+    <div class="input-field input-group-control col s12 m2">
       <label for="estado_adverso">Estado *</label>
       <input required="true" class="uf validate" type="text" name="estado_adverso" id="estado_adverso" value="<%= data.adverso[0].estado%>">
     </div>
