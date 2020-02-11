@@ -289,6 +289,15 @@ $(document).on('ready', function () {
 		//autoTablePdf2(container_relatorio,nomeProvisorio);
 	});
 
+
+	// $(document).on('click', '.gerar-relatorio', function(e) {
+	// 	e.preventDefault();
+	// 	var nomeProvisorio = $(this).data('nome-provisorio');
+	// 	var container_relatorio = $(this).data('container-relatorio');
+	// 	demoFromHTML(container_relatorio)
+	// 	//autoTablePdf2(container_relatorio,nomeProvisorio);
+	// });
+
 	$(document).on('click', '.gerar-relatorio-no-header', function(e) {
 		e.preventDefault();
 		var nomeProvisorio = $(this).data('nome-provisorio');
@@ -3114,7 +3123,62 @@ function changeTipoCompromissoPorCategoriaCompromisso(categoria,tipo,name){
 
 
 function demoFromHTML(elemento) {
-	// var pdf = new jsPDF();
+
+
+	//*****************************************************************************
+	// funciona mas o html fica sem css,então fica tudo do lado do outro
+
+	// var doc = new jsPDF();
+	// var elementHTML = $('#tabela_interna_processo').html();
+
+
+	// console.log('elemento do demoFromHTML:');
+	// console.log(elementHTML);
+	// console.log('-----------------------------------------');
+
+	// var specialElementHandlers = {
+	// 	'#elementH': function (element, renderer) {
+	// 		return true;
+	// 	}
+	// };
+
+	// doc.fromHTML(elementHTML, 15, 15, {
+	// 	'width': 170,
+	// 	'elementHandlers': specialElementHandlers
+	// });
+
+	// doc.save('sample-document.pdf');
+
+	//*****************************************************************************
+
+
+
+
+	html2canvas($('#tabela_interna_processo')[0]).then(function(canvas) {
+
+		console.log('8888888 canvas da tabela interna :D 8888888888888');
+		console.log(canvas);
+		console.log('8888888888888888888888888888888888888888888888888');
+
+		var imgData = canvas.toDataURL('image/jpeg');
+
+		var doc = new jsPDF('p','mm','a4');
+		
+		doc.setFontSize(10);
+		
+		doc.text(10, 15, 'Filter section will be printed where.')
+		
+		doc.addImage(imgData, 'jpeg', 10, 20);
+		
+		doc.save('sample.pdf');
+
+	});
+
+
+
+
+
+
 	// window.html2canvas = html2canvas;
 	// console.log('pppppppppppppppppp pdf ppppppppppppppppppppppppppppppp');
 	// console.log(pdf);
@@ -3130,7 +3194,7 @@ function demoFromHTML(elemento) {
 	// 	'width': 170
 	// });
 
-	console.log('TESTE 300');
+
 
 
 	// html2canvas(document.body,{
@@ -3174,26 +3238,26 @@ function demoFromHTML(elemento) {
 	// var element = document.getElementById('relatorio_generator');
 	// var worker = html2pdf().from($('#relatorio_generator')).save();
 
-	var pdf = new jsPDF('p', 'pt', 'letter');
-	var canvas = pdf.canvas;
-	canvas.height = 72 * 11;
-	canvas.width=72 * 8.5;;
+	//var pdf = new jsPDF('p', 'pt', 'letter');
+	//var canvas = pdf.canvas;
+	//canvas.height = 72 * 11;
+	//canvas.width=72 * 8.5;;
        // var width = 400;
 
-       html2pdf(document.body, pdf,function(pdf) {
-       	var iframe = document.createElement('iframe');
-       	console.log(iframe);
-       	console.log('iframe');
-       	iframe.setAttribute('style','position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
-       	document.body.appendChild(iframe);
-       	iframe.src = pdf.output('datauristring');
+      // html2pdf(document.body, pdf,function(pdf) {
+       //	var iframe = document.createElement('iframe');
+       	// console.log(iframe);
+       	// console.log('iframe');
+       	// iframe.setAttribute('style','position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
+       	// document.body.appendChild(iframe);
+       	// iframe.src = pdf.output('datauristring');
 
 
                //var div = document.createElement('pre');
                //div.innerText=pdf.output();
                //document.body.appendChild(div);
-           }
-           );
+           // }
+           // );
 
 
 
