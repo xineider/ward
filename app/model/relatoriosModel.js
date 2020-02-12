@@ -39,6 +39,59 @@ class RelatoriosModel {
 	}
 
 
+	CadastrarDadosParaCalculoFinanceiroProcesso(POST) {
+		return new Promise(function(resolve, reject) {
+			POST = helper.PrepareDates(POST, ['data_sentenca_acordo']);
+			console.log('ÒÒÒÒ insert do cadastrar dados para calculo financeiro ÒÒÒ');
+			console.log(POST);
+			console.log('ÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒ');
+			helper.Insert('calculo_processo_financeiro', POST).then(data => {
+				resolve(data);
+			});
+		});
+	}
+
+	CadastrarParcela(POST){
+		return new Promise(function(resolve, reject) {
+			console.log('88888888888888888 CADASTRAR ANDAMENTOS DO PROCESSO MODEL 8888888888888888888888');
+			console.log(POST);
+			console.log('8888888888888888888888888888888888888888888888888888888888888888888888888888888');
+			
+
+			if(POST.data_vencimento == "" || POST.data_vencimento == "undefined" || POST.data_vencimento == undefined){
+				delete POST.data_vencimento;
+			}
+
+			if(POST.data_recebimento_reclamada == "" || POST.data_recebimento_reclamada == "undefined" || POST.data_recebimento_reclamada == undefined){
+				delete POST.data_recebimento_reclamada;
+			}
+
+			if(POST.data_pago_reclamante == "" || POST.data_pago_reclamante == "undefined" || POST.data_pago_reclamante == undefined){
+				delete POST.data_pago_reclamante;
+			}
+
+			if(POST.id_banco == "" || POST.id_banco == "undefined" || POST.id_banco == undefined){
+				delete POST.id_banco;
+			}
+
+			POST = helper.PrepareDates(POST, ['data_vencimento']);
+			POST = helper.PrepareDates(POST, ['data_recebimento_reclamada']);
+			POST = helper.PrepareDates(POST, ['data_pago_reclamante']);
+
+
+
+			console.log('depois');
+			console.log(POST);
+			console.log('aadoapsd');
+
+			helper.Insert('parcela_processo', POST).then(data => {
+				resolve(data);
+			});
+		});
+	}
+
+
+
 
 }
 module.exports = RelatoriosModel;
