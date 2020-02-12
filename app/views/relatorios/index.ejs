@@ -3,7 +3,20 @@
 <div class="card cream archive">
 	<div class="row">
 
-		<h5 class="center">Você ainda não possui dados suficientes para gerar os relatórios! </h5>
+		<div class="right valign-wrapper">
+			<div class="black-text margin-r-5">Criar Parcela</div>
+			<a class="btn-floating btn-large waves-effect waves-light bordo lighten-1 right margin-l-5 load_especifico_to_container" data-idload="add_parcela" data-position="top" data-tooltip="Adicionar Parcela" data-link="/sistema/relatorios/adicionar-parcela/" data-container="container_parcelas">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+			</a>
+		</div>
+
+		<div class="container_parcelas"></div>
+
+
+		<div class="margin-t-10">
+			<%- include('tabela_interna_parcelas_only'); %>
+		</div>
+
 
 	</div>
 </div>
