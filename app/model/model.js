@@ -9,13 +9,13 @@ var crypto = require('crypto');
 // 				"database" : "wof4znfai0ls5ct3"
 //				"empresa"  : 0
 // 			};
-var config = {
-	"host"     : "localhost",
-	"user"     : "root",
-	"password" : "root",
-	"database" : "sistema_juridico",
-	"empresa"  : 1
-};
+// var config = {
+// 	"host"     : "localhost",
+// 	"user"     : "root",
+// 	"password" : "root",
+// 	"database" : "sistema_juridico",
+// 	"empresa"  : 0
+// };
 
 // var config = {
 // 					"host"     : "us-cdbr-iron-east-04.cleardb.net",
@@ -33,13 +33,13 @@ var config = {
 //  "empresa"  : 0
 // };
 
-// var config = {
-// 	"host"     : "mysql669.umbler.com",
-// 	"user"     : "admin-kjs-adv",
-// 	"password" : "?+uA2K5syG",
-// 	"database" : "kjs"
-//  "empresa"  : 1
-// };
+var config = {
+	"host"     : "mysql669.umbler.com",
+	"user"     : "admin-kjs-adv",
+	"password" : "?+uA2K5syG",
+	"database" : "kjs"
+ "empresa"  : 1
+};
 
 
 // // CONEXÃO MYSQL
