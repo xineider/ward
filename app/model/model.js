@@ -37,8 +37,8 @@ var config = {
 	"host"     : "mysql669.umbler.com",
 	"user"     : "admin-kjs-adv",
 	"password" : "?+uA2K5syG",
-	"database" : "kjs"
- "empresa"  : 1
+	"database" : "kjs",
+	"empresa"  : 1
 };
 
 
