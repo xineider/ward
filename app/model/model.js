@@ -7,19 +7,22 @@ var crypto = require('crypto');
 // 				"user"     : "qmu7fqec32v9yi1s",
 // 				"password" : "q8nqdc8xp8oce1eq",
 // 				"database" : "wof4znfai0ls5ct3"
+//				"empresa"  : 0
 // 			};
 var config = {
 	"host"     : "localhost",
 	"user"     : "root",
 	"password" : "root",
-	"database" : "sistema_juridico"
+	"database" : "sistema_juridico",
+	"empresa"  : 1
 };
 
 // var config = {
 // 					"host"     : "us-cdbr-iron-east-04.cleardb.net",
 // 					"user"     : "bf4496a051147d",
 // 					"password" : "756200a0",
-// 					"database" : "heroku_f7df11955c8ff5d"
+// 					"database" : "heroku_f7df11955c8ff5d",
+//					"empresa"  : 0
 // 					  	};
 
 // var config = {
@@ -27,7 +30,17 @@ var config = {
 // 	"user"     : "admin-ward-adv",
 // 	"password" : "4mX/4pJ4BfV#r",
 // 	"database" : "ward-adv"
+//  "empresa"  : 0
 // };
+
+// var config = {
+// 	"host"     : "mysql669.umbler.com",
+// 	"user"     : "admin-kjs-adv",
+// 	"password" : "?+uA2K5syG",
+// 	"database" : "kjs"
+//  "empresa"  : 1
+// };
+
 
 // // CONEXÃO MYSQL
 var mysql      = require('mysql');
@@ -68,6 +81,10 @@ class Helper {
 	}
 	Config() {
 		return config;
+	}
+
+	GetEmpresa(){
+		return config.empresa;
 	}
 	Unserialize(data) {
 		var array = [];

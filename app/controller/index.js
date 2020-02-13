@@ -13,20 +13,24 @@ app.use(require('express-is-ajax-request'));
 router.get('/', function(req, res, next) {
 	var id_usuario = req.session.usuario.id;
 	// var id_usuario = 1;
-	model.GetUltimasTarefas(id_usuario).then(data_tarefas => {
-		data.tarefas = data_tarefas;
-		model.GetUltimasTarefasPrazo(id_usuario).then(data_tarefas_prazo => {
-			data.tarefas_prazo =data_tarefas_prazo;
-			model.GetUltimasMensagens(id_usuario).then(data_mensagens => {
-				data.mensagens = data_mensagens;
-				model.GetUltimasNotificacoes(id_usuario).then(data_notificacoes => {
-					data.notificacoes = data_notificacoes;
-					model.GetNotificacoesQtdNaoVistas(id_usuario).then(data_notificacoes_qtd=>{
-						data.qtdnotificacoes = data_notificacoes_qtd;
-						console.log('----------------- ULTIMAS notificacoes -----------------------------');
-						console.log(data.qtdnotificacoes);
-						console.log('--------------------------------------------------------------------');
-						res.render(req.isAjaxRequest() == true ? 'api' : 'montador', {html: 'inicio/index', data: data, usuario: req.session.usuario});
+	var empresa_atual = model.GetEmpresaAtualLogin();
+	model.SelecionarEmpresaAtual(empresa_atual).then(data_empresa_atual =>{
+		data.empresa_atual = data_empresa_atual;
+		model.GetUltimasTarefas(id_usuario).then(data_tarefas => {
+			data.tarefas = data_tarefas;
+			model.GetUltimasTarefasPrazo(id_usuario).then(data_tarefas_prazo => {
+				data.tarefas_prazo =data_tarefas_prazo;
+				model.GetUltimasMensagens(id_usuario).then(data_mensagens => {
+					data.mensagens = data_mensagens;
+					model.GetUltimasNotificacoes(id_usuario).then(data_notificacoes => {
+						data.notificacoes = data_notificacoes;
+						model.GetNotificacoesQtdNaoVistas(id_usuario).then(data_notificacoes_qtd=>{
+							data.qtdnotificacoes = data_notificacoes_qtd;
+							console.log('----------------- ULTIMAS notificacoes -----------------------------');
+							console.log(data);
+							console.log('--------------------------------------------------------------------');
+							res.render(req.isAjaxRequest() == true ? 'api' : 'montador', {html: 'inicio/index', data: data, usuario: req.session.usuario});
+						});
 					});
 				});
 			});
@@ -39,12 +43,24 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	// Recebendo o valor do post
 	POST = req.body;
+	console.log('estou aqui no post do index');
+	console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
 	model.Login(POST).then(data => {
 		if (results.length > 0) {
 			req.session.id_usuario = results[0].id;
-			res.redirect('/sistema');
+			var empresa_atual = model.GetEmpresaAtualLogin();
+			model.SelecionarEmpresaAtual(empresa_atual).then(data_empresa_atual =>{
+				data.empresa_atual = data_empresa_atual;
+				console.log('estou aqui no post do login');
+				res.redirect('/sistema',{data:data});
+			});
 		} else {
-			res.render('login/index', { erro: 'Login ou senha incorreto(s).', tipo_erro: 'login' });
+			var empresa_atual = model.GetEmpresaAtualLogin();
+			model.SelecionarEmpresaAtual(empresa_atual).then(data_empresa_atual =>{
+				data.empresa_atual = data_empresa_atual;
+				console.log('estou aqui no post do login');
+				res.render('login/index', { erro: 'Login ou senha incorreto(s).', tipo_erro: 'login' });
+			});
 		}
 	});
 
@@ -54,7 +70,13 @@ router.get('/logout', function(req, res, next) {
 	req.session.destroy(function(err) {
 		console.log(err);
 	});
-	res.render('login/index', {});
+
+	var empresa_atual = model.GetEmpresaAtualLogin();
+	model.SelecionarEmpresaAtual(empresa_atual).then(data_empresa_atual =>{
+		data.empresa_atual = data_empresa_atual;
+		res.render('login/index', {data:data});
+	});
+
 });
 
 module.exports = router;

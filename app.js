@@ -35,6 +35,10 @@ var control = new Control;
 var VerificacaoModel = require('./app/model/verificacaoModel');
 var verificacao = new VerificacaoModel;
 
+
+var LoginModel = require('./app/model/loginModel');
+var login_empresa = new LoginModel;
+
 app.use(require('express-is-ajax-request'));
 // INICIANDO SESSION
 app.set('trust proxy', 1); // trust first proxy
@@ -45,7 +49,7 @@ app.use(session({
 }));
 
 
- 
+
 // Verifica usuario se esta logado ou não
 // app.use(function (req, res, next) {
 //   var pathname = parseurl(req).pathname;
@@ -108,7 +112,12 @@ app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /assets
-app.use(favicon(path.join(__dirname, 'assets', 'logo_mini.ico')));
+var empresa_atual = login_empresa.GetEmpresaAtualLogin();
+if(login_empresa.GetEmpresaAtualLogin() == 1){
+ app.use(favicon(path.join(__dirname, 'assets', 'kjs_logo_mini.ico')));
+}else{
+  app.use(favicon(path.join(__dirname, 'assets', 'young_logo_mini.ico')));
+}
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -175,10 +184,16 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-	if (typeof req.session.id_usuario != 'undefined' && req.session.id_usuario != 0) {
+  if (typeof req.session.id_usuario != 'undefined' && req.session.id_usuario != 0) {
   	res.render('error', { erro: 'Página não existente.', tipo_erro: '404' });
   } else {
-  	res.render('login/index', { erro: 'Página não existente, faça o login para acessar o sistema.', tipo_erro: '404' });
+    var empresa_atual = login_empresa.GetEmpresaAtualLogin();
+    var data = {};
+    login_empresa.SelecionarEmpresaAtual(empresa_atual).then(data_empresa_atual =>{
+      data.empresa_atual = data_empresa_atual;
+      res.render('login/index', {data:data, erro: 'Página não existente, faça o login para acessar o sistema.', tipo_erro: '404' });
+    });
+
   }
 });
 // app.listen(3000);

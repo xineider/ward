@@ -44,10 +44,10 @@ class IndexModel {
 	GetUltimasMensagens(id_usuario){
 		return new Promise(function(resolve, reject) {
 			helper.Query('SELECT (SELECT c.nome FROM usuarios as c WHERE c.id = a.id_usuario LIMIT 1) as nome_usuario, a.texto\
-										 FROM chats_mensagens as a WHERE a.id_usuario_enviado = ?', [id_usuario]).then(data => {
-				resolve(data);
-	    });
-		});
+				FROM chats_mensagens as a WHERE a.id_usuario_enviado = ?', [id_usuario]).then(data => {
+					resolve(data);
+				});
+			});
 	}
 
 
@@ -65,6 +65,21 @@ class IndexModel {
 				resolve(data);
 			});
 		});
+	}
+
+	GetEmpresaAtualLogin(){
+		console.log('resultado');
+		console.log(helper.GetEmpresa())
+		return helper.GetEmpresa();
+	}
+
+	SelecionarEmpresaAtual(empresa_atual) {
+		return new Promise(function(resolve, reject) {
+			helper.Query("SELECT a.*\
+				FROM empresa_atual as a WHERE a.deletado = ? AND a.id_empresa = ?", [0,empresa_atual]).then(data => {
+					resolve(data);
+				});
+			});
 	}
 
 

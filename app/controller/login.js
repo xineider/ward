@@ -5,16 +5,25 @@ var Control = require('./control.js');
 var control = new Control;
 var LoginModel = require('../model/loginModel.js');
 var model = new LoginModel;
-var data = '';
+var data = {};
 var app = express();
 app.use(require('express-is-ajax-request'));
 
 /* GET pagina de login. */
 router.get('/', function(req, res, next) {
+	console.log('estou no login mesmo');
 	if (typeof req.session.id_usuario != 'undefined' && req.session.id_usuario != 0) {
-		res.redirect('/sistema');
+		model.SelecionarEmpresaAtual(empresa_atual).then(data_empresa_atual =>{
+			data.empresa_atual = data_empresa_atual;
+			res.redirect('/sistema');
+		});
 	} else {
-		res.render('login/index', {});
+		var empresa_atual = model.GetEmpresaAtualLogin();
+		model.SelecionarEmpresaAtual(empresa_atual).then(data_empresa_atual =>{
+			data.empresa_atual = data_empresa_atual;
+			res.render('login/index', {data:data});
+		});
+
 	}
 });
 
@@ -29,7 +38,7 @@ router.post('/', function(req, res, next) {
 	console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
 	model.Login(POST).then(data => {
 		console.log(data != [] && data.length > 0);
-	  if (data.length > 0) {
+		if (data.length > 0) {
 			req.session.usuario = {};
 			req.session.usuario.id = data[0].id;
 			req.session.usuario.hash_login = data[0].hash_login;
@@ -40,26 +49,17 @@ router.post('/', function(req, res, next) {
 				req.session.usuario.config = data[0];
 				res.redirect('/sistema');
 			});
-	  } else {
-  		res.render('login/index', { erro: 'Login ou senha incorreto(s).', tipo_erro: 'login' });
-	  }
+		} else {
+			var empresa_atual = model.GetEmpresaAtualLogin();
+			model.SelecionarEmpresaAtual(empresa_atual).then(data_empresa_atual =>{
+				data.empresa_atual = data_empresa_atual;
+				console.log('estou aqui no post do login');
+				res.render('login/index', { data:data, erro: 'Login ou senha incorreto(s).', tipo_erro: 'login' });
+			});
+		}
 	});
 });
 
-/* GET pagina de login. */
-router.get('/logout', function(req, res, next) {
-
-	console.log('CAI AQUI NO LOGOUT DO LOGIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-	console.log('CAI AQUI NO LOGOUT DO LOGIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-	console.log('CAI AQUI NO LOGOUT DO LOGIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-
-
-
-	req.session.destroy(function(err) {
-  	console.log(err);
-	});
-	res.render('login/index', {});
-});
 
 router.get('/buscar_cpf/:cpf', function(req, res, next) {
 
