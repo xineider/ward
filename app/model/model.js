@@ -21,10 +21,10 @@ var crypto = require('crypto');
 // };
 
 var config = {
-					"host"     : "us-cdbr-iron-east-04.cleardb.net",
-					"user"     : "b8c9ba682fb0e2",
-					"password" : "bb22786f",
-					"database" : "heroku_f0069f694a3d577",
+					"host"     : "l6glqt8gsx37y4hs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+					"user"     : "d8i9466wmbhje7s1",
+					"password" : "eqvx4y7gooresawm",
+					"database" : "sjnlt6bbuao34avn",
 					"empresa"  : 0
 					  	};
 
