@@ -6,9 +6,12 @@ var crypto = require('crypto');
 // 				"host"     : "ryvdxs57afyjk41z.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
 // 				"user"     : "qmu7fqec32v9yi1s",
 // 				"password" : "q8nqdc8xp8oce1eq",
-// 				"database" : "wof4znfai0ls5ct3"
-//				"empresa"  : 0
+// 				"database" : "wof4znfai0ls5ct3",
+// 				"empresa"  : 0
 // 			};
+
+
+
 // var config = {
 // 	"host"     : "localhost",
 // 	"user"     : "root",
@@ -17,13 +20,13 @@ var crypto = require('crypto');
 // 	"empresa"  : 0
 // };
 
-// var config = {
-// 					"host"     : "us-cdbr-iron-east-04.cleardb.net",
-// 					"user"     : "bf4496a051147d",
-// 					"password" : "756200a0",
-// 					"database" : "heroku_f7df11955c8ff5d",
-//					"empresa"  : 0
-// 					  	};
+var config = {
+					"host"     : "us-cdbr-iron-east-04.cleardb.net",
+					"user"     : "b8c9ba682fb0e2",
+					"password" : "bb22786f",
+					"database" : "heroku_f0069f694a3d577",
+					"empresa"  : 0
+					  	};
 
 // var config = {
 // 	"host"     : "mysql669.umbler.com",
@@ -33,13 +36,13 @@ var crypto = require('crypto');
 //  "empresa"  : 0
 // };
 
-var config = {
-	"host"     : "mysql669.umbler.com",
-	"user"     : "admin-kjs-adv",
-	"password" : "?+uA2K5syG",
-	"database" : "kjs",
-	"empresa"  : 1
-};
+// var config = {
+// 	"host"     : "mysql669.umbler.com",
+// 	"user"     : "admin-kjs-adv",
+// 	"password" : "?+uA2K5syG",
+// 	"database" : "kjs",
+// 	"empresa"  : 1
+// };
 
 
 // // CONEXÃO MYSQL
