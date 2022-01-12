@@ -2,47 +2,13 @@
 var crypto = require('crypto');
 
 // FAZER LEITURA DAS CONFIGURAÇÕES
-// var config = {
-// 				"host"     : "ryvdxs57afyjk41z.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-// 				"user"     : "qmu7fqec32v9yi1s",
-// 				"password" : "q8nqdc8xp8oce1eq",
-// 				"database" : "wof4znfai0ls5ct3",
-// 				"empresa"  : 0
-// 			};
-
-
-
-// var config = {
-// 	"host"     : "localhost",
-// 	"user"     : "root",
-// 	"password" : "root",
-// 	"database" : "sistema_juridico",
-// 	"empresa"  : 0
-// };
-
 var config = {
-					"host"     : "l6glqt8gsx37y4hs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-					"user"     : "d8i9466wmbhje7s1",
-					"password" : "eqvx4y7gooresawm",
-					"database" : "sjnlt6bbuao34avn",
-					"empresa"  : 0
-					  	};
-
-// var config = {
-// 	"host"     : "mysql669.umbler.com",
-// 	"user"     : "admin-ward-adv",
-// 	"password" : "4mX/4pJ4BfV#r",
-// 	"database" : "ward-adv"
-//  "empresa"  : 0
-// };
-
-// var config = {
-// 	"host"     : "mysql669.umbler.com",
-// 	"user"     : "admin-kjs-adv",
-// 	"password" : "?+uA2K5syG",
-// 	"database" : "kjs",
-// 	"empresa"  : 1
-// };
+	"host"     : "localhost",
+	"user"     : "root",
+	"password" : "root",
+	"database" : "sistema_juridico",
+	"empresa"  : 0
+};
 
 
 // // CONEXÃO MYSQL
